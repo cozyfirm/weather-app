@@ -4,13 +4,17 @@ use App\Http\Controllers\Admin\Core\KeywordsController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\Other\FAQsController;
 use App\Http\Controllers\Admin\Users\UsersController;
+use App\Http\Controllers\PublicPart\HomeController as PublicHomeController;
 use App\Http\Controllers\Auth\AuthController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::prefix('/')->group(function () {
+    /**
+     *  Public part of Web App
+     */
+    Route::get ('/',                              [PublicHomeController::class, 'home'])->name('public.home');
 
+});
 
 /**
  *  Auth routes
@@ -94,7 +98,7 @@ Route::prefix('system')->middleware('auth')->group(function () {
         });
 
         /**
-         *  Blog
+         *  Blog:: ToDo
          */
         Route::prefix('blog')->middleware('auth')->group(function () {
             Route::get ('/',                               [AdminBlogController::class, 'index'])->name('system.admin.blog');

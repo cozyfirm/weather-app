@@ -10,6 +10,7 @@ use App\Models\User;
 use App\Traits\Http\ResponseTrait;
 use App\Traits\Users\UserBaseTrait;
 use Carbon\Carbon;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -125,16 +126,14 @@ class AuthController extends Controller{
             return $this->jsonResponse('1101', __('Greška prilikom procesiranja podataka. Molimo da nas kontaktirate!'));
         }
     }
-    public function verifyAccount($token){
+    public function verifyAccount($token): RedirectResponse{
         try{
-            $user = User::where('api_token', $token)->first();
+            $user = User::where('api_token', '=', $token)->first();
             $user->update(['email_verified_at' => Carbon::now()]);
             Auth::login($user);
-        }catch (\Exception $e){
-            dd($e);
-        }
+        }catch (\Exception $e){ }
 
-        return redirect()->route('public-part.home');
+        return redirect()->route('public.home');
     }
 
     /* -------------------------------------------------------------------------------------------------------------- */
