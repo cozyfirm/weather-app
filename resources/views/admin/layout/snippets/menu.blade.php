@@ -196,7 +196,7 @@
                 </div>
             </div>
         </a>
-        <a href="#" class="menu-a-link">
+        <a href="{{ route('system.admin.other.faq') }}" class="menu-a-link">
             <div class="s-lm-wrapper">
                 <div class="s-lm-s-elements">
                     <div class="s-lms-e-img">
@@ -209,7 +209,19 @@
                 </div>
             </div>
         </a>
-
+        <a href="{{ route('system.admin.core.keywords') }}" class="menu-a-link">
+            <div class="s-lm-wrapper">
+                <div class="s-lm-s-elements">
+                    <div class="s-lms-e-img">
+                        <i class="fas fa-key"></i>
+                    </div>
+                    <p>{{__('Keywords')}}</p>
+                    <div class="extra-elements">
+                        <div class="ee-t ee-t-b"><p>{{__('Core')}}</p></div>
+                    </div>
+                </div>
+            </div>
+        </a>
     </div>
 
 {{--    @include('system.template.menu.menu-includes.bottom-icons')--}}

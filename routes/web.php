@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\Admin\Core\KeywordsController;
 use App\Http\Controllers\Admin\HomeController;
+use App\Http\Controllers\Admin\Other\FAQsController;
 use App\Http\Controllers\Admin\Users\UsersController;
 use App\Http\Controllers\Auth\AuthController;
 use Illuminate\Support\Facades\Route;
@@ -54,15 +56,41 @@ Route::prefix('system')->middleware('auth')->group(function () {
         });
 
         /**
-         *  FAQs section
+         *  Other section
+         *  1. FAQs
          */
-        Route::prefix('faq')->middleware('auth')->group(function () {
-            Route::get ('/',                               [OtherController::class, 'faqIndex'])->name('system.admin.faq');
-            Route::get ('/create',                         [OtherController::class, 'faqCreate'])->name('system.admin.faq.create');
-            Route::post('/save',                           [OtherController::class, 'faqSave'])->name('system.admin.faq.save');
-            Route::get ('/edit/{id}',                      [OtherController::class, 'faqEdit'])->name('system.admin.faq.edit');
-            Route::post('/update',                         [OtherController::class, 'faqUpdate'])->name('system.admin.faq.update');
-            Route::get ('/delete/{id}',                    [OtherController::class, 'faqDelete'])->name('system.admin.faq.delete');
+        Route::prefix('other')->group(function () {
+            /**
+             *  FAQs section
+             */
+            Route::prefix('faq')->middleware('auth')->group(function () {
+                Route::get ('/',                               [FAQsController::class, 'faqIndex'])->name('system.admin.other.faq');
+                Route::get ('/create',                         [FAQsController::class, 'faqCreate'])->name('system.admin.other.faq.create');
+                Route::post('/save',                           [FAQsController::class, 'faqSave'])->name('system.admin.other.faq.save');
+                Route::get ('/edit/{id}',                      [FAQsController::class, 'faqEdit'])->name('system.admin.other.faq.edit');
+                Route::post('/update',                         [FAQsController::class, 'faqUpdate'])->name('system.admin.other.faq.update');
+                Route::get ('/delete/{id}',                    [FAQsController::class, 'faqDelete'])->name('system.admin.other.faq.delete');
+            });
+        });
+
+        /**
+         *  Core section:
+         *  1. Keywords
+         */
+        Route::prefix('core')->group(function () {
+            /**
+             *  FAQs section
+             */
+            Route::prefix('keywords')->group(function () {
+                Route::get ('/',                                    [KeywordsController::class, 'index'])->name('system.admin.core.keywords');
+                Route::get ('/preview-instances/{key}',             [KeywordsController::class, 'previewInstances'])->name('system.admin.core.keywords.preview-instances');
+                Route::get ('/new-instance/{key}',                  [KeywordsController::class, 'newInstance'])->name('system.admin.core.keywords.new-instance');
+
+                Route::post('/save-instance',                       [KeywordsController::class, 'saveInstance'])->name('system.admin.core.keywords.save-instance');
+                Route::get ('/edit-instance/{id}',                  [KeywordsController::class, 'editInstance'])->name('system.admin.core.keywords.edit-instance');
+                Route::post('/update-instance',                     [KeywordsController::class, 'updateInstance'])->name('system.admin.core.keywords.update-instance');
+                Route::get ('/delete-instance/{id}',                [KeywordsController::class, 'deleteInstance'])->name('system.admin.core.keywords.delete-instance');
+            });
         });
 
         /**
