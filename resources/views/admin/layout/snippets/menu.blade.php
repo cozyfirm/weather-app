@@ -1,7 +1,7 @@
 <div class="s-top-menu">
     <div class="app-name">
         <a title="{{__('Naslovna strana')}}">
-            <h1> CozyFirm d.o.o </h1>
+            <h1 class="mt-3"> CozyFirm d.o.o </h1>
         </a>
         <i class="fas fa-bars t-3 system-m-i-t" title="{{__('Otvorite / zatvorite MENU')}}"></i>
     </div>
@@ -129,7 +129,7 @@
                     <div class="s-lms-e-img">
                         <i class="far fa-file-alt"></i>
                     </div>
-                    <p>{{__('Programi')}}</p>
+                    <p>{{__('Something')}}</p>
                     <div class="extra-elements">
                         <div class="rotate-element"><i class="fas fa-angle-right"></i></div>
                     </div>
@@ -138,20 +138,20 @@
                     <a href="#">
                         <div class="inside-lm-link">
                             <div class="ilm-l"></div><div class="ilm-c"></div>
-                            <p>{{__('Pregled programa')}}</p>
+                            <p>{{__('Preview all')}}</p>
                         </div>
                     </a>
                     <a href="#">
                         <div class="inside-lm-link">
                             <div class="ilm-l"></div><div class="ilm-c"></div>
-                            <p> {{__('Prijave')}} </p>
+                            <p> {{__('Other link')}} </p>
                         </div>
                     </a>
                 </div>
             </div>
         </a>
 
-        <a href="#" class="menu-a-link">
+        <a href="{{ route('system.admin.users') }}" class="menu-a-link">
             <div class="s-lm-wrapper">
                 <div class="s-lm-s-elements">
                     <div class="s-lms-e-img">
