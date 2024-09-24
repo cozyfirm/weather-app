@@ -1,0 +1,157 @@
+html, body{ position: relative; left:0px; top:0px; width: 100%; height: 100%; margin:0px; padding:0px; }
+
+.form-text, label, .my-font{
+    font-family: "Gimlet Sans Variable", sans-serif;
+    font-display: swap;
+}
+
+.auth-form{
+    position: relative; left:0px; top:0px; width: 100%; height: 100%; display: inline-flex; justify-content: space-between;
+    padding: 0px;
+
+    /*
+     *  Auth form image - left part of page
+     */
+
+    .af-image{
+        position: absolute; left:0px; top:0px; width: 30%; height: 100%; background: #000000; margin: 0px;
+        img{
+            position: absolute; left:0px; top:0px; right:0px; bottom: 0px; margin:auto; max-width: 100%;
+            rotate: -90deg;
+        }
+
+        .af-img-text{
+            //position: absolute; left:0px; top:0px; width:100%; height:100%;
+
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform:  translateX(-50%) translateY(-50%) rotate(-90deg);
+
+            h1{
+                white-space: nowrap; color:#ffffff; font-size:100px;
+                font-family: "Gimlet Sans Variable", sans-serif;
+                font-display: swap;
+            }
+        }
+    }
+
+    /*
+     *  Auth form form - input elements for authentication
+     */
+    .af-form{
+        position: relative; left:30%; top:0px; width: 70%; height: 100%; display: inline-flex; align-items: center;
+
+        .aff-container{
+            position: relative; display: inline-flex; flex-wrap: wrap; left:120px; width: calc(100% - 240px);
+            .aff-header{
+                position: relative; left:0px; top:0px; width: 100%;
+                h1{
+                    font-family: "Gimlet Sans Variable", sans-serif;
+                    font-display: swap;
+                }
+            }
+
+            .aff-short{
+                position: relative; left:0px; top:0px; width: 100%;
+                p{ margin:0px; padding:0px;                 font-family: "Gimlet Sans Variable", sans-serif;
+                    font-display: swap; }
+            }
+
+            hr{
+                position: relative; left:0px; top:0px; width: 100%; height: 1px; background: #333; margin-top:50px; margin-bottom:50px;
+            }
+
+            .aff-form{
+                position: relative; left:0px; top:0px; width: 100%;
+                .row{
+                    input{
+                        width:100%;
+                    }
+                }
+            }
+
+            .aff-links{
+                /* a{font-weight:bold; } */
+                font-family: "Gimlet Sans Variable", sans-serif;
+                font-display: swap;
+                a{
+                    margin-top:6px;
+                    font-family: "Gimlet Sans Variable", sans-serif;
+                    font-display: swap;
+                }
+                span{margin:0px 10px; font-size:20px;}
+
+                .stay-logged-in{
+                    position: relative; display: inline-flex; gap: 5px;
+                    input{
+                        width:14px; height:14px; margin:0px; padding:0px; margin-top:9px;
+                    }
+                    label{
+                        margin:0px; margin-top:6px;
+                        font-family: "Gimlet Sans Variable", sans-serif;
+                        font-display: swap;
+                    }
+                }
+
+                .btn{
+                    background: #3D1F5F; height: 28px; padding:3px 15px; color:#fff; font-size:14px;
+                    font-family: "Gimlet Sans Variable", sans-serif;
+                    font-display: swap;
+                }
+            }
+        }
+    }
+
+    /*
+     *  Mobile friendly page
+     */
+
+    @media only screen and (max-width: 1500px) {
+        .af-form{
+            .aff-container{ left:50px; width: calc(100% - 100px); }
+        }
+    }
+
+    @media only screen and (max-width: 1300px) {
+        .af-image{display: none;}
+        .af-form{
+            left:0px; width: 100%;
+            .aff-container{ left:120px; width: calc(100% - 240px); }
+        }
+    }
+
+    @media only screen and (max-width: 1300px) {
+        .af-form{
+            .aff-container{
+                left:20px; width: calc(100% - 40px);
+                .aff-short{
+                    p{
+                        text-align: justify;
+                    }
+                }
+                hr{
+                    margin-top:20px; margin-bottom: 20px;
+                }
+                .aff-form{
+                    .col-md-6{
+                        margin-bottom: 20px;
+                    }
+                    label, input{
+                        font-family: "Gimlet Sans Variable", sans-serif;
+                        font-display: swap;
+                    }
+                }
+                .aff-links{
+                    .col-md-6{
+                        a{display:inline-flex; margin-bottom: 10px;}
+                    }
+                    //span{display: none;}
+                }
+            }
+            .auth-btn{
+                width: 100%; margin-top:10px; padding:5px 15px; height: 34px !important;
+            }
+        }
+    }
+}

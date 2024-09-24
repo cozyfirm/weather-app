@@ -1,0 +1,132 @@
+.loading-gif{
+    position: fixed; left: 0px; top: 0px; width: 100%; height: 100%; background: rgba(255,255,255,0.3); z-index: 100;
+    img{
+        position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; margin: auto;
+    }
+}
+.register-form{
+    position: relative; left:0px; top:0px; width: 100%; height: 100%; display: inline-flex; justify-content: space-between;
+    padding: 0px; margin: 0px;
+
+    /*
+     *  Auth form image - left part of page
+     */
+
+    .rf-image{
+        position: absolute; left:0px; top:0px; width: 30%; height: 100%; background: #000000; margin: 0px; padding: 0px; overflow: hidden;
+        img{
+            position: absolute; left:0px; top:0px; right:0px; bottom: 0px; margin:auto; max-height: 100%;
+            rotate: -90deg;
+        }
+    }
+
+    .rf-form{
+        position: relative; left:30%; top:0px; width: 70%; height: 100%; display: inline-flex; align-items: center;
+
+        .center-element{
+            position: relative; left: 0px; width: 100%;
+            .rf-f-header{
+                position: relative; left: 120px; width: calc(100% - 240px);
+
+                h1{}
+
+                .progress-line{
+                    position: relative; left: 0px; top:0px; width: 100%; height: 50px; display: inline-flex; justify-content: space-between;
+                    .pl-e-bar{
+                        position: absolute; left: 0px; height: 6px; top: 22px; width: 100%; background: #EFEFEF;
+                        .pl-e-bar-fill{
+                            position: absolute; left: 0px; top: 0px; height: 100%; background: #EA8BF3; transition: all 0.2s; transition-timing-function: linear;
+                            width: 16.66%;
+                        }
+                    }
+
+                    .pl-element{
+                        position: relative; width: 33.33%; height: 50px; display: inline-flex; justify-content: center;
+                        .pl-e-icon-w{
+                            position: relative; width: 34px; height: 34px; border-radius: 50%; border: 1px solid #EA8BF3; margin-top: 8px; text-align: center; background: #EA8BF3;
+                            i{
+                                margin-top: 8px; color:#ffffff;
+                            }
+                        }
+                    }
+
+                    //.pl-e-first{
+                    //    .pl-e-bar{
+                    //        .pl-e-bar-fill{width: 50%;}
+                    //    }
+                    //}
+                }
+                //.pl-1{
+                //    .pl-e-first{ .pl-e-bar{ .pl-e-bar-fill{ width: 100%; } } }
+                //    .pl-e-second{ .pl-e-bar{ .pl-e-bar-fill{ transition-delay: 0.2s; width: 50%; } } }
+                //}
+                //.pl-1{
+                //    .pl-e-second{ .pl-e-bar{ .pl-e-bar-fill{ transition-delay: 0s; width: 100%; } } }
+                //    .pl-e-second{ .pl-e-bar{ .pl-e-bar-fill{ transition-delay: 0.2s; width: 50%; } } }
+                //}
+            }
+
+            .rf-f-body{
+                position: relative; left: 120px; width: calc(100% - 240px); min-height: 120px; margin-top: 35px;
+
+                input, select{height: 36px !important;}
+                select{padding-top: 6px !important;}
+
+                .c-bootstrap-field{
+                    position: relative; left: 0px; top:0px; width: 100%; height: 96px; display: inline-flex; flex-wrap: wrap;
+                    .input-elements{
+                        margin-top: 4px; width: 100%; display: inline-flex; justify-content: space-between;
+                    }
+                }
+
+                .button-wrapper{
+                    background: #EA8BF3; color:#ffffff; padding-left: 20px; padding-right: 20px; padding-top: 3px; padding-bottom: 4px; border-radius: 4px; font-size: 15px;
+                }
+                .create-profile-back-btn{ margin-right: 20px; }
+                .button-wrapper:hover{cursor: pointer;}
+
+                .success-icon-wrapper{
+                    position: relative; left: 0px; width: 100%; display: inline-flex; justify-content: center;
+                    .success-icon{
+                        width: 80px; height: 80px; text-align: center; border-radius: 50%; background: #20c997;
+                        i{
+                            font-size: 30px; color: #ffffff; padding-top: 25px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @media only screen and (max-width: 1500px) {
+        .rf-form{
+            .center-element{
+                .rf-f-header, .rf-f-body{
+                    left:50px; width: calc(100% - 100px);
+                }
+            }
+        }
+    }
+
+    @media only screen and (max-width: 1300px) {
+        .rf-image{display: none;}
+        .rf-form{
+            left:0px; width: 100%;
+        }
+    }
+
+    @media only screen and (max-width: 1000px){
+        .rf-form{
+            align-items: start;
+            .center-element{
+                .rf-f-header{margin-top: 30px;}
+                .rf-f-header, .rf-f-body{
+                    left:20px; width: calc(100% - 40px);
+                }
+                .rf-f-body{
+                    margin-bottom: 30px;
+                }
+            }
+        }
+    }
+}

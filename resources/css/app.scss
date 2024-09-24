@@ -1,0 +1,29 @@
+/* Authentication style */
+
+@import 'bootstrap-icons/font/bootstrap-icons.css';
+@import "bootstrap/scss/bootstrap";
+
+/* Notify */
+@import "style/layout/notify";
+
+$primaryColor : #3D1F5F;
+$secondaryColor : #F86624;
+
+html{
+    body{
+        position: relative;
+    }
+    a{
+        text-decoration: none; color: #000000;
+    }
+}
+
+/* Layout styles */
+//@import "style/layout/notify";
+//@import 'style/layout/jquery-ui.css';
+
+/* Snippets */
+//@import "style/snippets/classes";
+
+@import "public-part/auth/auth";
+@import "public-part/auth/create-account";
