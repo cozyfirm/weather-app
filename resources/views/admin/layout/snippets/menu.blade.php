@@ -127,24 +127,24 @@
             <div class="s-lm-wrapper">
                 <div class="s-lm-s-elements">
                     <div class="s-lms-e-img">
-                        <i class="far fa-file-alt"></i>
+                        <i class="far fa-building"></i>
                     </div>
-                    <p>{{__('Something')}}</p>
+                    <p>{{__('Gradovi')}}</p>
                     <div class="extra-elements">
                         <div class="rotate-element"><i class="fas fa-angle-right"></i></div>
                     </div>
                 </div>
                 <div class="inside-links active-links">
-                    <a href="#">
+                    <a href="{{ route('system.admin.base.cities') }}">
                         <div class="inside-lm-link">
                             <div class="ilm-l"></div><div class="ilm-c"></div>
-                            <p>{{__('Preview all')}}</p>
+                            <p>{{__('Osnovni gradovi')}}</p>
                         </div>
                     </a>
                     <a href="#">
                         <div class="inside-lm-link">
                             <div class="ilm-l"></div><div class="ilm-c"></div>
-                            <p> {{__('Other link')}} </p>
+                            <p> {{__('Ostale info')}} </p>
                         </div>
                     </a>
                 </div>
@@ -165,19 +165,19 @@
             </div>
         </a>
 
-        <a href="#" class="menu-a-link">
-            <div class="s-lm-wrapper">
-                <div class="s-lm-s-elements">
-                    <div class="s-lms-e-img">
-                        <i class="fas fa-wind"></i>
-                    </div>
-                    <p>{{__('Blog')}}</p>
-                    <div class="extra-elements">
-                        <div class="ee-t ee-t-b"><p>{{__('Other')}}</p></div>
-                    </div>
-                </div>
-            </div>
-        </a>
+{{--        <a href="#" class="menu-a-link">--}}
+{{--            <div class="s-lm-wrapper">--}}
+{{--                <div class="s-lm-s-elements">--}}
+{{--                    <div class="s-lms-e-img">--}}
+{{--                        <i class="fas fa-wind"></i>--}}
+{{--                    </div>--}}
+{{--                    <p>{{__('Blog')}}</p>--}}
+{{--                    <div class="extra-elements">--}}
+{{--                        <div class="ee-t ee-t-b"><p>{{__('Other')}}</p></div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </a>--}}
 
         <div class="subtitle">
             <h4> {{__('Ostalo')}} </h4>

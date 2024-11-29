@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\Base\BaseCitiesController;
 use App\Http\Controllers\Admin\Core\KeywordsController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\Other\FAQsController;
@@ -117,6 +118,23 @@ Route::prefix('system')->middleware('auth')->group(function () {
 
             Route::get ('/edit-image/{id}/{what}',         [AdminBlogController::class, 'editImage'])->name('system.admin.blog.edit-image');
             Route::post('/update-image',                   [AdminBlogController::class, 'updateImage'])->name('system.admin.blog.update-image');
+        });
+
+        /** --------------------------------------------------------------------------------------------------------- */
+        /**
+         *  Base cities and places
+         */
+
+        Route::prefix('base')->middleware('isAdmin')->group(function () {
+            Route::prefix('cities')->middleware('isAdmin')->group(function () {
+                Route::get ('/',                          [BaseCitiesController::class, 'index'])->name('system.admin.base.cities');
+                Route::get ('/create',                    [BaseCitiesController::class, 'create'])->name('system.admin.base.cities.create');
+                Route::post('/save',                      [BaseCitiesController::class, 'save'])->name('system.admin.base.cities.save');
+                Route::get ('/preview/{id}',              [BaseCitiesController::class, 'preview'])->name('system.admin.base.cities.preview');
+                Route::get ('/edit/{id}',                 [BaseCitiesController::class, 'edit'])->name('system.admin.base.cities.edit');
+                Route::post('/update',                    [BaseCitiesController::class, 'update'])->name('system.admin.base.cities.update');
+                Route::get ('/delete/{id}',               [BaseCitiesController::class, 'delete'])->name('system.admin.base.cities.delete');
+            });
         });
     });
 });
