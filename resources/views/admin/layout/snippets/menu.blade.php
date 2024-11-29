@@ -22,13 +22,13 @@
 
             <a href="#" target="_blank">
                 <div class="single-li">
-                    <p> {{__('Blog')}} </p>
+                    <p> {{__('Naslovna strana')}} </p>
                 </div>
             </a>
 
             <a href="#">
                 <div class="single-li">
-                    <p> {{__('WebShop')}} </p>
+                    <p> {{__('Other pages')}} </p>
                 </div>
             </a>
         </div>
