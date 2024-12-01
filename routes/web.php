@@ -134,6 +134,9 @@ Route::prefix('system')->middleware('auth')->group(function () {
                 Route::get ('/edit/{id}',                 [BaseCitiesController::class, 'edit'])->name('system.admin.base.cities.edit');
                 Route::post('/update',                    [BaseCitiesController::class, 'update'])->name('system.admin.base.cities.update');
                 Route::get ('/delete/{id}',               [BaseCitiesController::class, 'delete'])->name('system.admin.base.cities.delete');
+
+                /* Fetch from API */
+                Route::post('/fetch',                     [BaseCitiesController::class, 'fetch'])->name('system.admin.base.cities.fetch');
             });
         });
     });

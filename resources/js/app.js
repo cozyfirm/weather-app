@@ -9,7 +9,7 @@ import 'bootstrap-datepicker';
 /* Import Admin JavaScript data */
 import './admin/layout/menu.js';
 import './admin/layout/filters.js';
-
+import './admin/snippets/c-select-2.js';
 
 /* Import Submit script */
 import "./style/submit.js";
