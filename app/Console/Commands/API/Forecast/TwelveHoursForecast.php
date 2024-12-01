@@ -5,11 +5,12 @@ namespace App\Console\Commands\API\Forecast;
 use App\Models\Base\Cities;
 use App\Models\Base\Forecast\TwelveHours;
 use App\Traits\API\ForecastTrait;
+use App\Traits\Common\FileTrait;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
 
 class TwelveHoursForecast extends Command{
-    use ForecastTrait;
+    use ForecastTrait, FileTrait;
     /**
      * The name and signature of the console command.
      *
@@ -36,12 +37,11 @@ class TwelveHoursForecast extends Command{
 
             $forecast = $this->fetchTwelveHoursForecast($uri);
             foreach ($forecast as $sample){
-                $dateTime = Carbon::parse($sample->DateTime);
-
                 $dbSample = TwelveHours::where('city_key', '=', $city->key)
                     ->where('date_time', '=', Carbon::parse($sample->DateTime))
                     ->first();
 
+                /* ToDo - Cannot fetch icons from AccuWeather.com */
                 if(!$dbSample){
                     TwelveHours::create($this->prepareTwelveHoursForecastQuery($sample, $city->key));
                 }else{
