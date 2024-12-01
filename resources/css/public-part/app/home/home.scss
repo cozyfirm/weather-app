@@ -6,6 +6,8 @@
         .info__wrapper{
             position: relative; width: calc(50% - 8px); background: #EEF0F2; border-radius: 8px; padding: 32px; gap: 16px; display: flex; flex-wrap: wrap;
             align-items: center;
+
+            background: rgba(255,255,255,0.5);
             .header{
                 position: relative; width: 100%; display: flex; justify-content: space-between; align-items: center;
                 h5{
@@ -76,7 +78,7 @@
     position: relative; width: 100%; display: flex; justify-content: space-between; gap: 32px;
 
     .forecast__wrapper{
-        position: relative; width: 420px; height: 420px; background: #EEF0F2; border-radius: 8px; padding: 32px; display: flex; flex-wrap: wrap; gap: 16px;
+        position: relative; width: 420px; height: 420px; background: rgba(255,255,255,0.5); border-radius: 8px; padding: 32px; display: flex; flex-wrap: wrap; gap: 16px;
 
         .fw__header{
             position: relative; width: 100%; display: flex; justify-content: space-between; align-items: center;
@@ -100,6 +102,7 @@
             &::-webkit-scrollbar { width: 0px; height:0px; }
             .fw_b_row{
                 position: relative; width: 100%; display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;
+                &:hover{cursor: pointer;}
                 .weather_info{
                     position: relative; gap: 16px; display: flex; align-items: center;
                     img{
@@ -117,6 +120,6 @@
     }
 
     .summary_wrapper{
-        position: relative; width: calc(100% - 420px); height: 100%; background: #EEF0F2; border-radius: 8px;
+        position: relative; width: calc(100% - 420px); height: 100%; background: rgba(255,255,255,0.5); border-radius: 8px;
     }
 }

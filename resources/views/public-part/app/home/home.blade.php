@@ -89,9 +89,9 @@
                 </div>
                 <div class="fw__body">
                     @foreach($currentCity->twelveHoursRel as $forecast)
-                        <div class="fw_b_row">
+                        <div class="fw_b_row" title="{{ $forecast->temperature_desc ?? '' }}">
                             <div class="weather_info">
-                                <img src="https://www.accuweather.com/images/weathericons/36.svg" alt="{{ __('Weather icon') }}">
+                                <img src="https://www.accuweather.com/images/weathericons/{{ $forecast->icon ?? '1' }}.svg" alt="{{ __('Weather icon') }}">
                                 <h6>{{ $forecast->temperature ?? '0' }}°C / {{ $forecast->temperature_rf }}°C</h6>
                             </div>
                             <div class="date">
