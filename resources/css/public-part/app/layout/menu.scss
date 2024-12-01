@@ -1,0 +1,40 @@
+.menu__wrapper{
+    position: relative; width: $d-width; display: flex; justify-content: space-between; align-items: center; gap: 16px;
+    .search__area{
+        position: relative; width: calc(100% - 962px); height: 100%; display: flex; align-items: center;
+        input{
+            position: relative; width: 100%; background: #EEF0F2; border: 1px solid rgba(0,0,0,0.2); border-radius: 4px; padding: 8px 16px;
+        }
+    }
+
+    .popular__cities{
+        position: relative; width: 962px; display: flex; height: 100%; justify-content: flex-end; align-items: center; gap: 8px;
+        .popular_city{
+            position: relative; display: flex; align-items: center; justify-content: space-between; width: 200px;
+            border: 1px solid rgba(255,255,255,0.6); border-radius: 4px; gap: 8px; padding: 8px 16px; background: #EEF0F2;
+
+            .city{
+                position: relative; width: 100%; display: flex; justify-content: flex-start;
+                overflow: hidden;
+                p{
+                    position: relative; width: 100%; text-align: left;
+                    white-space: nowrap;       /* Prevent wrapping to a new line */
+                    overflow: hidden;          /* Hide the overflowed text */
+                    text-overflow: ellipsis;   /* Add dots (ellipsis) */
+                }
+            }
+            .weather_icon{
+                position: relative; width: 20px;
+                img{
+                    height: 20px;
+                }
+            }
+            .temperature{
+                position: relative; width: 60px;
+                p{
+                    white-space: nowrap;
+                }
+            }
+        }
+    }
+}

@@ -20,6 +20,7 @@ import "./style/submit.js";
  */
 
 import './public-part/auth/auth.js';
+import './public-part/snippets/map.js';
 
 $(document).ready(function() {
     $(".datepicker").datepicker({
