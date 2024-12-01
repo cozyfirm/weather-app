@@ -2,8 +2,12 @@
 
 namespace App\Models\Base;
 
+use App\Models\Base\Forecast\TwelveHours;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
@@ -18,5 +22,19 @@ class Cities extends Model{
     protected $table = 'base__cities';
     protected $guarded = ['id'];
 
-
+    public function twelveHoursRel(): HasMany{
+        return $this->hasMany(TwelveHours::class, 'city_key', 'key')->where('date_time', '>=', Carbon::now()->format('Y-m-d H:00:00'));
+    }
+    public function twelveHoursCurrentRel(): HasOne{
+        return $this->hasOne(TwelveHours::class, 'city_key', 'key')->where('date_time', '>=', Carbon::now()->format('Y-m-d H:00:00'));
+    }
+    public function currentTemperature(): string{
+        return ($this->twelveHoursCurrentRel->temperature ?? '0') . ' °C';
+    }
+    public function currentHumidity(): string{
+        return ($this->twelveHoursCurrentRel->rel_humidity ?? '0') . ' %';
+    }
+    public function currentWind(): string{
+        return ($this->twelveHoursCurrentRel->wind_speed ?? '0') . ' km/h';
+    }
 }

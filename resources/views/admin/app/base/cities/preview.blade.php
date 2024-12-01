@@ -114,35 +114,25 @@
                                 </div>
                             </div>
 
-                            <div class="card p-0 m-0 mt-3" title="#">
+                            <div class="card p-0 m-0 mt-3" title="{{ $city->twelveHoursCurrentRel->temperature_desc ?? '' }}">
                                 <div class="card-body d-flex justify-content-between">
                                     <h5 class="p-0 m-0"> {{ __('Vremenski uslovi') }} </h5>
-                                    <i class="fas fa-temperature"></i>
+                                    <img src="https://www.accuweather.com/images/weathericons/{{ $city->twelveHoursCurrentRel->icon ?? '1' }}.svg" class="height-30" alt="">
                                 </div>
 
-                                <div class="card-body d-flex justify-content-between pt-0 pb-0" title="{{ __('Šifra grada iz API-a') }}">
+                                <div class="card-body d-flex justify-content-between pt-0 pb-0">
                                     <p class="p-0 m-0"> {{ __('Temperatura') }} </p>
-                                    <p class="p-0 m-0"> 10 °C </p>
+                                    <p class="p-0 m-0"> {{ $city->currentTemperature() }} </p>
                                 </div>
-                                <div class="card-body d-flex justify-content-between pt-0 pb-3" title="{{ __('Šifra grada iz API-a') }}">
+                                <div class="card-body d-flex justify-content-between pt-0 pb-0">
+                                    <p class="p-0 m-0"> {{ __('Vjetar') }} </p>
+                                    <p class="p-0 m-0"> {{ $city->currentWind() }} </p>
+                                </div>
+                                <div class="card-body d-flex justify-content-between pt-0 pb-3">
                                     <p class="p-0 m-0"> {{ __('Vlažnost') }} </p>
-                                    <p class="p-0 m-0"> 47% </p>
+                                    <p class="p-0 m-0"> {{ $city->currentHumidity() }} </p>
                                 </div>
                             </div>
-
-{{--                            <form action="{{ route('system.admin.users.update-profile-image') }}" method="POST" id="update-profile-image" enctype="multipart/form-data">--}}
-{{--                                @csrf--}}
-{{--                                {{ html()->hidden('id')->class('form-control')->value($user->id) }}--}}
-{{--                                <div class="card p-0 m-0 mt-3" title="{{ __('Nova fotografija za program') }}">--}}
-{{--                                    <div class="card-body d-flex justify-content-between">--}}
-{{--                                        <label for="photo_uri" >--}}
-{{--                                            <p class="m-0">{{ __('Ažurirajte fotografiju') }}</p>--}}
-{{--                                        </label>--}}
-{{--                                        <i class="fas fa-image mt-1"></i>--}}
-{{--                                    </div>--}}
-{{--                                    <input name="photo_uri" class="form-control form-control-lg d-none" id="photo_uri" type="file">--}}
-{{--                                </div>--}}
-{{--                            </form>--}}
                         </div>
                     </div>
                 </div>
