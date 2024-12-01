@@ -7,6 +7,10 @@ $(document).ready(function (){
     let uri = '/system/search/clubs/by-name-v2';
     let imgUri = "/images/club-images/";
 
+    let removeSearchedValues = function (){
+        $(".input__search_wrapper").find(".c-select-2-wrapper").remove();
+    }
+
     if(cSelect2.length){
         /**
          *  First, create new input label for real data information
@@ -37,7 +41,7 @@ $(document).ready(function (){
                     let data = response['data']['data'];
 
                     /* First, remove all other */
-                    $(".input__search_wrapper").find(".c-select-2-wrapper").remove();
+                    removeSearchedValues();
 
                     if(data.length){
 
@@ -54,7 +58,7 @@ $(document).ready(function (){
                                     //         });
                                     // })
                                     .append(function (){
-                                        return $("<span>").text(data[i]['title'] + ', ' + data[i]['city'] /* + ', ' + data[i]['country_rel']['name_ba'] */);
+                                        return $("<span>").text(data[i]['title'] + ', ' + data[i]['description'] );
                                     });
                             });
                         }
@@ -63,6 +67,8 @@ $(document).ready(function (){
                             return wrapper;
                         });
                     }
+                }else{
+                    removeSearchedValues();
                 }
             }
         });

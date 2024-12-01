@@ -38,10 +38,10 @@
             @foreach($cities as $city)
                 <tr>
                     <td class="text-center">{{ $i++}}</td>
-                    <td> {{ $user->name ?? ''}} </td>
-                    <td> {{ $user->region ?? ''}} </td>
-                    <td> {{ $user->country ?? ''}} </td>
-                    <td> {{ $user->area ?? ''}} </td>
+                    <td> {{ $city->name ?? ''}} </td>
+                    <td> {{ $city->region ?? ''}} </td>
+                    <td> {{ $city->country ?? ''}} </td>
+                    <td> {{ $city->area ?? ''}} </td>
 
                     <td class="text-center">
                         <a href="{{route('system.admin.base.cities.preview', ['id' => $city->id] )}}" title="{{ __('Više informacija') }}">
