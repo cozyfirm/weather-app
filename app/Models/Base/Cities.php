@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static create(array $array)
  * @method static where(string $string, string $string1, $Key)
  * @method static orderBy(string $string, string $string1)
+ * @method static get()
  */
 class Cities extends Model{
     use HasFactory, SoftDeletes;
