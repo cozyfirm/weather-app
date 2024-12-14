@@ -1,6 +1,16 @@
 $( document ).ready(function() {
     let searchedVal = '', searching = false;
 
+    let setSearch = function (show){
+        if(show){
+            $(".dropdown__wrapper").removeClass('d-none');
+            $(".search__wrapper").addClass('focused');
+        }else{
+            $(".search__wrapper").removeClass('focused');
+            $(".dropdown__wrapper").addClass('d-none');
+        }
+    }
+
     /**
      *  On keyup on main input field
      */
@@ -11,20 +21,20 @@ $( document ).ready(function() {
             /* Rise flag for searching */
             searching = true;
 
-            $(".dropdown__wrapper").removeClass('d-none');
+            setSearch(true);
         }else{
             /* Remove searched elements */
-            $(".dropdown__wrapper").addClass('d-none');
+            setSearch(false);
         }
     }).on('focus', '#main-search', function(e) {
-        $(".dropdown__wrapper").removeClass('d-none');
+        setSearch(true);
     }).on('focusout', '#main-search', function(e) {
-        $(".dropdown__wrapper").addClass('d-none');
+        setSearch(false);
     }).on('click', '.cs2-row', function(e) {
 
     }).on('click', 'body', function(e){
         if(!$(e.target).hasClass('c-select-2-wrapper') ) {
-            $(".input__search_wrapper").find(".c-select-2-wrapper").remove();
+            // $(".input__search_wrapper").find(".c-select-2-wrapper").remove();
         }else{
             // console.log("anywhere ..");
         }

@@ -1,3 +1,11 @@
+/* Default desktop width */
 $d-width: 1240px;
 
+/* Main background color */
 $bColor: #03335b;
+$lightBlue: #2fc8fe;
+
+.transition-02{ transition: 0.2s all; &:hover{transition: 0.2s all;} }
+.transition-03{ transition: 0.3s all; &:hover{transition: 0.3s all;} }
+.transition-04{ transition: 0.4s all; &:hover{transition: 0.4s all;} }
+.transition-05{ transition: 0.5s all; &:hover{transition: 0.5s all;} }

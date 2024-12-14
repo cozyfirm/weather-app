@@ -10,7 +10,7 @@ html{
         background-attachment: fixed;
 
         .public-content{
-            position: relative; width: 100%; display: flex; justify-content: center; flex-wrap: wrap; gap: 32px;
+            position: relative; width: 100%; display: flex; justify-content: center; flex-wrap: wrap; gap: 64px;
             // padding: 32px 0px;
 
             h1,h2,h3,h4,h5,h6,p,a,span{margin: 0px; padding: 0px;}
@@ -21,6 +21,7 @@ html{
              *  Pages imports
              */
             @import "app/home/home";
+            @import "app/forecast/preview";
             //.main__wrapper{
             //    position: relative; width: $d-width; min-height: 300px; display: flex; flex-wrap: wrap; gap: 32px;
             //
@@ -32,4 +33,4 @@ html{
     }
 }
 
-
+// Rain effect CSS - https://codepen.io/arickle/pen/XKjMZY

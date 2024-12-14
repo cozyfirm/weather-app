@@ -16,11 +16,11 @@
     </head>
 
     <body>
-        <!-- Static element on every page -->
-        @include('public-part.layout.snippets.menu')
-
         <!-- Public content wrapper should be used in every public page -->
         <div class="public-content">
+            <!-- Static element on every page -->
+            @include('public-part.layout.snippets.menu')
+
             <!-- Yield data into it -->
             @yield('public-content')
         </div>
