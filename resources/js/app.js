@@ -22,6 +22,12 @@ import "./style/submit.js";
 import './public-part/auth/auth.js';
 import './public-part/snippets/map.js';
 
+/**
+ *  Import App scripts, such as:
+ *      1. Search script for homepage
+ */
+import './public-part/app/home/search.js';
+
 $(document).ready(function() {
     $(".datepicker").datepicker({
         format: 'mm.dd.yyyy',
