@@ -1,0 +1,95 @@
+.specific__day__wrapper{
+    position: relative; width: 100%; background: #03335b; border-radius: 8px; padding: 32px; display: flex; flex-wrap: wrap;
+    align-items: center;
+
+    .sdw__header{
+        position: relative; width: 100%; display: flex; justify-content: space-between; align-items: center;
+
+        h2{ color: #FFFFFF; }
+        .sdw__h__options{
+            position: relative; display: flex; gap: 0px; align-items: center; background: $skyBlue; padding: 8px; border-radius: 4px;
+            .sdw__h__o_option{
+                position: relative; color: #FFFFFF; padding: 2px 16px; border-radius:4px;
+                &.active{
+                    background: $lightBlue;
+                }
+                &:hover{
+                    cursor: pointer; // background: $lightBlue;
+                }
+            }
+        }
+    }
+
+    .sdw__body{
+        position: relative; width: 100%; display: flex; justify-content: space-between; // align-items: center;
+
+        .text__info{
+            position: relative; height: 100%; display: flex; flex-wrap:wrap; gap: 16px;
+            p{color:#fff; width:100%;}
+            h4{color: #FFFFFF; margin-top:16px;}
+            .warnings__wrapper{
+                position: relative; width: 100%; display: flex; flex-grow: 1; flex-direction: column; gap: 8px;
+
+                .oiw__info{
+                    position: relative; padding: 2px 16px; border-radius: 3px; margin-right: auto;
+                    page-break-after: always;
+
+                    &.yellow-warning{background: #fbed50; p{color:#333;} }
+                    &.info-warning{background: #2fc8fe; p{color:#333;} }
+                    p{
+                        color: #FFFFFF; font-size: 14px;
+                    }
+                }
+            }
+        }
+        .temperature__info{
+            position: relative; display: flex; padding-top:32px;
+            .temp__info__inner{
+                position: relative; width: 100%; display: flex; gap: 32px; align-items: flex-start;
+                .tii__text{
+                    h2{ color:#FFFFFF; font-weight:normal; }
+                    p{color: #FFFFFF;}
+                }
+                img{height: 80px; }
+            }
+        }
+    }
+}
+
+/**
+ *  1. Humidity
+ *  2. Precipitation
+ *  3. Uv Index
+ */
+
+.other__info__wrapper{
+    position: relative; width: 100%; min-height: 120px; background: $bColor; border-radius: 8px; display: flex; justify-content: space-between; gap: 32px; padding: 32px;
+
+    .oiw__inner{
+        position: relative; width: 25%; background: $skyBlue; border-radius:8px; padding: 16px; gap: 8px; display: flex; flex-wrap: wrap;
+        .oiw__i__header{
+            position: relative; width: 100%; display: flex; justify-content: space-between; align-items: center;
+            p{color:#FFFFFF;}
+            img{height: 20px;}
+        }
+        .oiw__i__body{
+            position: relative; width: 100%; display: flex; justify-content: center;
+            h3{color: #FFFFFF; margin:0px; padding:0px; }
+        }
+        .oiw__i__footer{
+            position: relative; width: 100%; margin-top: 8px;
+            .line__wrapper{
+                position: relative; width: 100%; height: 10px; background: $bColor; border-radius: 4px; overflow: hidden;
+                .fill__line{
+                    position: relative; left: 0px; top: 0px; height: 100%; background: $lightBlue;
+                }
+            }
+            .line__desc{
+                position: relative; width: 100%; display: flex; justify-content: space-between; margin-top: 4px;
+                span{
+                    color: #FFFFFF; font-size: 12px;
+                }
+            }
+        }
+    }
+}

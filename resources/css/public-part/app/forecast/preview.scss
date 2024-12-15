@@ -231,4 +231,12 @@
             }
         }
     }
+
+    /**
+     *  Preview specific day, info about:
+     *      1. That day
+     *      2. Short about current conditions
+     *      3. Info about five days (upper scss)
+     */
+    @import "preview-day";
 }

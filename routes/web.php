@@ -25,6 +25,7 @@ Route::prefix('/')->group(function () {
 
         /** Preview searched city */
         Route::get ('/preview',                       [ForecastController::class, 'preview'])->name('public.forecast.preview');
+        Route::get ('/preview-day',                   [ForecastController::class, 'previewDay'])->name('public.forecast.preview-day');
     });
 });
 

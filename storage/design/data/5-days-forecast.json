@@ -1,0 +1,337 @@
+{
+    "Date": "2024-12-15T07:00:00+01:00",
+    "EpochDate": 1734242400,
+    "Sun": {
+        "Rise": "2024-12-15T07:14:00+01:00",
+        "EpochRise": 1734243240,
+        "Set": "2024-12-15T16:10:00+01:00",
+        "EpochSet": 1734275400
+    },
+    "Moon": {
+        "Rise": "2024-12-15T15:51:00+01:00",
+        "EpochRise": 1734274260,
+        "Set": "2024-12-16T08:40:00+01:00",
+        "EpochSet": 1734334800,
+        "Phase": "Full",
+        "Age": 14
+    },
+    "Temperature": {
+        "Minimum": {
+            "Value": -2.2,
+            "Unit": "C",
+            "UnitType": 17
+        },
+        "Maximum": {
+            "Value": 4.9,
+            "Unit": "C",
+            "UnitType": 17
+        }
+    },
+    "RealFeelTemperature": {
+        "Minimum": {
+            "Value": -0.9,
+            "Unit": "C",
+            "UnitType": 17,
+            "Phrase": "Hladno"
+        },
+        "Maximum": {
+            "Value": 7.2,
+            "Unit": "C",
+            "UnitType": 17,
+            "Phrase": "Prohladno"
+        }
+    },
+    "RealFeelTemperatureShade": {
+        "Minimum": {
+            "Value": -0.9,
+            "Unit": "C",
+            "UnitType": 17,
+            "Phrase": "Hladno"
+        },
+        "Maximum": {
+            "Value": 5.4,
+            "Unit": "C",
+            "UnitType": 17,
+            "Phrase": "Prohladno"
+        }
+    },
+    "HoursOfSun": 3.7,
+    "DegreeDaySummary": {
+        "Heating": {
+            "Value": 17.0,
+            "Unit": "C",
+            "UnitType": 17
+        },
+        "Cooling": {
+            "Value": 0.0,
+            "Unit": "C",
+            "UnitType": 17
+        }
+    },
+    "AirAndPollen": [
+        {
+            "Name": "AirQuality",
+            "Value": 0,
+            "Category": "Dobro",
+            "CategoryValue": 1,
+            "Type": "Ozon"
+        },
+        {
+            "Name": "Grass",
+            "Value": 0,
+            "Category": "Dobro",
+            "CategoryValue": 1
+        },
+        {
+            "Name": "Mold",
+            "Value": 0,
+            "Category": "Dobro",
+            "CategoryValue": 1
+        },
+        {
+            "Name": "Ragweed",
+            "Value": 0,
+            "Category": "Dobro",
+            "CategoryValue": 1
+        },
+        {
+            "Name": "Tree",
+            "Value": 0,
+            "Category": "Dobro",
+            "CategoryValue": 1
+        },
+        {
+            "Name": "UVIndex",
+            "Value": 2,
+            "Category": "Dobro",
+            "CategoryValue": 1
+        }
+    ],
+    "Day": {
+        "Icon": 18,
+        "IconPhrase": "Kiša",
+        "HasPrecipitation": true,
+        "PrecipitationType": "Rain",
+        "PrecipitationIntensity": "Light",
+        "ShortPhrase": "Malo kiše",
+        "LongPhrase": "Malo kiše",
+        "PrecipitationProbability": 90,
+        "ThunderstormProbability": 0,
+        "RainProbability": 90,
+        "SnowProbability": 10,
+        "IceProbability": 0,
+        "Wind": {
+            "Speed": {
+                "Value": 5.6,
+                "Unit": "km/h",
+                "UnitType": 7
+            },
+            "Direction": {
+                "Degrees": 350,
+                "Localized": "S",
+                "English": "N"
+            }
+        },
+        "WindGust": {
+            "Speed": {
+                "Value": 16.7,
+                "Unit": "km/h",
+                "UnitType": 7
+            },
+            "Direction": {
+                "Degrees": 329,
+                "Localized": "SSZ",
+                "English": "NNW"
+            }
+        },
+        "TotalLiquid": {
+            "Value": 1.5,
+            "Unit": "mm",
+            "UnitType": 3
+        },
+        "Rain": {
+            "Value": 1.5,
+            "Unit": "mm",
+            "UnitType": 3
+        },
+        "Snow": {
+            "Value": 0.0,
+            "Unit": "cm",
+            "UnitType": 4
+        },
+        "Ice": {
+            "Value": 0.0,
+            "Unit": "mm",
+            "UnitType": 3
+        },
+        "HoursOfPrecipitation": 2.0,
+        "HoursOfRain": 2.0,
+        "HoursOfSnow": 0.0,
+        "HoursOfIce": 0.0,
+        "CloudCover": 72,
+        "Evapotranspiration": {
+            "Value": 0.5,
+            "Unit": "mm",
+            "UnitType": 3
+        },
+        "SolarIrradiance": {
+            "Value": 1734.9,
+            "Unit": "W/m²",
+            "UnitType": 33
+        },
+        "RelativeHumidity": {
+            "Minimum": 79,
+            "Maximum": 96,
+            "Average": 86
+        },
+        "WetBulbTemperature": {
+            "Minimum": {
+                "Value": -0.6,
+                "Unit": "C",
+                "UnitType": 17
+            },
+            "Maximum": {
+                "Value": 4.1,
+                "Unit": "C",
+                "UnitType": 17
+            },
+            "Average": {
+                "Value": 2.6,
+                "Unit": "C",
+                "UnitType": 17
+            }
+        },
+        "WetBulbGlobeTemperature": {
+            "Minimum": {
+                "Value": -0.6,
+                "Unit": "C",
+                "UnitType": 17
+            },
+            "Maximum": {
+                "Value": 4.9,
+                "Unit": "C",
+                "UnitType": 17
+            },
+            "Average": {
+                "Value": 3.3,
+                "Unit": "C",
+                "UnitType": 17
+            }
+        }
+    },
+    "Night": {
+        "Icon": 34,
+        "IconPhrase": "Pretežno vedro",
+        "HasPrecipitation": false,
+        "ShortPhrase": "Uglavnom vedro",
+        "LongPhrase": "Uglavnom vedro",
+        "PrecipitationProbability": 13,
+        "ThunderstormProbability": 0,
+        "RainProbability": 0,
+        "SnowProbability": 13,
+        "IceProbability": 0,
+        "Wind": {
+            "Speed": {
+                "Value": 3.7,
+                "Unit": "km/h",
+                "UnitType": 7
+            },
+            "Direction": {
+                "Degrees": 101,
+                "Localized": "I",
+                "English": "E"
+            }
+        },
+        "WindGust": {
+            "Speed": {
+                "Value": 11.1,
+                "Unit": "km/h",
+                "UnitType": 7
+            },
+            "Direction": {
+                "Degrees": 61,
+                "Localized": "ISI",
+                "English": "ENE"
+            }
+        },
+        "TotalLiquid": {
+            "Value": 0.0,
+            "Unit": "mm",
+            "UnitType": 3
+        },
+        "Rain": {
+            "Value": 0.0,
+            "Unit": "mm",
+            "UnitType": 3
+        },
+        "Snow": {
+            "Value": 0.0,
+            "Unit": "cm",
+            "UnitType": 4
+        },
+        "Ice": {
+            "Value": 0.0,
+            "Unit": "mm",
+            "UnitType": 3
+        },
+        "HoursOfPrecipitation": 0.0,
+        "HoursOfRain": 0.0,
+        "HoursOfSnow": 0.0,
+        "HoursOfIce": 0.0,
+        "CloudCover": 24,
+        "Evapotranspiration": {
+            "Value": 0.0,
+            "Unit": "mm",
+            "UnitType": 3
+        },
+        "SolarIrradiance": {
+            "Value": 0.0,
+            "Unit": "W/m²",
+            "UnitType": 33
+        },
+        "RelativeHumidity": {
+            "Minimum": 78,
+            "Maximum": 92,
+            "Average": 82
+        },
+        "WetBulbTemperature": {
+            "Minimum": {
+                "Value": -2.4,
+                "Unit": "C",
+                "UnitType": 17
+            },
+            "Maximum": {
+                "Value": 1.9,
+                "Unit": "C",
+                "UnitType": 17
+            },
+            "Average": {
+                "Value": -0.6,
+                "Unit": "C",
+                "UnitType": 17
+            }
+        },
+        "WetBulbGlobeTemperature": {
+            "Minimum": {
+                "Value": -2.2,
+                "Unit": "C",
+                "UnitType": 17
+            },
+            "Maximum": {
+                "Value": 3.1,
+                "Unit": "C",
+                "UnitType": 17
+            },
+            "Average": {
+                "Value": 0.2,
+                "Unit": "C",
+                "UnitType": 17
+            }
+        }
+    },
+    "Sources": [
+        "AccuWeather"
+    ],
+    "MobileLink": "http://www.accuweather.com/bs/ba/sarajevo/33028/daily-weather-forecast/33028?day=1&unit=c",
+    "Link": "http://www.accuweather.com/bs/ba/sarajevo/33028/daily-weather-forecast/33028?day=1&unit=c"
+},

@@ -16,4 +16,8 @@ class ForecastController extends Controller{
     public function preview(): View{
         return view($this->_path . 'preview');
     }
+
+    public function previewDay(): View{
+        return view($this->_path . 'preview-day');
+    }
 }
