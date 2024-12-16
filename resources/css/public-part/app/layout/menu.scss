@@ -48,16 +48,27 @@
     .inner__menu__wrapper{
         position: relative; width: $d-width; display: flex; justify-content: space-between; align-items: center;
 
+        @media only screen and (max-width: $d-width) {
+            left:0px; width:calc(100% - 100px);
+        }
+        @media only screen and (max-width: 1000px) {
+            width: calc(100% - 40px);
+        }
+
         .logo_wrapper{
             position: relative;
             img{
                 height: 40px;
+                @media only screen and (max-width: 1000px) {
+                    height: 32px;
+                }
             }
         }
         .hamburger__wrapper{
             position: relative;
             img{
                 height: 30px;
+                &:hover{cursor: pointer;}
             }
         }
     }

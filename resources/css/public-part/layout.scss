@@ -10,11 +10,19 @@ html{
         background-repeat: no-repeat;
         background-attachment: fixed;
 
+        /**
+         *  Right menu is on top
+         */
+        @import "app/layout/right-menu";
+
         .public-content{
             position: relative; width: 100%; display: flex; justify-content: center; flex-wrap: wrap; gap: 64px;
             // padding: 32px 0px;
 
             h1,h2,h3,h4,h5,h6,p,a,span{margin: 0px; padding: 0px;}
+            @media only screen and (max-width: 1000px) {
+                gap: 20px;
+            }
 
             @import "app/layout/menu";
 
@@ -22,6 +30,7 @@ html{
              *  Pages imports
              */
             @import "app/home/home";
+            @import "app/forecast/search";
             @import "app/forecast/preview";
             //.main__wrapper{
             //    position: relative; width: $d-width; min-height: 300px; display: flex; flex-wrap: wrap; gap: 32px;
