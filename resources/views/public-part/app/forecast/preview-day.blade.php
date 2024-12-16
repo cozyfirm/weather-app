@@ -27,6 +27,7 @@
                             <p>{{ __('Srijeda navečer snijeg 20:00 - 23:59') }}</p>
                         </div>
                     </div>
+                    <p>Izlazak sunca u 07:54h, zalazak u 16:03h !</p>
                 </div>
                 <div class="temperature__info">
                     <div class="temp__info__inner">
@@ -41,7 +42,7 @@
         </div>
 
         <div class="other__info__wrapper">
-            <div class="oiw__inner">
+            <div class="oiw__inner transition-05">
                 <div class="oiw__i__header">
                     <p>{{ __('Vlažnost') }}</p>
                     <img src="{{ asset('files/images/icons/humidity.svg') }}" alt="">
@@ -57,7 +58,7 @@
                     </div>
                 </div>
             </div>
-            <div class="oiw__inner">
+            <div class="oiw__inner transition-05">
                 <div class="oiw__i__header">
                     <p>{{ __('UV Index') }}</p>
                     <img src="{{ asset('files/images/icons/sun.svg') }}" alt="">
@@ -73,7 +74,7 @@
                     </div>
                 </div>
             </div>
-            <div class="oiw__inner">
+            <div class="oiw__inner transition-05">
                 <div class="oiw__i__header">
                     <p>{{ __('Padavine') }}</p>
                     <img src="{{ asset('files/images/icons/precipitation.svg') }}" alt="">
@@ -89,7 +90,7 @@
                     </div>
                 </div>
             </div>
-            <div class="oiw__inner">
+            <div class="oiw__inner transition-05">
                 <div class="oiw__i__header">
                     <p>{{ __('Kiša') }}</p>
                     <img src="{{ asset('files/images/icons/rain.svg') }}" alt="">

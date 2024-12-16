@@ -67,6 +67,9 @@
 
     .oiw__inner{
         position: relative; width: 25%; background: $skyBlue; border-radius:8px; padding: 16px; gap: 8px; display: flex; flex-wrap: wrap;
+        &:hover{
+            background: #0A5791; cursor: pointer;
+        }
         .oiw__i__header{
             position: relative; width: 100%; display: flex; justify-content: space-between; align-items: center;
             p{color:#FFFFFF;}
