@@ -1,0 +1,75 @@
+/**
+ *  Right menu
+ */
+.right__menu{
+    position: fixed; right: -420px; width: 420px; height: 100%; background: #E7E7E7; z-index:500;
+    padding: 32px; display: flex; flex-wrap: wrap; align-content: space-between;
+
+    &.visible{ right: 0px; }
+
+    .menu__body{
+        position: relative; width: 100%;
+
+        .rm__header{
+            position: relative; width: 100%; display: flex; justify-content: space-between; align-items: center;
+
+            .rm__info{
+                position: relative; display: flex; gap: 16px; align-items: center;
+                h2{font-size: 20px; padding-top: 6px;}
+                img{
+                    height: 20px;
+                }
+            }
+            .rm__exit{
+                &:hover{
+                    cursor: pointer;
+                    img{transform: rotate(90deg);}
+                }
+                img{
+                    height: 24px;
+                }
+            }
+        }
+        .city__info{
+            position: relative; width: 100%;
+            a{
+                transition: 0.2s all;
+                &:hover{color: $skyBlue;}
+                color: #000000; text-decoration: none;
+            }
+        }
+        .line{
+            position: relative; width: 100%; margin: 32px 0px; height: 1px; background: rgba(0,0,0,0.2);
+        }
+        .forecast__links{
+            position: relative; width: 100%; display: flex; flex-wrap: wrap; gap: 8px;
+            .fl__row{
+                position: relative; width: 100%; padding: 4px;
+                a{
+                    transition: 0.2s all;
+                    &:hover{color: $skyBlue;}
+                    color: #000000; text-decoration: none;
+                }
+            }
+        }
+    }
+
+    .menu__footer{
+        position: relative; width: 100%; display: flex; justify-content: space-between; align-items: center;
+        .login__wrapper{
+            position: relative; display: flex; gap: 8px; align-items: center;
+            a{
+                transition: 0.2s all;
+                &:hover{color: $skyBlue;}
+                color: #000000; text-decoration: none;
+            }
+            img{height: 16px; margin-top: 1px;}
+        }
+        .icons__wrapper{
+            position: relative; display: flex; gap: 8px; align-items: center;
+            img{
+                height: 18px;
+            }
+        }
+    }
+}

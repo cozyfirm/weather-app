@@ -17,10 +17,13 @@ import "./style/submit.js";
 /**
  *  Import public scripts such as:
  *      1. Auth scripts
+ *      2. Map
+ *      3. Menu script
  */
 
 import './public-part/auth/auth.js';
 import './public-part/snippets/map.js';
+import './public-part/snippets/menu.js';
 
 /**
  *  Import App scripts, such as:

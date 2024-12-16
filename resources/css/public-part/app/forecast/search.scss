@@ -1,0 +1,69 @@
+.search__wrapper{
+    position: relative; width: $d-width; display: flex; gap: 64px; justify-content: space-between;
+
+    @media only screen and (max-width: $d-width) {
+        left:0px; width:calc(100% - 100px); gap: 32px;
+    }
+    @media only screen and (max-width: 1000px) {
+        width: calc(100% - 40px); flex-wrap: wrap;
+    }
+
+    .search__list{
+        position: relative; width: calc(100% - 424px); display: flex; gap: 16px; flex-wrap: wrap;
+
+        @media only screen and (max-width: 1000px) {
+            width: calc(100% - 352px);
+        }
+        @media only screen and (max-width: 1000px) {
+            width: calc(100% - 0px);
+        }
+
+        .search__row{
+            position: relative; width: 100%; border-bottom: 1px solid rgba(255,255,255,0.2); padding: 4px 0px; padding-bottom: 16px;
+            &:last-child{border-bottom: none;}
+            &:hover{cursor: pointer; }
+
+            h5, p{
+                color: #FFFFFF;
+            }
+        }
+    }
+    /* Not used anymore */
+    .border__line{ position: relative; width: 3px; background: rgba(255,255,255,0.3); height: 100%; }
+    .side__info{
+        width: 360px; display: flex; gap: 64px; flex-wrap: wrap; left: 0px; top: 64px;
+        position: -webkit-sticky; /* for Safari */
+        position: sticky;
+        align-self: flex-start;
+
+        @media only screen and (max-width: 1000px) {
+            width: 320px; gap: 32px; top: 32px;
+        }
+        @media only screen and (max-width: 1000px) {
+            width: calc(100% - 0px);
+        }
+
+        .side__info__inner{
+            position: relative; width: 100%; display: flex; gap: 16px; flex-wrap: wrap;
+
+            .si__header{
+                position: relative; width: 100%;
+                h4{
+                    color: #FFFFFF;
+                }
+            }
+            .si__body{
+                position: relative; width: 100%; display: flex; flex-wrap: wrap; gap: 8px;
+                .si__b__row{
+                    position: relative; width: 100%; display: flex; justify-content: space-between; align-items: center;
+                    p{color: #FFFFFF; }
+                    .weather__icon{
+                        position: relative; display: flex; gap: 16px; align-items: center;
+                        p{color: #FFFFFF;}
+                        img{height: 20px;}
+                    }
+                }
+            }
+        }
+    }
+}
