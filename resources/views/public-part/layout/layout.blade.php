@@ -17,12 +17,15 @@
 
     <body>
         <!-- Right menu -->
-        @include('public-part.layout.snippets.right-menu')
-
+        @if(!isset($hideMenu))
+            @include('public-part.layout.snippets.right-menu')
+        @endif
         <!-- Public content wrapper should be used in every public page -->
         <div class="public-content pt-0">
             <!-- Static element on every page -->
-            @include('public-part.layout.snippets.menu')
+            @if(!isset($hideMenu))
+                @include('public-part.layout.snippets.menu')
+            @endif
 
             <!-- Yield data into it -->
             @yield('public-content')

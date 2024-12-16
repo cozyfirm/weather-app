@@ -2,8 +2,13 @@
  *  Right menu
  */
 .right__menu{
-    position: fixed; right: -420px; width: 420px; height: 100%; background: #E7E7E7; z-index:500;
+    position: fixed; right: -100%; width: 420px; height: 100%; background: #E7E7E7; z-index:500;
     padding: 32px; display: flex; flex-wrap: wrap; align-content: space-between;
+
+    @media only screen and (max-width: 1000px) {
+        width: 100%;
+    }
+
 
     &.visible{ right: 0px; }
 

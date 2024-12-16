@@ -2,6 +2,11 @@ $( document ).ready(function() {
     let searchedVal = '', searching = false;
 
     let setSearch = function (show){
+        /**
+         *  When user is on mobile phone, skip homepage search, and offer global search
+         */
+        if(window.innerWidth <= 800) return;
+
         if(show){
             $(".dropdown__wrapper").removeClass('d-none');
             $(".search__wrapper").addClass('focused');

@@ -13,7 +13,8 @@ class HomeController extends Controller{
     public function home(): View{
         return view($this->_path . 'home', [
             'popularCities' => Cities::inRandomOrder()->take(5)->get(),
-            'currentCity' => Cities::where('key', '=', 33028)->first()
+            'currentCity' => Cities::where('key', '=', 33028)->first(),
+            'hideMenu' => true
         ]);
     }
 }

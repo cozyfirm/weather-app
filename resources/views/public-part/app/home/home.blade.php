@@ -5,6 +5,7 @@
         <div class="inner__wrapper">
             <div class="main__search__wrapper">
                 <div class="search__upper_description">
+                    <img src="{{ asset('files/images/logo.png') }}" alt="">
                     <h2>{{ __('Pouzdana prognoza') }}</h2>
                 </div>
 
@@ -67,7 +68,7 @@
                 <div class="previous__locations__wrapper">
                     <div class="previous__locations">
                         <div class="pl__header">
-                            <h3>{{ __('Ranije lokacije') }}</h3>
+                            <h3>{{ __('Ranije pretrage') }}</h3>
                         </div>
                         <div class="pl__body">
                             @for($i=0; $i<4; $i++)
