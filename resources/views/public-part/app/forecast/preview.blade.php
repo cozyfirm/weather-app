@@ -4,17 +4,23 @@
     <div class="preview__wrapper">
         <div class="current__wrapper">
             <div class="header">
-                <h2>{{ __('Sarajevo, Federation of Bosnia and Herzegovina') }}</h2>
-                <p>Subota, 14.12.2024 20:06h</p>
+                <div class="city__">
+                    <h2>{{ __('Sarajevo') }}</h2>
+                    <span class="comma">,</span>
+                    <h2 class="country_name">{{ __('Bosna i Hercegovina') }}</h2>
+                </div>
+                <p>Subota, 14. Dec 2024 20:06h</p>
             </div>
             <div class="temperature__wrapper">
                 <div class="info__wrapper">
                     <div class="main__info__w">
-                        <div class="img__wrapper">
-                            <img src="https://www.accuweather.com/images/weathericons/36.svg" alt="{{ __('Weather icon') }}">
-                        </div>
-                        <div class="temp__wrapper">
-                            <h1>4°C</h1>
+                        <div class="miw__temp">
+                            <div class="img__wrapper">
+                                <img src="https://www.accuweather.com/images/weathericons/36.svg" alt="{{ __('Weather icon') }}">
+                            </div>
+                            <div class="temp__wrapper">
+                                <h1>4°C</h1>
+                            </div>
                         </div>
                         <div class="info__inner_wrapper">
                             <div class="ii_i_w">

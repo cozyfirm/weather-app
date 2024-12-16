@@ -1,42 +1,106 @@
 .preview__wrapper{
     position: relative; width: $d-width; display: flex; gap: 32px; flex-wrap: wrap;
 
+    @media only screen and (max-width: $d-width) {
+        width:calc(100% - 100px); gap: 32px;
+    }
+    @media only screen and (max-width: 1000px) {
+        width:calc(100% - 40px); gap: 20px;
+    }
+
     .current__wrapper{
         position: relative; width: 100%; background: #03335b; border-radius: 8px; padding: 32px; gap: 32px; display: flex; flex-wrap: wrap;
         align-items: center;
 
+        @media only screen and (max-width: 1000px) {
+            gap: 20px; padding: 20px 0px; background: none;
+        }
+
         // background: rgba(255,255,255,0.5);
         .header{
             position: relative; width: 100%; display: flex; justify-content: space-between; align-items: center;
-            h2, p{
+            @media only screen and (max-width: 1000px) {
+                flex-wrap: wrap; justify-content: center; flex-direction: column-reverse; gap: 16px;
+            }
+
+            .city__{
+                position: relative; display: flex; align-items: center; gap: 4px;
+                @media only screen and (max-width: 1000px) {
+                    flex-wrap: wrap; gap: 8px;
+                }
+                h2{
+                    @media only screen and (max-width: 1000px) {
+                        width: 100%; text-align: center; font-size: 30px;
+                        &.country_name{
+                            font-size: 16px;
+                        }
+                    }
+                    color: #FFFFFF;
+                }
+                span{
+                    @media only screen and (max-width: 1000px) {
+                        display: none;
+                    }
+                    font-size: 24px; color: #FFFFFF;
+                }
+            }
+
+            p{
                 color: #FFFFFF;
             }
         }
         .temperature__wrapper{
             position: relative; width: 100%; display: flex; gap: 32px;
+            @media only screen and (max-width: 1000px) {
+                flex-wrap: wrap; padding: 32px 0px;
+            }
+
             .info__wrapper{
                 position: relative; display: flex; gap: 16px; width: 50%; flex-wrap: wrap;
+
+                @media only screen and (max-width: 1000px) {
+                    width: 100%;
+                }
 
                 .main__info__w{
                     position: relative; width: 100%; display: flex; gap: 16px; height: 100px;
 
-                    .img__wrapper{
-                        position: relative; height: 100%;
-                        img{
-                            position: relative; height: 100%;
-                        }
+                    @media only screen and (max-width: 1000px) {
+                        flex-wrap: wrap;  height: auto; flex-direction: column-reverse;
                     }
-                    .temp__wrapper{
-                        position: relative; display: flex; align-items: center;
-                        h1{
-                            font-size: 80px; margin: 0px; padding: 0px; line-height: 1; /* Or 100% */
-                            margin-top: -6px; color: #FFFFFF;
+
+                    .miw__temp{
+                        position: relative; display: flex; gap: 16px; height: 100%;
+                        @media only screen and (max-width: 1000px) {
+                            height: 100px; justify-content: center;
+                        }
+                        .img__wrapper{
+                            position: relative; height: 100%;
+                            img{
+                                position: relative; height: 100%;
+                            }
+                        }
+                        .temp__wrapper{
+                            position: relative; display: flex; align-items: center;
+                            h1{
+                                font-size: 80px; margin: 0px; padding: 0px; line-height: 1; /* Or 100% */
+                                margin-top: -6px; color: #FFFFFF;
+                            }
                         }
                     }
                     .info__inner_wrapper{
                         position: relative; display: flex; align-items: center;
+                        @media only screen and (max-width: 1000px) {
+                            width: 100%;
+                        }
                         .ii_i_w{
+                            @media only screen and (max-width: 1000px) {
+                                width: 100%;
+                            }
                             h6, p{
+                                @media only screen and (max-width: 1000px) {
+                                    text-align: center;
+                                }
                                 width: 100%; color: #FFFFFF;
                             }
                         }
@@ -44,6 +108,9 @@
                 }
                 .text__wrapper{
                     position: relative; width: 100%;
+                    @media only screen and (max-width: 1000px) {
+                        text-align: center;
+                    }
                     p{color: #FFFFFF;}
                 }
             }
@@ -51,9 +118,17 @@
             .other__info__wrapper{
                 position: relative; width: 50%; display: flex; flex-grow: 1; flex-direction: column; gap: 16px;
 
+                @media only screen and (max-width: 1000px) {
+                    background: none; padding: 0px; flex-direction: initial; flex-wrap: wrap;
+                }
+
                 .oiw__info{
                     position: relative; padding: 4px 16px; border-radius: 3px; margin-left: auto;
                     page-break-after: always;
+
+                    @media only screen and (max-width: 1000px) {
+                        margin-left: 0px; width: 100%; text-align: center;
+                    }
 
                     &.yellow-warning{background: #fbed50; p{color:#333;} }
                     &.info-warning{background: #2fc8fe; p{color:#333;} }
@@ -109,10 +184,18 @@
      *  Five days forecast
      */
     .five__days__wrapper{
-        position: relative; width: 100%; min-height: 120px;  display: flex; gap: 32px;
+        position: relative; width: 100%; display: flex; gap: 32px;
+
+        @media only screen and (max-width: 1000px) {
+            flex-wrap: wrap; gap: 20px;
+        }
 
         .five__days__inner_wrapper{
             position: relative; width: calc(100% - 432px); display: flex; gap: 16px; flex-wrap: wrap; background: $bColor; border-radius: 8px; padding: 32px 0px;
+
+            @media only screen and (max-width: 1000px) {
+                width: 100%;
+            }
 
             .inner__header{
                 position: relative; width: 100%; display: flex; gap: 16px; align-items: center; padding: 0px 32px;
@@ -174,6 +257,10 @@
             position: relative; width: 400px; height: 100%; background: $bColor; border-radius: 8px; padding: 32px; gap: 16px;
             display: flex; flex-wrap: wrap; align-items: center;
 
+            @media only screen and (max-width: 1000px) {
+                width: 100%; height: auto; gap: 64px;
+            }
+
             .wind__direction__header{
                 position: relative; width: 100%; display: flex; justify-content: space-between; align-items: center;
                 p{color: #FFFFFF;}
@@ -182,6 +269,10 @@
 
             .compass__wrapper{
                 position: relative; width: 100%; height: calc(100% - 120px); display: flex; justify-content: space-between; gap: 32px;
+
+                @media only screen and (max-width: 1000px) {
+                    height: auto;
+                }
 
                 .compass__animation_wrapper{
                     position: relative; height: 100%; display: flex; align-items: center;
