@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('base__five_days_forecast_detailed', function (Blueprint $table) {
+        Schema::create('base__five_days_forecast_info', function (Blueprint $table) {
             $table->id();
 
             $table->unsignedBigInteger('parent_id');
@@ -65,6 +65,7 @@ return new class extends Migration
             $table->string('rel_humidity_max', 5)->default(0);            // 87 (%) - Humidity
             $table->string('rel_humidity_avg', 5)->default(0);            // 87 (%) - Humidity
 
+
             $table->timestamps();
         });
     }
@@ -74,6 +75,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('base__five_days_forecast_detailed');
+        Schema::dropIfExists('base__five_days_forecast_info');
     }
 };

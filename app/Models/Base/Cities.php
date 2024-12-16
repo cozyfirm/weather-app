@@ -2,6 +2,7 @@
 
 namespace App\Models\Base;
 
+use App\Models\Base\Forecast\FiveDays;
 use App\Models\Base\Forecast\TwelveHours;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -29,6 +30,14 @@ class Cities extends Model{
     public function twelveHoursCurrentRel(): HasOne{
         return $this->hasOne(TwelveHours::class, 'city_key', 'key')->where('date_time', '>=', Carbon::now()->format('Y-m-d H:00:00'));
     }
+
+    public function fiveDaysRel(): HasMany{
+        return $this->hasMany(FiveDays::class, 'city_key', 'key')->where('date', '>=', Carbon::now()->format('Y-m-d'))->orderBy('id', 'ASC');
+    }
+
+    /**
+     *  Helper methods
+     */
     public function currentTemperature(): string{
         return ($this->twelveHoursCurrentRel->temperature ?? '0') . ' °C';
     }
