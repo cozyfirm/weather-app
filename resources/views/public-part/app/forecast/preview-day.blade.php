@@ -4,13 +4,17 @@
     <div class="preview__wrapper">
         <div class="specific__day__wrapper">
             <div class="sdw__header">
-                <h2>Sarajevo, 16. Dec 2024</h2>
+                <div class="sdw__header__w">
+                    <h2>Sarajevo</h2>
+                    <h2 class="comma">,</h2>
+                    <h2 class="date">16. Dec 2024</h2>
+                </div>
                 <div class="sdw__h__options">
-                    <div class="sdw__h__o_option active">
-                        {{ __('Dan') }}
+                    <div class="sdw__h__o_option active animated pulse infinite">
+                        {{ __('DAN') }}
                     </div>
                     <div class="sdw__h__o_option">
-                        {{ __('Večer') }}
+                        {{ __('VEČER') }}
                     </div>
                 </div>
             </div>

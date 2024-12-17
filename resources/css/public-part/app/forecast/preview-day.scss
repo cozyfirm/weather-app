@@ -2,14 +2,43 @@
     position: relative; width: 100%; background: #03335b; border-radius: 8px; padding: 32px; display: flex; flex-wrap: wrap;
     align-items: center;
 
+    @media only screen and (max-width: 1000px) {
+        background: none; padding: 0px;
+    }
+
     .sdw__header{
         position: relative; width: 100%; display: flex; justify-content: space-between; align-items: center;
 
-        h2{ color: #FFFFFF; }
+        @media only screen and (max-width: 1000px) {
+            flex-wrap: wrap; flex-direction: column-reverse;
+        }
+
+        .sdw__header__w{
+            position: relative; display: flex; align-items: center; gap: 4px;
+            @media only screen and (max-width: 1000px) {
+                width: 100%; flex-wrap: wrap; padding: 64px 0px 32px 0px;
+                .comma{display: none;}
+                h2{
+                    width: 100%; text-align: center; font-size: 30px;
+                }
+                .date{
+                    font-weight: normal; font-size: 18px;
+                }
+            }
+            h2{ color: #FFFFFF; }
+        }
         .sdw__h__options{
             position: relative; display: flex; gap: 0px; align-items: center; background: $skyBlue; padding: 8px; border-radius: 4px;
+            @media only screen and (max-width: 1000px) {
+                width: 100%; background: #03335b; gap: 20px; padding: 16px;
+            }
+
             .sdw__h__o_option{
-                position: relative; color: #FFFFFF; padding: 2px 16px; border-radius:4px;
+                position: relative; color: #FFFFFF; padding: 2px 16px 4px 16px; border-radius:4px;
+                @media only screen and (max-width: 1000px) {
+                    width: calc(50% - 10px); text-align: center; padding: 4px 16px 6px 16px;
+                }
+
                 &.active{
                     background: $lightBlue;
                 }
@@ -23,32 +52,61 @@
     .sdw__body{
         position: relative; width: 100%; display: flex; justify-content: space-between; // align-items: center;
 
+        @media only screen and (max-width: 1000px) {
+            flex-wrap: wrap; justify-content: center; flex-direction: column-reverse;
+        }
+
         .text__info{
             position: relative; height: 100%; display: flex; flex-wrap:wrap; gap: 16px;
-            p{color:#fff; width:100%;}
-            h4{color: #FFFFFF; margin-top:16px;}
+            p{
+                @media only screen and (max-width: 1000px) {
+                    display: none;
+                }
+                color:#fff; width:100%;
+            }
+            h4{
+                @media only screen and (max-width: 1000px) {
+                    width: 100%; text-align: center;
+                }
+                color: #FFFFFF; margin-top:16px;
+            }
             .warnings__wrapper{
                 position: relative; width: 100%; display: flex; flex-grow: 1; flex-direction: column; gap: 8px;
+                @media only screen and (max-width: 1000px) {
+                    flex-direction: unset; flex-grow: 0; flex-wrap: wrap;
+                }
 
                 .oiw__info{
                     position: relative; padding: 2px 16px; border-radius: 3px; margin-right: auto;
                     page-break-after: always;
 
+                    @media only screen and (max-width: 1000px) {
+                        width: 100%; height: auto; text-align: center;
+                    }
+
                     &.yellow-warning{background: #fbed50; p{color:#333;} }
                     &.info-warning{background: #2fc8fe; p{color:#333;} }
                     p{
+                        @media only screen and (max-width: 1000px) {
+                            display: initial;
+                        }
                         color: #FFFFFF; font-size: 14px;
                     }
                 }
             }
         }
         .temperature__info{
-            position: relative; display: flex; padding-top:32px;
+            position: relative; display: flex; align-items: center; padding: 0px;
             .temp__info__inner{
                 position: relative; width: 100%; display: flex; gap: 32px; align-items: flex-start;
+
+                @media only screen and (max-width: 1000px) {
+                    justify-content: center; align-items: center;
+                }
+
                 .tii__text{
                     h2{ color:#FFFFFF; font-weight:normal; }
-                    p{color: #FFFFFF;}
+                    p{color: #FFFFFF; white-space: nowrap;}
                 }
                 img{height: 80px; }
             }
