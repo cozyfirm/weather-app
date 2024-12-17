@@ -141,8 +141,16 @@
 
         .other__info{
             position: relative; width: 100%; display: flex; justify-content: flex-start; gap: 32px;
+
+            @media only screen and (max-width: 1000px) {
+                flex-wrap: wrap; gap: 20px;
+            }
+
             .oi_w{
                 position: relative;
+                @media only screen and (max-width: 1000px) {
+                    width: calc(50% - 10px); background: $bColor; padding: 20px; border-radius: 8px;
+                }
                 p{
                     color: grey; font-size: 14px;
                 }
@@ -158,6 +166,9 @@
      */
     .twelve__hours__wrapper{
         position: relative; width: 100%; background: #03335b; border-radius: 8px; padding: 32px;
+        @media only screen and (max-width: 1000px) {
+            padding: 20px;
+        }
 
         .swiper{
             .swiper-wrapper{
@@ -194,11 +205,18 @@
             position: relative; width: calc(100% - 432px); display: flex; gap: 16px; flex-wrap: wrap; background: $bColor; border-radius: 8px; padding: 32px 0px;
 
             @media only screen and (max-width: 1000px) {
+                padding: 20px 0px;
+            }
+
+            @media only screen and (max-width: 1000px) {
                 width: 100%;
             }
 
             .inner__header{
                 position: relative; width: 100%; display: flex; gap: 16px; align-items: center; padding: 0px 32px;
+                @media only screen and (max-width: 1000px) {
+                    padding: 0px 20px;
+                }
                 img{
                     height: 20px;
                 }
@@ -207,21 +225,45 @@
 
             .body__data{
                 position: relative; width: 100%; display: flex; flex-wrap: wrap; gap: 4px; padding: 0px 16px;
+                @media only screen and (max-width: 1000px) {
+                    padding: 0px 20px;
+                }
                 .day__forecast{
                     position: relative; display: flex; justify-content: space-between; width: 100%; padding: 8px 16px; border-radius: 4px;
+                    @media only screen and (max-width: 1000px) {
+                        padding: 8px 0px;
+                    }
                     &:hover{
+                        @media only screen and (max-width: 1000px) {
+                            background: none;
+                        }
                         cursor: pointer; background: #0a5189;
                     }
                     .day__title{
                         position: relative; display: flex; align-items: center; gap: 4px;
                         p{color: #FFFFFF; font-size:18px; }
-                        span{color: grey; font-size: 18px;}
+                        span{
+                            @media only screen and (max-width: 1000px) {
+                                display: none;
+                            }
+                            color: grey; font-size: 18px;
+                        }
+                        .comma{
+                            @media only screen and (max-width: 1000px) {
+                                display: none;
+                            }
+                        }
                     }
                     .day__forecast_info{
                         position: relative; display: flex; justify-content: flex-start; gap: 32px; align-items: center;
+                        @media only screen and (max-width: 1000px) {
+                            gap: 16px;
+                        }
 
                         /* Weather image height */
-                        img{ height: 24px; }
+                        img{
+                            height: 24px;
+                        }
 
                         .warning__info{
                             position: relative; display: flex; align-items: center; gap: 8px;
@@ -238,6 +280,9 @@
                         }
                         .wind__info{
                             position: relative; display: flex; gap: 8px; align-items: center;
+                            @media only screen and (max-width: 1000px) {
+                                display: none;
+                            }
                             img{
                                 height: 16px;
                             }

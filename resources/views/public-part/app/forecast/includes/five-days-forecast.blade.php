@@ -9,7 +9,8 @@
             @for($i=0; $i<5; $i++)
                 <div class="day__forecast transition-05">
                     <div class="day__title">
-                        <p>@if($i==0) {{ __('Ponedjeljak') }} @else {{ __('Utorak') }}@endif, </p>
+                        <p>@if($i==0) {{ __('Ponedjeljak') }} @else {{ __('Utorak') }}@endif </p>
+                        <p class="comma">,</p>
                         <span>{{ $i + 14 }}. Decembar </span>
                     </div>
                     <div class="day__forecast_info">
