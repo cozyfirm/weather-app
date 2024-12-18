@@ -123,8 +123,23 @@
 .other__info__wrapper{
     position: relative; width: 100%; background: $bColor; border-radius: 8px; display: flex; justify-content: space-between; gap: 32px; padding: 32px;
 
+    @media only screen and (max-width: 1000px) {
+        flex-wrap: wrap;
+    }
+    @media only screen and (max-width: 800px) {
+        padding: 0px; background: none; gap: 20px;
+    }
+
     .oiw__inner{
         position: relative; width: 25%; background: $skyBlue; border-radius:8px; padding: 16px; gap: 8px; display: flex; flex-wrap: wrap;
+
+        @media only screen and (max-width: 1000px) {
+            width: calc(50% - 16px);
+        }
+        @media only screen and (max-width: 800px) {
+            width: 100%; // background: $bColor;
+        }
+
         &:hover{
             background: #0A5791; cursor: pointer;
         }
