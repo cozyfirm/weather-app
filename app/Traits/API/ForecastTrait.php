@@ -2,6 +2,9 @@
 
 namespace App\Traits\API;
 
+use App\Models\Base\Forecast\FiveDays;
+use App\Models\Base\Forecast\FiveDaysInfo;
+use App\Models\Base\Forecast\TwelveHours;
 use Carbon\Carbon;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
@@ -88,6 +91,24 @@ trait ForecastTrait{
         if(isset($key)) $queryArr['city_key'] = $key;
 
         return $queryArr;
+    }
+
+    public function saveTwelveHoursForecast($cityKey): void{
+        $uri = '12hour/' . $cityKey;
+
+        $forecast = $this->fetchForecast($uri, "hourly");
+        foreach ($forecast as $sample){
+            $dbSample = TwelveHours::where('city_key', '=', $cityKey)
+                ->where('date_time', '=', Carbon::parse($sample->DateTime))
+                ->first();
+
+            /* ToDo - Cannot fetch icons from AccuWeather.com */
+            if(!$dbSample){
+                TwelveHours::create($this->prepareTwelveHoursForecastQuery($sample, $cityKey));
+            }else{
+                $dbSample->update($this->prepareTwelveHoursForecastQuery($sample));
+            }
+        }
     }
 
     /**
@@ -178,5 +199,37 @@ trait ForecastTrait{
          */
         $this->dayAndNightInfo($sample, "Day", $day);
         $this->dayAndNightInfo($sample, "Night", $night);
+    }
+    public function saveFiveDaysForecast($cityKey): void{
+        $uri = '5day/' . $cityKey;
+
+        $forecast = $this->fetchForecast($uri, "daily");
+
+        foreach ($forecast->DailyForecasts as $sample){
+            $dbSample = FiveDays::where('city_key', '=', $cityKey)
+                ->where('date', '=', Carbon::parse($sample->Date)->format('Y-m-d'))
+                ->first();
+
+            $forecast = []; $day = []; $night = [];
+
+            if(!$dbSample){
+                $this->prepareFiveDAysForecastQuery($sample, $forecast, $day, $night, $cityKey);
+                $dbSample = FiveDays::create($forecast);
+            }else{
+                $this->prepareFiveDAysForecastQuery($sample, $forecast, $day, $night);
+                $dbSample->update($forecast);
+            }
+
+            /**
+             *  Delete night and day info
+             */
+            FiveDaysInfo::where('parent_id', '=', $dbSample->id)->delete();
+
+            $day['parent_id'] = $dbSample->id;
+            $night['parent_id'] = $dbSample->id;
+
+            FiveDaysInfo::create($day);
+            FiveDaysInfo::create($night);
+        }
     }
 }

@@ -33,21 +33,7 @@ class TwelveHoursForecast extends Command{
         $cities = Cities::get();
 
         foreach ($cities as $city){
-            $uri = '12hour/' . $city->key;
-
-            $forecast = $this->fetchForecast($uri, "hourly");
-            foreach ($forecast as $sample){
-                $dbSample = TwelveHours::where('city_key', '=', $city->key)
-                    ->where('date_time', '=', Carbon::parse($sample->DateTime))
-                    ->first();
-
-                /* ToDo - Cannot fetch icons from AccuWeather.com */
-                if(!$dbSample){
-                    TwelveHours::create($this->prepareTwelveHoursForecastQuery($sample, $city->key));
-                }else{
-                    $dbSample->update($this->prepareTwelveHoursForecastQuery($sample));
-                }
-            }
+            $this->saveTwelveHoursForecast($city->key);
         }
     }
 }

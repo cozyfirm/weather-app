@@ -34,36 +34,7 @@ class FiveDaysForecast extends Command{
         $cities = Cities::get();
 
         foreach ($cities as $city){
-            $uri = '5day/' . $city->key;
-
-            $forecast = $this->fetchForecast($uri, "daily");
-
-            foreach ($forecast->DailyForecasts as $sample){
-                $dbSample = FiveDays::where('city_key', '=', $city->key)
-                    ->where('date', '=', Carbon::parse($sample->Date)->format('Y-m-d'))
-                    ->first();
-
-                $forecast = []; $day = []; $night = [];
-
-                if(!$dbSample){
-                    $this->prepareFiveDAysForecastQuery($sample, $forecast, $day, $night, $city->key);
-                    $dbSample = FiveDays::create($forecast);
-                }else{
-                    $this->prepareFiveDAysForecastQuery($sample, $forecast, $day, $night);
-                    $dbSample->update($forecast);
-                }
-
-                /**
-                 *  Delete night and day info
-                 */
-                FiveDaysInfo::where('parent_id', '=', $dbSample->id)->delete();
-
-                $day['parent_id'] = $dbSample->id;
-                $night['parent_id'] = $dbSample->id;
-
-                FiveDaysInfo::create($day);
-                FiveDaysInfo::create($night);
-            }
+            $this->saveFiveDaysForecast($city->key);
         }
     }
 }
