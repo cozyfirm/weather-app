@@ -61,7 +61,8 @@ class BaseCitiesController extends Controller{
                             'area_eng' => $city->AdministrativeArea->EnglishName ?? '',
                             'latitude' => $city->GeoPosition->Latitude ?? '0.000',
                             'longitude' => $city->GeoPosition->Longitude ?? '0.000',
-                            'elevation' => $city->GeoPosition->Elevation->Metric->Value ?? '0.0'
+                            'elevation' => $city->GeoPosition->Elevation->Metric->Value ?? '0.0',
+                            'base' => true
                         ]);
                     }
 

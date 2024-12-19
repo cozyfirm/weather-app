@@ -35,7 +35,7 @@ class TwelveHoursForecast extends Command{
         foreach ($cities as $city){
             $uri = '12hour/' . $city->key;
 
-            $forecast = $this->fetchTwelveHoursForecast($uri);
+            $forecast = $this->fetchForecast($uri, "hourly");
             foreach ($forecast as $sample){
                 $dbSample = TwelveHours::where('city_key', '=', $city->key)
                     ->where('date_time', '=', Carbon::parse($sample->DateTime))

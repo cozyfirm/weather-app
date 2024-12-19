@@ -12,3 +12,9 @@ Artisan::command('api:forecast:twelve-hours-forecast', function () {
     // You can call the handle method of your command class
     (new \App\Console\Commands\API\Forecast\TwelveHoursForecast())->handle();
 })->purpose('Fetch 12 hours forecast for base cities');
+
+
+Artisan::command('api:forecast:five-days-forecast', function () {
+    // You can call the handle method of your command class
+    (new \App\Console\Commands\API\Forecast\FiveDaysForecast())->handle();
+})->purpose('Fetch 5 days forecast for base cities');
