@@ -20,6 +20,10 @@
         @if(!isset($hideMenu))
             @include('public-part.layout.snippets.right-menu')
         @endif
+
+        <!-- Mobile search -->
+        @include('public-part.layout.snippets.mobile-search')
+
         <!-- Public content wrapper should be used in every public page -->
         <div class="public-content pt-0">
             <!-- Static element on every page -->

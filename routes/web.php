@@ -24,8 +24,15 @@ Route::prefix('/')->group(function () {
         Route::get ('/search',                        [ForecastController::class, 'search'])->name('public.forecast.search');
 
         /** Preview searched city */
-        Route::get ('/preview',                       [ForecastController::class, 'preview'])->name('public.forecast.preview');
+        Route::get ('/preview/{citiKey}',             [ForecastController::class, 'preview'])->name('public.forecast.preview');
         Route::get ('/preview-day',                   [ForecastController::class, 'previewDay'])->name('public.forecast.preview-day');
+
+        /**
+         *  API Routes
+         */
+        Route::prefix('/api-routes')->group(function () {
+            Route::post('/search-by-text',            [ForecastController::class, 'searchByText'])->name('public.forecast.api-routes.search-by-text');
+        });
     });
 });
 

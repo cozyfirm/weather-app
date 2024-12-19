@@ -28,8 +28,11 @@ import './public-part/snippets/menu.js';
 /**
  *  Import App scripts, such as:
  *      1. Search script for homepage
+ *      2. Search script for menu - Desktop version
  */
 import './public-part/app/home/search.js';
+import './public-part/snippets/menu-search.js';
+import './public-part/snippets/mobile-search.js';
 
 $(document).ready(function() {
     $(".datepicker").datepicker({

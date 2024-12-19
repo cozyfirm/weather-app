@@ -30,7 +30,7 @@ class TwelveHoursForecast extends Command{
      */
 
     public function handle(): void{
-        $cities = Cities::get();
+        $cities = Cities::where('base', '=', 1)->get();
 
         foreach ($cities as $city){
             $this->saveTwelveHoursForecast($city->key);

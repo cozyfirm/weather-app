@@ -126,5 +126,12 @@ $(document).ready(function (){
         if(!$(e.target).hasClass('mac_w_clk')) {
             $(".more__actions_w").addClass('d-none');
         }
+
+        /**
+         *  Desktop menu search
+         */
+        if(!$(e.target).hasClass('last__search__row') && !$(e.target).hasClass('menu-search') && !$(e.target).hasClass('skip-closing')) {
+            $(".menu__search__wrapper").removeClass('focused');
+        }
     });
 });

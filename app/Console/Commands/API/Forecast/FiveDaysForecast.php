@@ -31,7 +31,7 @@ class FiveDaysForecast extends Command{
      * Execute the console command.
      */
     public function handle(){
-        $cities = Cities::get();
+        $cities = Cities::where('base', '=', 1)->get();
 
         foreach ($cities as $city){
             $this->saveFiveDaysForecast($city->key);

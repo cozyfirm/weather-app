@@ -17,6 +17,11 @@ html{
          */
         @import "app/layout/right-menu";
 
+        /**
+         *  Mobile search
+         */
+        @import "app/layout/mobile-search";
+
         .public-content{
             position: relative; width: 100%; display: flex; justify-content: center; flex-wrap: wrap; gap: 64px;
             // padding: 32px 0px;
