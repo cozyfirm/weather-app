@@ -16,13 +16,20 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
+/* To use Autoplay, Pagination and navigation */
+Swiper.use([Autoplay, Pagination]);
+
 const multiSwiper = new Swiper('.multi-swiper', {
+    pagination: {
+        el: ".swiper-pagination",
+        type: "progressbar",
+    },
     slidesPerView: 12,
     spaceBetween: 0,
-    autoplay: {
-        delay: 2500,
-        disableOnInteraction: false
-    },
+    // autoplay: {
+    //     delay: 2500,
+    //     disableOnInteraction: false
+    // },
     breakpoints: {
         320: {
             slidesPerView: 3,
@@ -47,17 +54,8 @@ const multiSwiper = new Swiper('.multi-swiper', {
         1400: {
             slidesPerView: 10,
             spaceBetweenSlides: 16
-        },
-        // when window width is <= 999px
-        // 999: {
-        //     slidesPerView: 2,
-        //     spaceBetweenSlides: 50
-        // }
+        }
     }
-    // navigation: {
-    //     nextEl: ".swiper-button-next",
-    //     prevEl: ".swiper-button-prev",
-    // }
 });
 
 // import 'jquery-ui/ui/widgets/button'; // Import specific widgets as needed
