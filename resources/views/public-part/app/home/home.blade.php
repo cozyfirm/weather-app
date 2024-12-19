@@ -16,7 +16,7 @@
                                 <img src="{{ asset('files/images/icons/search-white.svg') }}" alt="">
                             </div>
                             <div class="input__wrapper">
-                                <input type="text" name="search" id="main-search" placeholder="{{ __('Unesi svoju lokaciju') }}">
+                                <input type="text" name="search" id="main-search" uri="{{ route('public.forecast.api-routes.search-by-text') }}" class="skip-home" placeholder="{{ __('Unesi svoju lokaciju') }}">
                             </div>
                         </div>
                         <div class="dropdown__wrapper d-none">
@@ -32,17 +32,15 @@
                                 </div>
                             </div>
 
-                            <hr>
-
                             <div class="default__values">
                                 <div class="popular__search">
-                                    <p>Sarajevo</p>
+                                    <p><a href="#" class="skip-home">Sarajevo</a></p>
                                     <span>|</span>
-                                    <p>Tuzla</p>
+                                    <p><a href="#" class="skip-home">Tuzla</a></p>
                                     <span>|</span>
-                                    <p>Zenica</p>
+                                    <p><a href="#" class="skip-home">Zenica</a></p>
                                 </div>
-                                <div class="current__location">
+                                <div class="current__location skip-home">
                                     <img src="{{ asset('files/images/icons/location-arrow.svg') }}" alt="">
                                     <p>{{ __('Koristi trenutnu lokaciju') }}</p>
                                 </div>

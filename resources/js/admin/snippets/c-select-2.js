@@ -133,5 +133,13 @@ $(document).ready(function (){
         if(!$(e.target).hasClass('last__search__row') && !$(e.target).hasClass('menu-search') && !$(e.target).hasClass('skip-closing')) {
             $(".menu__search__wrapper").removeClass('focused');
         }
+
+        /**
+         *  Homepage search
+         */
+        if(!$(e.target).hasClass('skip-home') ) {
+            $(".search__wrapper").removeClass('focused');
+            $(".dropdown__wrapper").addClass('d-none');
+        }
     });
 });
