@@ -25,18 +25,18 @@
                 <p>16. Dec 20:03</p>
             </div>
             <div class="psw_row__w">
-                @for($i=0; $i<6; $i++)
-                    <div class="psw__row skip-closing go-to" uri="{{ route('public.forecast.preview', ['citiKey' => 12]) }}">
+                @foreach($history as $sample)
+                    <div class="psw__row skip-closing go-to" uri="{{ route('public.forecast.preview', ['citiKey' => $sample->city_key ?? '0']) }}">
                         <div class="psw_r_data skip-closing">
-                            <h6 class="skip-closing">Sarajevo</h6>
-                            <p class="skip-closing">Federacija Bosne i Hercegovine</p>
+                            <h6 class="skip-closing">{{ $sample->cityRel->name ?? '' }}</h6>
+                            <p class="skip-closing">{{ $sample->cityRel->name ?? '' }}</p>
                         </div>
                         <div class="psw_r_info skip-closing">
-                            <img class="skip-closing" src="https://www.accuweather.com/images/weathericons/4.svg" alt="{{ __('Weather icon') }}">
-                            <h4 class="skip-closing">{{ $i + 3 }}°C</h4>
+                            <img class="skip-closing" src="https://www.accuweather.com/images/weathericons/{{ $sample->cityRel->twelveHoursCurrentRel->icon ?? '' }}.svg" alt="{{ __('Weather icon') }}">
+                            <h4 class="skip-closing">{{ $sample->cityRel->twelveHoursCurrentRel->temperature ?? '' }}°C</h4>
                         </div>
                     </div>
-                @endfor
+                @endforeach
             </div>
         </div>
     </div>

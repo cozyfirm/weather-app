@@ -20,18 +20,9 @@
                             </div>
                         </div>
                         <div class="dropdown__wrapper d-none">
-                            <div class="searched__values">
-                                <div class="search_row">
-                                    <h3>Sarajevo</h3>
-                                </div>
-                                <div class="search_row">
-                                    <h3>Tuzla</h3>
-                                </div>
-                                <div class="search_row">
-                                    <h3>Mostar</h3>
-                                </div>
-                            </div>
+                            <!-- Search items created in JS -->
 
+                            <!-- Popular cities search -->
                             <div class="default__values">
                                 <div class="popular__search">
                                     <p><a href="#" class="skip-home">Sarajevo</a></p>

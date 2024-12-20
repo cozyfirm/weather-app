@@ -2,6 +2,7 @@
 
 namespace App\Traits\API;
 
+use App\Models\Base\Cities;
 use App\Traits\Common\CommonTrait;
 use App\Traits\Mqtt\MqttTrait;
 use GuzzleHttp\Client;
@@ -44,5 +45,26 @@ trait LocationsTrait{
 
         if($response->getStatusCode() == 200) return json_decode($response->getBody());
         else return false;
+    }
+
+    public function createCityObject($cityKey, $city, $base = false){
+        return Cities::create([
+            'key' => $cityKey,
+            'name' => $city->LocalizedName ?? '',
+            'name_eng' => $city->EnglishName ?? '',
+            'region_id' => $city->Region->ID ?? '',
+            'region' => $city->Region->LocalizedName ?? '',
+            'region_eng' => $city->Region->EnglishName ?? '',
+            'country_id' => $city->Country->ID ?? '',
+            'country' => $city->Country->LocalizedName ?? '',
+            'country_eng' => $city->Country->EnglishName ?? '',
+            'area_id' => $city->AdministrativeArea->ID ?? '',
+            'area' => $city->AdministrativeArea->LocalizedName ?? '',
+            'area_eng' => $city->AdministrativeArea->EnglishName ?? '',
+            'latitude' => $city->GeoPosition->Latitude ?? '0.000',
+            'longitude' => $city->GeoPosition->Longitude ?? '0.000',
+            'elevation' => $city->GeoPosition->Elevation->Metric->Value ?? '0.0',
+            'base' => $base
+        ]);
     }
 }

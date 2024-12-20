@@ -5,6 +5,7 @@ namespace App\Traits\API;
 use App\Models\Base\Forecast\FiveDays;
 use App\Models\Base\Forecast\FiveDaysInfo;
 use App\Models\Base\Forecast\TwelveHours;
+use App\Models\Users\History\SearchHistory;
 use Carbon\Carbon;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
@@ -13,7 +14,7 @@ trait ForecastTrait{
     protected string $_hourly_forecast_uri_path = 'forecasts/v1/hourly';
     protected string $_daily_forecast_uri_path = 'forecasts/v1/daily';
 
-    public function constructUri($uri, $apiType): string{
+    public function constructForecastUri($uri, $apiType): string{
         if($apiType == "hourly") return env('ACCU_WEATHER_BASE_URI') . $this->_hourly_forecast_uri_path . '/' . $uri;
         else if($apiType == "daily") return env('ACCU_WEATHER_BASE_URI') . $this->_daily_forecast_uri_path . '/' . $uri;
     }
@@ -21,7 +22,7 @@ trait ForecastTrait{
         $client = new Client();
 
         try {
-            $response = $client->request('GET', $this->constructUri($uri, $apiType), [
+            $response = $client->request('GET', $this->constructForecastUri($uri, $apiType), [
                 'query' => [
                     'apikey' => env('ACCU_WEATHER_API'),
                     'language' => $language,
@@ -231,5 +232,18 @@ trait ForecastTrait{
             FiveDaysInfo::create($day);
             FiveDaysInfo::create($night);
         }
+    }
+
+    /** ------------------------------------------------------------------------------------------------------------ **/
+    /**
+     * Get user search history
+     * @return mixed
+     */
+    public function getUserHistory(): mixed{
+        return SearchHistory::where('ip_addr', '=', request()->ip())
+            ->where('updated_at', '>=', Carbon::now()->subHours(8)->format('Y-m-d H:00:00'))
+            ->orderBy('updated_at', 'DESC')
+            ->take(6)
+            ->get();
     }
 }

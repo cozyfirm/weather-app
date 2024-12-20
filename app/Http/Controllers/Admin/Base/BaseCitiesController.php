@@ -46,24 +46,8 @@ class BaseCitiesController extends Controller{
                 if(isset($city->Key)){
                     $sample = Cities::where('key', '=', $city->Key)->first();
                     if(!$sample){
-                        $sample = Cities::create([
-                            'key' => $city->Key,
-                            'name' => $city->LocalizedName ?? '',
-                            'name_eng' => $city->EnglishName ?? '',
-                            'region_id' => $city->Region->ID ?? '',
-                            'region' => $city->Region->LocalizedName ?? '',
-                            'region_eng' => $city->Region->EnglishName ?? '',
-                            'country_id' => $city->Country->ID ?? '',
-                            'country' => $city->Country->LocalizedName ?? '',
-                            'country_eng' => $city->Country->EnglishName ?? '',
-                            'area_id' => $city->AdministrativeArea->ID ?? '',
-                            'area' => $city->AdministrativeArea->LocalizedName ?? '',
-                            'area_eng' => $city->AdministrativeArea->EnglishName ?? '',
-                            'latitude' => $city->GeoPosition->Latitude ?? '0.000',
-                            'longitude' => $city->GeoPosition->Longitude ?? '0.000',
-                            'elevation' => $city->GeoPosition->Elevation->Metric->Value ?? '0.0',
-                            'base' => true
-                        ]);
+                        /* Create database object: Cities */
+                        $sample = $this->createCityObject($city->Key, $city, true);
                     }
 
                     return $this->jsonSuccess(__('Uspješno!'), route('system.admin.base.cities.preview', ['id' => $sample->id ]));

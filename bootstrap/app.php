@@ -2,6 +2,7 @@
 
 use App\Http\Middleware\isAdmin;
 use App\Http\Middleware\isLogged;
+use App\Http\Middleware\forecast;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -15,7 +16,8 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->alias([
             'isAdmin' => isAdmin::class,
-            'isLogged' => isLogged::class
+            'isLogged' => isLogged::class,
+            'forecast' => forecast::class
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

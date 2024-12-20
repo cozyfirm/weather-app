@@ -36,6 +36,7 @@ return new class extends Migration
             $table->string('elevation');   // Metric system
 
             $table->tinyInteger('base')->default(0);
+            $table->bigInteger('loads')->default(0);
 
             $table->timestamps();
             $table->softDeletes();
