@@ -11,6 +11,7 @@ use App\Traits\Http\ResponseTrait;
 use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\View\View;
 
@@ -25,10 +26,12 @@ class ForecastController extends Controller{
      */
     public function search($keyword): View{
         $cities = $this->searchBy("cities/autocomplete", $keyword);
+        $popular = Cities::where('base', '=', 1)->inRandomOrder()->take(4)->get();
 
         return view($this->_path . 'search', [
             'cities' => $cities,
-            'history' => $this->getUserHistory()
+            'history' => $this->getUserHistory(),
+            'popular' => $popular
         ]);
     }
 

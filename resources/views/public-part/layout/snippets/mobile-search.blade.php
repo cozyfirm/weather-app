@@ -19,25 +19,27 @@
             <p id="searched__value"></p>
         </div>
 
-        <div class="previous__search_w">
-            <div class="psw__header">
-                <p>{{ __('Posljednje pretraživano') }}</p>
-                <p>16. Dec 20:03</p>
-            </div>
-            <div class="psw_row__w">
-                @foreach($history as $sample)
-                    <div class="psw__row skip-closing go-to" uri="{{ route('public.forecast.preview', ['citiKey' => $sample->city_key ?? '0']) }}">
-                        <div class="psw_r_data skip-closing">
-                            <h6 class="skip-closing">{{ $sample->cityRel->name ?? '' }}</h6>
-                            <p class="skip-closing">{{ $sample->cityRel->name ?? '' }}</p>
+        @if($history->count())
+            <div class="previous__search_w">
+                <div class="psw__header">
+                    <p>{{ __('Posljednje pretraživano') }}</p>
+                    <p>{{ HistoryHelper::lastSearch() }}</p>
+                </div>
+                <div class="psw_row__w">
+                    @foreach($history as $sample)
+                        <div class="psw__row skip-closing go-to" uri="{{ route('public.forecast.preview', ['citiKey' => $sample->city_key ?? '0']) }}">
+                            <div class="psw_r_data skip-closing">
+                                <h6 class="skip-closing">{{ $sample->cityRel->name ?? '' }}</h6>
+                                <p class="skip-closing">{{ $sample->cityRel->name ?? '' }}</p>
+                            </div>
+                            <div class="psw_r_info skip-closing">
+                                <img class="skip-closing" src="https://www.accuweather.com/images/weathericons/{{ $sample->cityRel->twelveHoursCurrentRel->icon ?? '' }}.svg" alt="{{ __('Weather icon') }}">
+                                <h4 class="skip-closing">{{ $sample->cityRel->twelveHoursCurrentRel->temperature ?? '' }}°C</h4>
+                            </div>
                         </div>
-                        <div class="psw_r_info skip-closing">
-                            <img class="skip-closing" src="https://www.accuweather.com/images/weathericons/{{ $sample->cityRel->twelveHoursCurrentRel->icon ?? '' }}.svg" alt="{{ __('Weather icon') }}">
-                            <h4 class="skip-closing">{{ $sample->cityRel->twelveHoursCurrentRel->temperature ?? '' }}°C</h4>
-                        </div>
-                    </div>
-                @endforeach
+                    @endforeach
+                </div>
             </div>
-        </div>
+        @endif
     </div>
 </div>

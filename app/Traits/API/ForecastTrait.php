@@ -13,6 +13,7 @@ use GuzzleHttp\Exception\GuzzleException;
 trait ForecastTrait{
     protected string $_hourly_forecast_uri_path = 'forecasts/v1/hourly';
     protected string $_daily_forecast_uri_path = 'forecasts/v1/daily';
+    protected int $_history_samples = 6;
 
     public function constructForecastUri($uri, $apiType): string{
         if($apiType == "hourly") return env('ACCU_WEATHER_BASE_URI') . $this->_hourly_forecast_uri_path . '/' . $uri;
@@ -243,7 +244,7 @@ trait ForecastTrait{
         return SearchHistory::where('ip_addr', '=', request()->ip())
             ->where('updated_at', '>=', Carbon::now()->subHours(8)->format('Y-m-d H:00:00'))
             ->orderBy('updated_at', 'DESC')
-            ->take(6)
+            ->take($this->_history_samples)
             ->get();
     }
 }
