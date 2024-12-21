@@ -77,6 +77,13 @@ $( document ).ready(function() {
     $("body").on('keyup', '#main-search', function(e) {
         searchedVal = $(this).val();
 
+        if(e.key === "Enter") {
+            if(searchedVal === '' || searchedVal === ' ') return;
+
+            window.location = '/forecast/search/' + searchedVal;
+            return;
+        }
+
         if(searchedVal.length >= 2){
             setSearch(true);
 
@@ -99,4 +106,10 @@ $( document ).ready(function() {
         }
     });
 
+    $("#main-search").keypress(function (e) {
+        var keycode = event.keyCode || event.which;
+        if(keycode === '13') {
+            alert('You pressed a "enter" key in somewhere');
+        }
+    })
 });

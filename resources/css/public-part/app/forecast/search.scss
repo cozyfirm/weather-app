@@ -18,13 +18,16 @@
             width: calc(100% - 0px);
         }
 
-        .search__row{
-            position: relative; width: 100%; border-bottom: 1px solid rgba(255,255,255,0.2); padding: 4px 0px; padding-bottom: 16px;
-            &:last-child{border-bottom: none;}
-            &:hover{cursor: pointer; }
+        a{
+            display: flex; width: 100%; text-decoration: none;
+            .search__row{
+                position: relative; width: 100%; border-bottom: 1px solid rgba(255,255,255,0.2); padding: 4px 0px; padding-bottom: 16px;
+                &:last-child{border-bottom: none;}
+                &:hover{cursor: pointer; }
 
-            h5, p{
-                color: #FFFFFF;
+                h5, p{
+                    color: #FFFFFF;
+                }
             }
         }
     }

@@ -22,4 +22,7 @@ class TwelveHours extends Model{
     public function getDayAndTime(): string{
         return $this->dayAndTime($this->date_time);
     }
+    public function getTime(): string{
+        return $this->getPublicTime($this->date_time);
+    }
 }

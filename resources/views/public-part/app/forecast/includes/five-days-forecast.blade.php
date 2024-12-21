@@ -57,16 +57,16 @@
             </div>
             <div class="compass__info_wrapper">
                 <div class="ciw__inner">
-                    <p>Iz pravca ZJZ (36°)</p>
+                    <p>Iz pravca {{ $city->twelveHoursCurrentRel->wind_direction_l ?? 'I' }} ({{ $city->twelveHoursCurrentRel->wind_direction_deg ?? 'I' }}°)</p>
                     <div class="wind__info">
-                        <h3>8</h3>
+                        <h3>{{ $city->twelveHoursCurrentRel->wind_speed ?? 'I' }}</h3>
                         <div class="wind__info__text">
                             <p>km/h</p>
                             <p>Brzina vjetra</p>
                         </div>
                     </div>
                     <div class="wind__info">
-                        <h3>25</h3>
+                        <h3>{{ $city->twelveHoursCurrentRel->wind_gust_speed ?? 'I' }}</h3>
                         <div class="wind__info__text">
                             <p>km/h</p>
                             <p>Udari vjetra</p>
@@ -77,6 +77,7 @@
         </div>
         <div class="wind__info">
             <p>
+                ToDo::
                 {{ __('Umjeren, sa prosječnom brzinom od 8 km/h.') }}
                 {{ __('Očekuju se udari vjetra do 25 km/h!') }}
             </p>

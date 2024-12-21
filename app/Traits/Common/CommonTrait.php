@@ -31,9 +31,18 @@ trait CommonTrait{
 
         return $carbonDT->format('d') . ' ' . ($this->_months[(int)($carbonDT->format('m') - 1)]) . ', ' . ($this->_days[(int)($carbonDT->format('w'))]) . ' ' . $carbonDT->format('H:i');
     }
+    public function getFullDateTime($dateTime): string{
+        $carbonDT = Carbon::parse($dateTime);
+
+        return ($this->_full_days[(int)($carbonDT->format('w'))]) . ', ' . $carbonDT->format('d') . ' ' . ($this->_months[(int)($carbonDT->format('m') - 1)]) . ' ' . $carbonDT->format('Y') . ' ' . $carbonDT->format('H:i');
+    }
     public function dayAndTime($dateTime): string{
         $carbonDT = Carbon::parse($dateTime);
 
         return ($this->_days[(int)($carbonDT->format('w'))]) . ', ' . $carbonDT->format('H:i');
+    }
+    public function getPublicTime($dateTime): string{
+        $carbonTime = Carbon::parse($dateTime);
+        return $carbonTime->format('H:i');
     }
 }

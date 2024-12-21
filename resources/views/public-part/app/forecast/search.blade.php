@@ -3,12 +3,14 @@
 @section('public-content')
     <div class="search__wrapper">
         <div class="search__list">
-            @for($i=0; $i<10; $i++)
-                <div class="search__row">
-                    <h5>Sarajevo</h5>
-                    <p>Federacija Bosne i Hercegovine, Bosna i Hercegovina</p>
-                </div>
-            @endfor
+            @foreach($cities as $city)
+                <a href="{{ route('public.forecast.preview', ['citiKey' => $city->Key ?? 0]) }}">
+                    <div class="search__row">
+                        <h5>{{ $city->LocalizedName ?? '' }}</h5>
+                        <p> @if(!empty($city->AdministrativeArea->LocalizedName)) {{ $city->AdministrativeArea->LocalizedName ?? '' }}, @endif {{ $city->Country->LocalizedName ?? '' }}</p>
+                    </div>
+                </a>
+            @endforeach
         </div>
 {{--        <div class="border__line"></div>--}}
         <div class="side__info">

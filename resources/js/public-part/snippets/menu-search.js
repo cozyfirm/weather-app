@@ -86,6 +86,13 @@ $( document ).ready(function() {
      *  On keyup on main input field
      */
     $("body").on('keyup', '#menu-search', function(e) {
+        if(e.key === "Enter") {
+            if($(this).val() === '' || $(this).val() === ' ') return;
+
+            window.location = '/forecast/search/' + $(this).val();
+            return;
+        }
+
         preSearch($(this).attr('uri'), $(this).val());
     }).on('focus', '#menu-search', function(e) {
         setSearch(true);

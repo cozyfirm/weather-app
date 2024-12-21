@@ -21,7 +21,7 @@ Route::prefix('/')->group(function () {
      */
     Route::prefix('/forecast')->group(function () {
         /** Display searched cities */
-        Route::get ('/search',                        [ForecastController::class, 'search'])->name('public.forecast.search');
+        Route::get ('/search/{keyword}',              [ForecastController::class, 'search'])->name('public.forecast.search');
 
         /** Preview searched city */
         Route::get ('/preview/{citiKey}',             [ForecastController::class, 'preview'])->name('public.forecast.preview');

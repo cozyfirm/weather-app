@@ -23,8 +23,13 @@ class ForecastController extends Controller{
      * Search cities from API by keyword
      * @return View
      */
-    public function search(): View{
-        return view($this->_path . 'search');
+    public function search($keyword): View{
+        $cities = $this->searchBy("cities/autocomplete", $keyword);
+
+        return view($this->_path . 'search', [
+            'cities' => $cities,
+            'history' => $this->getUserHistory()
+        ]);
     }
 
     /** ------------------------------------------------------------------------------------------------------------ **/
@@ -39,7 +44,7 @@ class ForecastController extends Controller{
             /* In case there is no city info, let's first create one */
 
             $cityResponse = $this->searchBy($cityKey, null);
-            $city = $this->createCityObject($cityKey, $cityResponse, true);
+            $city = $this->createCityObject($cityKey, $cityResponse);
 
             /* Get twelve hours info */
             $this->saveTwelveHoursForecast($cityKey);
@@ -81,13 +86,17 @@ class ForecastController extends Controller{
      * @return View
      */
     public function preview($citiKey): View{
-        $day = $this->getDayInfo($citiKey);
+        $city = $this->getDayInfo($citiKey);
+        /* Update number of loads */
+        $city->update(['loads' => ($city->loads + 1)]);
+
         /* Log search history */
         $this->userSearchHistory($citiKey);
 
         return view($this->_path . 'preview', [
-            'day' => $day,
-            'history' => $this->getUserHistory()
+            'city' => $city,
+            'history' => $this->getUserHistory(),
+            'dateTime' => $this->getFullDateTime(Carbon::now())
         ]);
     }
     public function previewDay(): View{
