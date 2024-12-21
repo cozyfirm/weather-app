@@ -2,6 +2,7 @@
 
 namespace App\Models\Base\Forecast;
 
+use App\Traits\Common\CommonTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
@@ -11,7 +12,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  * @method static create(array $forecast)
  */
 class FiveDays extends Model{
-    use HasFactory;
+    use HasFactory, CommonTrait;
 
     protected $table = 'base__five_days_forecast';
     protected $guarded = ['id'];
@@ -21,5 +22,11 @@ class FiveDays extends Model{
     }
     public function nightRel(): HasOne{
         return $this->HasOne(FiveDaysInfo::class, 'parent_id', 'id')->where('type', '=', 'night');
+    }
+    public function weekDay(): string{
+        return $this->getDay($this->date);
+    }
+    public function dateAndMonth(): string{
+        return $this->getDayAndFullMonth($this->date);
     }
 }

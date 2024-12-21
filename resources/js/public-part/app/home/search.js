@@ -8,6 +8,8 @@ $( document ).ready(function() {
          */
         if(window.innerWidth <= 800) {
             $(".mobile__search_wrapper").addClass('visible');
+            $(".mobile-menu-search").focus();
+
             return;
         }
 

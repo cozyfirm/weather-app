@@ -6,12 +6,12 @@
         </div>
 
         <div class="body__data">
-            @for($i=0; $i<5; $i++)
-                <div class="day__forecast transition-05">
+            @foreach($city->fiveDaysRel as $day)
+                <div class="day__forecast transition-05" title="{{ $day->dayRel->long_phrase ?? '' }}">
                     <div class="day__title">
-                        <p>@if($i==0) {{ __('Ponedjeljak') }} @else {{ __('Utorak') }}@endif </p>
+                        <p> {{ $day->weekDay() }} </p>
                         <p class="comma">,</p>
-                        <span>{{ $i + 14 }}. Decembar </span>
+                        <span> {{ $day->dateAndMonth() }} </span>
                     </div>
                     <div class="day__forecast_info">
                         <div class="warning__info">
@@ -20,23 +20,25 @@
                         </div>
 
                         <div class="temperature__info">
-                            <p>8°</p>
+                            <p>{{ $day->min_temp ?? '0' }}°</p>
                             <span>|</span>
-                            <p>16°</p>
+                            <p>{{ $day->max_temp ?? '0' }}°</p>
                         </div>
+
+                        <!-- ToDo: Day or night -->
 
                         <div class="wind__info">
                             <img src="{{ asset('files/images/icons/wind.svg') }}" alt="">
                             <div class="wind__text">
-                                <p>ZSZ</p>
-                                <span>{{ $i }} km/h</span>
+                                <p>{{ $day->dayRel->wind_direction_l ?? '' }}</p>
+                                <span> {{ $day->dayRel->wind_speed ?? '' }} km/h</span>
                             </div>
                         </div>
 
-                        <img src="https://www.accuweather.com/images/weathericons/{{ $i + 32 }}.svg" alt="{{ __('Weather icon') }}">
+                        <img src="https://www.accuweather.com/images/weathericons/{{ $day->dayRel->icon ?? 0 }}.svg" alt="{{ __('Weather icon') }}">
                     </div>
                 </div>
-            @endfor
+            @endforeach
         </div>
     </div>
 
@@ -48,7 +50,7 @@
         <div class="compass__wrapper">
             <div class="compass__animation_wrapper">
                 <div class="compass__circle">
-                    <img src="{{ asset('files/images/icons/compass.png') }}" alt="">
+                    <img class="rotate-{{ $city->twelveHoursCurrentRel->wind_direction_deg ?? '0' }}" src="{{ asset('files/images/icons/compass.png') }}" alt="">
                     <div class="position north">{{ __('S') }}</div>
                     <div class="position east">{{ __('I') }}</div>
                     <div class="position south">{{ __('J') }}</div>
@@ -62,14 +64,14 @@
                         <h3>{{ $city->twelveHoursCurrentRel->wind_speed ?? 'I' }}</h3>
                         <div class="wind__info__text">
                             <p>km/h</p>
-                            <p>Brzina vjetra</p>
+                            <p>{{ __('Brzina vjetra') }}</p>
                         </div>
                     </div>
                     <div class="wind__info">
                         <h3>{{ $city->twelveHoursCurrentRel->wind_gust_speed ?? 'I' }}</h3>
                         <div class="wind__info__text">
                             <p>km/h</p>
-                            <p>Udari vjetra</p>
+                            <p>{{ __('Udari vjetra') }}</p>
                         </div>
                     </div>
                 </div>

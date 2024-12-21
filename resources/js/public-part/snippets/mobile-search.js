@@ -109,6 +109,7 @@ $( document ).ready(function() {
      */
     $(".mobile__search__trigger").click(function (){
         showHideMenu(true);
+        $(".mobile-menu-search").focus();
     });
     $(".msw_sa_cancel_w").click(function (){
         showHideMenu(false);

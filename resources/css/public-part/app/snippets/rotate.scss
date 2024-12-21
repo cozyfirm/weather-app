@@ -1,0 +1,6 @@
+// Rotate Classes from 1deg to 360deg
+@for $i from 1 through 360 {
+    .rotate-#{$i} {
+        transform: rotate(#{$i}deg);
+    }
+}

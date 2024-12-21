@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 trait CommonTrait{
     protected array $_months = ['Jan', 'Feb', 'Mar', 'Apr', 'Maj', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dec'];
+    protected array $_full_months = ['Januar', 'Februar', 'Mart', 'April', 'Maj', 'Juni', 'Juli', 'August', 'Septembar', 'Oktobar', 'Novembar', 'Decembar'];
     protected array $_days = ['Ned', 'Pon', 'Uto', 'Sri', 'Čet', 'Pet', 'Sub'];
     protected array $_full_days = ['Nedjelja', 'Ponedjeljak', 'Utorak', 'Srijeda', 'Četvrtak', 'Petak', 'Subota'];
     protected static array $_time_arr = [];
@@ -44,6 +45,12 @@ trait CommonTrait{
     public function getPublicTime($dateTime): string{
         $carbonTime = Carbon::parse($dateTime);
         return $carbonTime->format('H:i');
+    }
+    public function getDay($date): string{
+        return $this->_full_days[Carbon::parse($date)->format('w')];
+    }
+    public function getDayAndFullMonth($date): string{
+        return Carbon::parse($date)->format('d') . ' ' .$this->_full_months[Carbon::parse($date)->format('m') - 1];
     }
 
     /**

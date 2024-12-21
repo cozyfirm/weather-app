@@ -349,11 +349,11 @@
                             }
                         }
                         .temperature__info{
-                            position: relative; display: flex; gap: 8px; align-items: center;
+                            position: relative; display: flex; gap: 8px; align-items: center; width: 100px; justify-content: center;
                             p, span{font-size: 16px; color: #FFFFFF;}
                         }
                         .wind__info{
-                            position: relative; display: flex; gap: 8px; align-items: center;
+                            position: relative; display: flex; gap: 8px; align-items: center; width: 85px;
                             @media only screen and (max-width: 1000px) {
                                 display: none;
                             }
@@ -401,7 +401,7 @@
                         display: flex; align-items: center; justify-content: center;
 
                         img{
-                            height: 60px; transform: rotate(36deg);
+                            height: 60px; 
                         }
                         .position{
                             position: absolute; width: 24px; height: 24px; background: $bColor; display: flex; justify-content: center; align-items: center; color: #FFFFFF;

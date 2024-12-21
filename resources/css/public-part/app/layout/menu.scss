@@ -147,25 +147,28 @@
 
                         .menu__last__search{
                             position: relative; width: 100%; display: flex; gap: 4px; padding: 16px 8px; flex-wrap: wrap;
-                            .last__search__row{
-                                position: relative; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 4px 8px; border-radius: 2px;
-                                &:hover{
-                                    cursor: pointer; background: rgb(0,0,0,0.2);
+                            a{
+                                position: relative; width: 100%; display: flex; text-decoration: none; color: unset;
+                                .last__search__row{
+                                    position: relative; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 4px 8px; border-radius: 2px;
+                                    &:hover{
+                                        cursor: pointer; background: rgb(0,0,0,0.2);
+                                        .ls_r_data{
+                                            h6{color: $bColor}
+                                        }
+                                        .ls_r_info{
+                                            h4{color: $bColor;}
+                                        }
+                                    }
                                     .ls_r_data{
-                                        h6{color: $bColor}
+                                        h6{}
+                                        p{font-size: 12px; color: grey;}
                                     }
                                     .ls_r_info{
-                                        h4{color: $bColor;}
+                                        position: relative; display: flex; gap: 16px; align-items: center;
+                                        img{height: 20px;}
+                                        h4{font-size: 20px;}
                                     }
-                                }
-                                .ls_r_data{
-                                    h6{}
-                                    p{font-size: 12px; color: grey;}
-                                }
-                                .ls_r_info{
-                                    position: relative; display: flex; gap: 16px; align-items: center;
-                                    img{height: 20px;}
-                                    h4{font-size: 20px;}
                                 }
                             }
                         }
