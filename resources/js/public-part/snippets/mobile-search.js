@@ -1,6 +1,7 @@
 $( document ).ready(function() {
     let searchedVal = '', searching = false;
     let previewUri = '/forecast/preview/';
+    let searchUri = '/forecast/search/';
 
     /** Show or hide search menu in full screen */
     let showHideMenu = function (visible){
@@ -75,7 +76,9 @@ $( document ).ready(function() {
 
             /* Show search offer */
             $(".search__row").removeClass('d-none');
-            $("#searched__value").text(value);
+            if(value !== '' && value !== ' '){
+                $("#searched__value").text(value).attr('uri', searchUri + value);
+            }
         }else{
             /* Remove searched elements */
             cleanSearchHistory();
@@ -96,6 +99,8 @@ $( document ).ready(function() {
          * Go-To URI
          * @type {*|jQuery}
          */
+        window.location = $(this).attr('uri');
+    }).on('click', '#searched__value', function (e){
         window.location = $(this).attr('uri');
     })
 
