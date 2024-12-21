@@ -27,7 +27,7 @@
                 </div>
                 <div class="psw_row__w">
                     @foreach($history as $sample)
-                        <div class="psw__row skip-closing go-to" uri="{{ route('public.forecast.preview', ['citiKey' => $sample->city_key ?? '0']) }}">
+                        <div class="psw__row skip-closing go-to" uri="{{ route('public.forecast.preview', ['cityKey' => $sample->city_key ?? '0']) }}">
                             <div class="psw_r_data skip-closing">
                                 <h6 class="skip-closing">{{ $sample->cityRel->name ?? '' }}</h6>
                                 <p class="skip-closing">{{ $sample->cityRel->name ?? '' }}</p>

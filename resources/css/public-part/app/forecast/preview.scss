@@ -302,68 +302,71 @@
                 @media only screen and (max-width: 1000px) {
                     padding: 0px 20px;
                 }
-                .day__forecast{
-                    position: relative; display: flex; justify-content: space-between; width: 100%; padding: 8px 16px; border-radius: 4px;
-                    @media only screen and (max-width: 1000px) {
-                        padding: 8px 0px;
-                    }
-                    &:hover{
+                a{
+                    position: relative; width: 100%; display: flex; color: unset; text-decoration: none;
+                    .day__forecast{
+                        position: relative; display: flex; justify-content: space-between; width: 100%; padding: 8px 16px; border-radius: 4px;
                         @media only screen and (max-width: 1000px) {
-                            background: none;
+                            padding: 8px 0px;
                         }
-                        cursor: pointer; background: #0a5189;
-                    }
-                    .day__title{
-                        position: relative; display: flex; align-items: center; gap: 4px;
-                        p{color: #FFFFFF; font-size:18px; }
-                        span{
+                        &:hover{
                             @media only screen and (max-width: 1000px) {
-                                display: none;
+                                background: none;
                             }
-                            color: grey; font-size: 18px;
+                            cursor: pointer; background: #0a5189;
                         }
-                        .comma{
+                        .day__title{
+                            position: relative; display: flex; align-items: center; gap: 4px;
+                            p{color: #FFFFFF; font-size:18px; }
+                            span{
+                                @media only screen and (max-width: 1000px) {
+                                    display: none;
+                                }
+                                color: grey; font-size: 18px;
+                            }
+                            .comma{
+                                @media only screen and (max-width: 1000px) {
+                                    display: none;
+                                }
+                            }
+                        }
+                        .day__forecast_info{
+                            position: relative; display: flex; justify-content: flex-start; gap: 32px; align-items: center;
                             @media only screen and (max-width: 1000px) {
-                                display: none;
+                                gap: 16px;
                             }
-                        }
-                    }
-                    .day__forecast_info{
-                        position: relative; display: flex; justify-content: flex-start; gap: 32px; align-items: center;
-                        @media only screen and (max-width: 1000px) {
-                            gap: 16px;
-                        }
 
-                        /* Weather image height */
-                        img{
-                            height: 24px;
-                        }
-
-                        .warning__info{
-                            position: relative; display: flex; align-items: center; gap: 8px;
-                            .warning__w{
-                                position: relative; height: 20px; width: 20px; display: flex; justify-content: center; align-items: center; border-radius:2px;
-                                &.yellow-warning{ background: #fbed50; }
-                                &.info-warning{ background: $lightBlue; p{color:#FFF;} }
-                                p{ color: #333333; }
-                            }
-                        }
-                        .temperature__info{
-                            position: relative; display: flex; gap: 8px; align-items: center; width: 100px; justify-content: center;
-                            p, span{font-size: 16px; color: #FFFFFF;}
-                        }
-                        .wind__info{
-                            position: relative; display: flex; gap: 8px; align-items: center; width: 85px;
-                            @media only screen and (max-width: 1000px) {
-                                display: none;
-                            }
+                            /* Weather image height */
                             img{
-                                height: 16px;
+                                height: 24px;
                             }
-                            .wind__text{
-                                display: flex; flex-direction: column;
-                                p, span{
-                                    font-size: 10px; color: #FFFFFF;
+
+                            .warning__info{
+                                position: relative; display: flex; align-items: center; gap: 8px;
+                                .warning__w{
+                                    position: relative; height: 20px; width: 20px; display: flex; justify-content: center; align-items: center; border-radius:2px;
+                                    &.yellow-warning{ background: #fbed50; }
+                                    &.info-warning{ background: $lightBlue; p{color:#FFF;} }
+                                    p{ color: #333333; }
+                                }
+                            }
+                            .temperature__info{
+                                position: relative; display: flex; gap: 8px; align-items: center; width: 100px; justify-content: center;
+                                p, span{font-size: 16px; color: #FFFFFF;}
+                            }
+                            .wind__info{
+                                position: relative; display: flex; gap: 8px; align-items: center; width: 85px;
+                                @media only screen and (max-width: 1000px) {
+                                    display: none;
+                                }
+                                img{
+                                    height: 16px;
+                                }
+                                .wind__text{
+                                    display: flex; flex-direction: column;
+                                    p, span{
+                                        font-size: 10px; color: #FFFFFF;
+                                    }
                                 }
                             }
                         }
@@ -401,7 +404,7 @@
                         display: flex; align-items: center; justify-content: center;
 
                         img{
-                            height: 60px; 
+                            height: 60px;
                         }
                         .position{
                             position: absolute; width: 24px; height: 24px; background: $bColor; display: flex; justify-content: center; align-items: center; color: #FFFFFF;

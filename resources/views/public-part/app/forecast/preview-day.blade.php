@@ -5,24 +5,30 @@
         <div class="specific__day__wrapper">
             <div class="sdw__header">
                 <div class="sdw__header__w">
-                    <h2>Sarajevo</h2>
-                    <h2 class="comma">,</h2>
-                    <h2 class="date">16. Dec 2024</h2>
+                    <h2>{{ $city->name ?? '' }}</h2>
+                    @if($dayTitle != 'danas' and $dayTitle != 'sutra')
+                        <h2 class="comma">,</h2>
+                    @endif
+                    <h2 class="date">{{ $dayTitle }}</h2>
                 </div>
                 <div class="sdw__h__options">
-                    <div class="sdw__h__o_option active animated pulse infinite">
-                        {{ __('DAN') }}
-                    </div>
-                    <div class="sdw__h__o_option">
-                        {{ __('VEČER') }}
-                    </div>
+                    <a href="{{ route('public.forecast.preview-day', ['cityKey' => $city->key, 'date' => $date, 'type' => 'day']) }}" title="{{ __('Dnevna prognoza') }}">
+                        <div class="sdw__h__o_option @if($type == 'day') active @else animated pulse infinite @endif">
+                            {{ __('DAN') }}
+                        </div>
+                    </a>
+                    <a href="{{ route('public.forecast.preview-day', ['cityKey' => $city->key, 'date' => $date, 'type' => 'night']) }}" title="{{ __('Večernja prognoza') }}">
+                        <div class="sdw__h__o_option @if($type == 'night') active @else animated pulse infinite @endif">
+                            {{ __('VEČER') }}
+                        </div>
+                    </a>
                 </div>
             </div>
 
             <div class="sdw__body">
                 <div class="text__info">
-                    <p>Srijeda</p>
-                    <h4>Očekuje se malo kiše</h4>
+                    <p>{{ $dayName }}</p>
+                    <h4> {{ $info->long_phrase ?? '' }} </h4>
                     <div class="warnings__wrapper">
                         <div class="oiw__info yellow-warning">
                             <p>{{ __('Žuto upozorenje za maglu 00:00 - 11:00h') }}</p>
@@ -31,13 +37,13 @@
                             <p>{{ __('Srijeda navečer snijeg 20:00 - 23:59') }}</p>
                         </div>
                     </div>
-                    <p>Izlazak sunca u 07:54h, zalazak u 16:03h !</p>
+                    <p>Izlazak sunca u {{ $fiveDays->getSunrise() }}h, zalazak u {{ $fiveDays->getSunset() }}h !</p>
                 </div>
                 <div class="temperature__info">
                     <div class="temp__info__inner">
                         <div class="tii__text">
-                            <p>{{ __('Osjeća se kao') }} 11° | 17°C </p>
-                            <h2>12° | 17°C</h2>
+                            <p>{{ __('Osjeća se kao') }} {{ temperatureHelper::roundUp($fiveDays->min_temp_rf ?? '0') }}° | {{ temperatureHelper::roundUp($fiveDays->max_temp_rf ?? '0') }}°C </p>
+                            <h2>{{ temperatureHelper::roundUp($fiveDays->min_temp ?? '0') }}° | {{ temperatureHelper::roundUp($fiveDays->max_temp ?? '0') }}°C</h2>
                         </div>
                         <img src="https://www.accuweather.com/images/weathericons/18.svg" alt="{{ __('Weather icon') }}">
                     </div>
@@ -52,26 +58,26 @@
                     <img src="{{ asset('files/images/icons/humidity.svg') }}" alt="">
                 </div>
                 <div class="oiw__i__body">
-                    <h3>80%</h3>
+                    <h3>{{ $info->rel_humidity_avg ?? '0' }}%</h3>
                 </div>
                 <div class="oiw__i__footer">
-                    <div class="line__wrapper"> <div class="fill__line width-80"></div> </div>
+                    <div class="line__wrapper"> <div class="fill__line width-{{ $info->rel_humidity_avg ?? '0' }}"></div> </div>
                     <div class="line__desc">
                         <span>0%</span>
                         <span>100%</span>
                     </div>
                 </div>
             </div>
-            <div class="oiw__inner transition-05">
+            <div class="oiw__inner transition-05" title="{{ $fiveDays->uv_index_desc ?? '' }}">
                 <div class="oiw__i__header">
                     <p>{{ __('UV Index') }}</p>
                     <img src="{{ asset('files/images/icons/sun.svg') }}" alt="">
                 </div>
                 <div class="oiw__i__body">
-                    <h3>3</h3>
+                    <h3>{{ $fiveDays->uv_index ?? '' }}</h3>
                 </div>
                 <div class="oiw__i__footer">
-                    <div class="line__wrapper"> <div class="fill__line width-30"></div> </div>
+                    <div class="line__wrapper"> <div class="fill__line width-{{ ($fiveDays->uv_index ?? '0') * 10 }}"></div> </div>
                     <div class="line__desc">
                         <span>0</span>
                         <span>10</span>
@@ -84,32 +90,51 @@
                     <img src="{{ asset('files/images/icons/precipitation.svg') }}" alt="">
                 </div>
                 <div class="oiw__i__body">
-                    <h3>93%</h3>
+                    <h3>{{ $info->precipitation_probability ?? '0' }}%</h3>
                 </div>
                 <div class="oiw__i__footer">
-                    <div class="line__wrapper"> <div class="fill__line width-93"></div> </div>
+                    <div class="line__wrapper"> <div class="fill__line width-{{ $info->precipitation_probability ?? '0' }}"></div> </div>
                     <div class="line__desc">
                         <span>0%</span>
                         <span>100%</span>
                     </div>
                 </div>
             </div>
-            <div class="oiw__inner transition-05">
-                <div class="oiw__i__header">
-                    <p>{{ __('Kiša') }}</p>
-                    <img src="{{ asset('files/images/icons/rain.svg') }}" alt="">
-                </div>
-                <div class="oiw__i__body">
-                    <h3>1.5mm</h3>
-                </div>
-                <div class="oiw__i__footer">
-                    <div class="line__wrapper"> <div class="fill__line width-15"></div> </div>
-                    <div class="line__desc">
-                        <span>0mm</span>
-                        <span>10mm</span>
+            @if((($info->snow_probability ?? '0') > ($info->rain_probability ?? '0')) and ($info->total_snow ?? '0') > 0)
+                <div class="oiw__inner transition-05">
+                    <div class="oiw__i__header">
+                        <p>{{ __('Snijeg') }}</p>
+                        <img src="{{ asset('files/images/icons/rain.svg') }}" alt="">
+                    </div>
+                    <div class="oiw__i__body">
+                        <h3>{{ $info->total_snow ?? 0 }}cm</h3>
+                    </div>
+                    <div class="oiw__i__footer">
+                        <div class="line__wrapper"> <div class="fill__line width-{{ (int)(($info->total_snow ?? 0) * 10) }}"></div> </div>
+                        <div class="line__desc">
+                            <span>0cm</span>
+                            <span>10cm</span>
+                        </div>
                     </div>
                 </div>
-            </div>
+            @else
+                <div class="oiw__inner transition-05">
+                    <div class="oiw__i__header">
+                        <p>{{ __('Kiša') }}</p>
+                        <img src="{{ asset('files/images/icons/rain.svg') }}" alt="">
+                    </div>
+                    <div class="oiw__i__body">
+                        <h3>{{ $info->total_rain ?? 0 }}mm</h3>
+                    </div>
+                    <div class="oiw__i__footer">
+                        <div class="line__wrapper"> <div class="fill__line width-{{ (int)(($info->total_rain ?? 0) * 10) }}"></div> </div>
+                        <div class="line__desc">
+                            <span>0mm</span>
+                            <span>10mm</span>
+                        </div>
+                    </div>
+                </div>
+            @endif
         </div>
 
         <!-- Five days forecast -->

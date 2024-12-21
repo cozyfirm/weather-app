@@ -33,17 +33,20 @@
                 width: 100%; background: #03335b; gap: 20px; padding: 16px;
             }
 
-            .sdw__h__o_option{
-                position: relative; color: #FFFFFF; padding: 2px 16px 4px 16px; border-radius:4px;
-                @media only screen and (max-width: 1000px) {
-                    width: calc(50% - 10px); text-align: center; padding: 4px 16px 6px 16px;
-                }
+            a{
+                display: flex; text-decoration: none; color: unset; padding: 0px; margin: 0px;
+                .sdw__h__o_option{
+                    position: relative; color: #FFFFFF; padding: 4px 32px 4px 32px; border-radius:4px;
+                    @media only screen and (max-width: 1000px) {
+                        width: calc(50% - 10px); text-align: center; padding: 4px 16px 6px 16px;
+                    }
 
-                &.active{
-                    background: $lightBlue;
-                }
-                &:hover{
-                    cursor: pointer; // background: $lightBlue;
+                    &.active{
+                        background: $lightBlue;
+                    }
+                    &:hover{
+                        cursor: pointer; // background: $lightBlue;
+                    }
                 }
             }
         }

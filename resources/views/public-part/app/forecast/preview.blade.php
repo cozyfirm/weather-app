@@ -77,7 +77,7 @@
                         <div class="inside-swiper active">
                             <p> {{ $tw->getTime() }} </p>
                             <img src="https://www.accuweather.com/images/weathericons/{{ $tw->icon ?? '1' }}.svg" alt="{{ __('Weather icon') }}">
-                            <h5> {{ $tw->temperature ?? '0' }}°C </h5>
+                            <h5> {{ temperatureHelper::roundUp($tw->temperature ?? '0') }}°C </h5>
                         </div>
                     </div>
                     @endforeach

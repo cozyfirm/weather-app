@@ -21,7 +21,7 @@
                         <!-- Previous search if exists -->
                         <div class="menu__last__search">
                             @foreach($history as $sample)
-                                <a href="{{ route('public.forecast.preview', ['citiKey' => $sample->city_key ?? '0']) }}">
+                                <a href="{{ route('public.forecast.preview', ['cityKey' => $sample->city_key ?? '0']) }}">
                                     <div class="last__search__row skip-closing">
                                         <div class="ls_r_data skip-closing">
                                             <h6 class="skip-closing">{{ $sample->cityRel->name ?? '' }}</h6>

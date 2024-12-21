@@ -4,6 +4,8 @@ namespace App\Http\Controllers\PublicPart;
 
 use App\Http\Controllers\Controller;
 use App\Models\Base\Cities;
+use App\Models\Base\Forecast\FiveDays;
+use App\Models\Base\Forecast\FiveDaysInfo;
 use App\Models\Users\History\SearchHistory;
 use App\Traits\API\ForecastTrait;
 use App\Traits\API\LocationsTrait;
@@ -85,16 +87,16 @@ class ForecastController extends Controller{
     /**
      * Preview info about day
      *
-     * @param $citiKey
+     * @param $cityKey
      * @return View
      */
-    public function preview($citiKey): View{
-        $city = $this->getDayInfo($citiKey);
+    public function preview($cityKey): View{
+        $city = $this->getDayInfo($cityKey);
         /* Update number of loads */
         $city->update(['loads' => ($city->loads + 1)]);
 
         /* Log search history */
-        $this->userSearchHistory($citiKey);
+        $this->userSearchHistory($cityKey);
 
         return view($this->_path . 'preview', [
             'city' => $city,
@@ -102,8 +104,27 @@ class ForecastController extends Controller{
             'dateTime' => $this->getFullDateTime(Carbon::now())
         ]);
     }
-    public function previewDay(): View{
-        return view($this->_path . 'preview-day');
+    public function previewDay($cityKey, $date, $type): View{
+        $city = $this->getDayInfo($cityKey);
+
+        if(date("Y-m-d", strtotime('today')) == $date) $dayTitle = "danas";
+        else if(date("Y-m-d", strtotime('tomorrow')) == $date) $dayTitle = "sutra";
+        else $dayTitle = $this->getMDayY($date);
+
+        $fiveDays = FiveDays::where('city_key', '=', $cityKey)->where('date', '=', $date)->first();
+        $info = FiveDaysInfo::where('parent_id', '=', $fiveDays->id)->where('type', '=', $type)->first();
+
+        return view($this->_path . 'preview-day', [
+            'city' => $city,
+            'date' => $date,
+            'history' => $this->getUserHistory(),
+            'dayTitle' => $dayTitle,
+            'dayName' => $this->getDay($date),
+            'type' => $type,
+            'fiveDays' => $fiveDays,
+            'info' => $info,
+            'previewDay' => true
+        ]);
     }
 
     /** ------------------------------------------------------------------------------------------------------------ **/

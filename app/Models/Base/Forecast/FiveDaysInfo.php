@@ -14,5 +14,4 @@ class FiveDaysInfo extends Model{
 
     protected $table = 'base__five_days_forecast_info';
     protected $guarded = ['id'];
-
 }

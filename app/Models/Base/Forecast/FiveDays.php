@@ -29,4 +29,10 @@ class FiveDays extends Model{
     public function dateAndMonth(): string{
         return $this->getDayAndFullMonth($this->date);
     }
+    public function getSunrise(): string{
+        return $this->getPublicTime($this->sunrise);
+    }
+    public function getSunset(): string{
+        return $this->getPublicTime($this->sunset);
+    }
 }

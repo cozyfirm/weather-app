@@ -4,7 +4,7 @@
     <div class="search__wrapper">
         <div class="search__list">
             @foreach($cities as $city)
-                <a href="{{ route('public.forecast.preview', ['citiKey' => $city->Key ?? 0]) }}">
+                <a href="{{ route('public.forecast.preview', ['cityKey' => $city->Key ?? 0]) }}">
                     <div class="search__row">
                         <h5>{{ $city->LocalizedName ?? '' }}</h5>
                         <p> @if(!empty($city->AdministrativeArea->LocalizedName)) {{ $city->AdministrativeArea->LocalizedName ?? '' }}, @endif {{ $city->Country->LocalizedName ?? '' }}</p>
@@ -21,7 +21,7 @@
                     </div>
                     <div class="si__body">
                         @foreach($history as $city)
-                            <a href="{{ route('public.forecast.preview', ['citiKey' => $city->cityRel->key ?? 0]) }}">
+                            <a href="{{ route('public.forecast.preview', ['cityKey' => $city->cityRel->key ?? 0]) }}">
                                 <div class="si__b__row">
                                     <p>{{ $city->cityRel->name ?? '' }}</p>
                                     <div class="weather__icon">
@@ -40,7 +40,7 @@
                 </div>
                 <div class="si__body">
                     @foreach($popular as $city)
-                        <a href="{{ route('public.forecast.preview', ['citiKey' => $city->key ?? 0]) }}">
+                        <a href="{{ route('public.forecast.preview', ['cityKey' => $city->key ?? 0]) }}">
                             <div class="si__b__row">
                                 <p>{{ $city->name ?? '' }}</p>
                                 <div class="weather__icon">

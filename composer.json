@@ -28,7 +28,8 @@
             "Database\\Seeders\\": "database/seeders/"
         },
         "files": [
-            "app/Helpers/historyHelper.php"
+            "app/Helpers/historyHelper.php",
+            "app/Helpers/temperatureHelper.php"
         ]
     },
     "autoload-dev": {

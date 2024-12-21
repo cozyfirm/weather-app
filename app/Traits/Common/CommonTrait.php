@@ -50,7 +50,10 @@ trait CommonTrait{
         return $this->_full_days[Carbon::parse($date)->format('w')];
     }
     public function getDayAndFullMonth($date): string{
-        return Carbon::parse($date)->format('d') . ' ' .$this->_full_months[Carbon::parse($date)->format('m') - 1];
+        return Carbon::parse($date)->format('d') . '. ' .$this->_full_months[Carbon::parse($date)->format('m') - 1];
+    }
+    public function getMDayY($date): string{
+        return Carbon::parse($date)->format('d') . '. ' .$this->_months[Carbon::parse($date)->format('m') - 1] . ' ' . Carbon::parse($date)->format('Y');
     }
 
     /**
