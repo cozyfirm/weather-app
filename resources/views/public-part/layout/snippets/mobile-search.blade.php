@@ -30,11 +30,11 @@
                         <div class="psw__row skip-closing go-to" uri="{{ route('public.forecast.preview', ['cityKey' => $sample->city_key ?? '0']) }}">
                             <div class="psw_r_data skip-closing">
                                 <h6 class="skip-closing">{{ $sample->cityRel->name ?? '' }}</h6>
-                                <p class="skip-closing">{{ $sample->cityRel->name ?? '' }}</p>
+                                <p class="skip-closing">{{ $sample->cityRel->country ?? '' }}</p>
                             </div>
                             <div class="psw_r_info skip-closing">
                                 <img class="skip-closing" src="https://www.accuweather.com/images/weathericons/{{ $sample->cityRel->twelveHoursCurrentRel->icon ?? '' }}.svg" alt="{{ __('Weather icon') }}">
-                                <h4 class="skip-closing">{{ $sample->cityRel->twelveHoursCurrentRel->temperature ?? '' }}°C</h4>
+                                <h4 class="skip-closing">{{ temperatureHelper::roundUp($sample->cityRel->twelveHoursCurrentRel->temperature ?? '0') }}°C</h4>
                             </div>
                         </div>
                     @endforeach

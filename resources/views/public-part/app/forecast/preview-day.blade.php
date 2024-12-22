@@ -42,7 +42,7 @@
                 <div class="temperature__info">
                     <div class="temp__info__inner">
                         <div class="tii__text">
-                            <p>{{ __('Osjeća se kao') }} {{ temperatureHelper::roundUp($fiveDays->min_temp_rf ?? '0') }}° | {{ temperatureHelper::roundUp($fiveDays->max_temp_rf ?? '0') }}°C </p>
+                            <p>{{ __('Realan osjećaj') }} {{ temperatureHelper::roundUp($fiveDays->min_temp_rf ?? '0') }}° | {{ temperatureHelper::roundUp($fiveDays->max_temp_rf ?? '0') }}°C </p>
                             <h2>{{ temperatureHelper::roundUp($fiveDays->min_temp ?? '0') }}° | {{ temperatureHelper::roundUp($fiveDays->max_temp ?? '0') }}°C</h2>
                         </div>
                         <img src="https://www.accuweather.com/images/weathericons/18.svg" alt="{{ __('Weather icon') }}">

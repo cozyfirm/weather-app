@@ -22,7 +22,7 @@
                                     <img src="https://www.accuweather.com/images/weathericons/{{ $city->twelveHoursCurrentRel->icon ?? '' }}.svg" alt="{{ __('Weather icon') }}">
                                 </div>
                                 <div class="temp__wrapper">
-                                    <h1>{{ $city->twelveHoursCurrentRel->temperature ?? '' }}°C</h1>
+                                    <h1>{{ temperatureHelper::roundUp($city->twelveHoursCurrentRel->temperature ?? '0') }}°C</h1>
                                 </div>
                             </div>
                         </div>
@@ -45,7 +45,7 @@
             </div>
             <div class="other__info">
                 <div class="other__info__temp" title="{{ $city->twelveHoursCurrentRel->temperature_desc ?? '' }}">
-                    <h5>{{ __('Realan osjećaj') }} {{ $city->twelveHoursCurrentRel->temperature_rf ?? '' }} °C </h5>
+                    <h5>{{ __('Realan osjećaj') }} {{ temperatureHelper::roundUp($city->twelveHoursCurrentRel->temperature_rf ?? '0') }} °C </h5>
                 </div>
                 <div class="other__info__inner">
                     <div class="oi_w">

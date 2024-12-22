@@ -10,25 +10,39 @@
             </div>
         </div>
 
-        <div class="city__info" title="{{ __('Vaša trenutna lokacija') }}">
-            <a href="#">
-                <p>{{ __('Sarajevo, Bosna i Hercegovina') }}</p>
-            </a>
-        </div>
+        @if(isset(temperatureHelper::lastSearchedCity()->cityRel))
+            <div class="city__info" title="{{ __('Vaša trenutna lokacija') }}">
+                <a href="#">
+                    <p> {{ temperatureHelper::lastSearchedCity()->cityRel->name ?? '' }}, {{ temperatureHelper::lastSearchedCity()->cityRel->country ?? '' }} </p>
+                </a>
+            </div>
 
-        <div class="line"></div>
+            <div class="line"></div>
 
-        <div class="forecast__links">
-            <div class="fl__row">
-                <a href="#">{{ __('Vrijeme danas') }}</a>
+            <div class="forecast__links">
+                <div class="fl__row">
+                    <a href="{{ route('public.forecast.preview', ['cityKey' => temperatureHelper::lastSearchedCity()->cityRel->key ?? 0]) }}">
+                        {{ __('Vrijeme danas') }}
+                    </a>
+                </div>
+                <div class="fl__row">
+                    <a href="{{ route('public.forecast.preview-day', ['cityKey' => temperatureHelper::lastSearchedCity()->cityRel->key ?? 0, 'date' => date("Y-m-d", strtotime('tomorrow')), 'type' => 'day']) }}">
+                        {{ __('Vrijeme sutra') }}
+                    </a>
+                </div>
+                <div class="fl__row">
+                    @if(Route::is('public.forecast.preview') or Route::is('public.forecast.preview-day'))
+                        <a href="#five__days__wrapper">
+                            {{ temperatureHelper::lastSearchedCity()->cityRel->name ?? '' }} {{ __('5 dana') }}
+                        </a>
+                    @else
+                        <a href="{{ route('public.forecast.preview', ['cityKey' => temperatureHelper::lastSearchedCity()->cityRel->key ?? 0]) }}#five__days__wrapper">
+                            {{ temperatureHelper::lastSearchedCity()->cityRel->name ?? '' }} {{ __('5 dana') }}
+                        </a>
+                    @endif
+                </div>
             </div>
-            <div class="fl__row">
-                <a href="#">{{ __('Vrijeme sutra') }}</a>
-            </div>
-            <div class="fl__row">
-                <a href="#">{{ __('Sarajevo 5 dana') }}</a>
-            </div>
-        </div>
+        @endif
 
         <div class="line"></div>
 
@@ -48,7 +62,7 @@
     <div class="menu__footer">
         <div class="login__wrapper">
             <img src="{{ asset('files/images/icons/login.svg') }}" class="transition-02" alt="">
-            <a href="#"> {{ __('Prijavite se') }} </a>
+            <a href="{{ route('auth') }}"> {{ __('Prijavite se') }} </a>
         </div>
         <div class="icons__wrapper">
             <img src="{{ asset('files/images/icons/globe.svg') }}" class="transition-02" alt="">

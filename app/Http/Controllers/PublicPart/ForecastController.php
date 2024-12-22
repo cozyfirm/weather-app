@@ -60,12 +60,16 @@ class ForecastController extends Controller{
             return $city;
         }
 
-        if($city->twelveHoursRel->count() < 13){
-            /* Get twelve hours info */
-            $this->saveTwelveHoursForecast($cityKey);
-        }
-        if($city->fiveDaysRel->count() < 5){
-            $this->saveFiveDaysForecast($cityKey);
+        if($city->twelveHoursRel->count() < 13 or $city->fiveDaysRel->count() < 5){
+            if($city->twelveHoursRel->count() < 13){
+                /* Get twelve hours info */
+                $this->saveTwelveHoursForecast($cityKey);
+            }
+            if($city->fiveDaysRel->count() < 5){
+                $this->saveFiveDaysForecast($cityKey);
+            }
+
+            return null;
         }
 
         return $city;
@@ -92,6 +96,8 @@ class ForecastController extends Controller{
      */
     public function preview($cityKey): View{
         $city = $this->getDayInfo($cityKey);
+        if(!$city) $city = Cities::where('key', '=', $cityKey)->first();
+
         /* Update number of loads */
         $city->update(['loads' => ($city->loads + 1)]);
 
@@ -106,6 +112,7 @@ class ForecastController extends Controller{
     }
     public function previewDay($cityKey, $date, $type): View{
         $city = $this->getDayInfo($cityKey);
+        if(!$city) $city = Cities::where('key', '=', $cityKey)->first();
 
         if(date("Y-m-d", strtotime('today')) == $date) $dayTitle = "danas";
         else if(date("Y-m-d", strtotime('tomorrow')) == $date) $dayTitle = "sutra";

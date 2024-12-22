@@ -1,4 +1,4 @@
-<div class="five__days__wrapper">
+<div class="five__days__wrapper" id="five__days__wrapper">
     <div class="five__days__inner_wrapper">
         <div class="inner__header">
             <img src="{{ asset('files/images/icons/location.svg') }}" alt="">

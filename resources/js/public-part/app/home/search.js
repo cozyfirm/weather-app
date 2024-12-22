@@ -114,4 +114,14 @@ $( document ).ready(function() {
             alert('You pressed a "enter" key in somewhere');
         }
     })
+
+    /**
+     *  Home popular cities; Toggle class
+     */
+    $(".inside__popular__dropdown").click(function (){
+        if(window.innerWidth <= 1000) return;
+
+        $(".popular__content").toggleClass('visible');
+        $(".inside__popular__dropdown").toggleClass('rotated');
+    });
 });

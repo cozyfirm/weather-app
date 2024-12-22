@@ -25,11 +25,11 @@
                             <!-- Popular cities search -->
                             <div class="default__values">
                                 <div class="popular__search">
-                                    <p><a href="#" class="skip-home">Sarajevo</a></p>
-                                    <span>|</span>
-                                    <p><a href="#" class="skip-home">Tuzla</a></p>
-                                    <span>|</span>
-                                    <p><a href="#" class="skip-home">Zenica</a></p>
+                                    @php $i = 0 @endphp
+                                    @foreach($popular as $city)
+                                        <p><a href="{{ route('public.forecast.preview', ['cityKey' => $city->key ?? 0]) }}" class="skip-home">{{ $city->name ?? '' }}</a></p>
+                                        @if($i++ != 5) <span>|</span> @endif
+                                    @endforeach
                                 </div>
                                 <div class="current__location skip-home">
                                     <img src="{{ asset('files/images/icons/location-arrow.svg') }}" alt="">
@@ -46,8 +46,26 @@
                 <!-- Default popular locations -->
                 <div class="popular__locations">
                     <div class="popular__dropdown">
-                        <h4>{{ __('Popularne lokacije') }}</h4>
-                        <img src="{{ asset('files/images/icons/arrow-down.svg') }}" alt="">
+                        <div class="inside__popular__dropdown noselect">
+                            <h4>{{ __('Popularne lokacije') }}</h4>
+                            <img src="{{ asset('files/images/icons/arrow-down.svg') }}" alt="">
+                        </div>
+
+                        <div class="popular__content">
+                            @foreach($popular as $sample)
+                                <a href="{{ route('public.forecast.preview', ['cityKey' => $sample->key ]) }}">
+                                    <div class="ppl_b_row">
+                                        <p>{{ $sample->name ?? '' }}</p>
+                                        <div class="ppl_icons__wrapper">
+                                            <div class="temp__wrapper">
+                                                {{ temperatureHelper::roundUp($sample->twelveHoursCurrentRel->temperature ?? '0') }}°C
+                                            </div>
+                                            <img src="https://www.accuweather.com/images/weathericons/{{ $sample->twelveHoursCurrentRel->icon ?? '' }}.svg" alt="{{ __('Weather icon') }}">
+                                        </div>
+                                    </div>
+                                </a>
+                            @endforeach
+                        </div>
                     </div>
 
                     <div class="popular__locations__map" id="map__wrapper"></div>
@@ -55,24 +73,28 @@
 
                 <!-- Previous locations and banner -->
                 <div class="previous__locations__wrapper">
-                    <div class="previous__locations">
-                        <div class="pl__header">
-                            <h3>{{ __('Ranije pretrage') }}</h3>
-                        </div>
-                        <div class="pl__body">
-                            @for($i=0; $i<4; $i++)
-                                <div class="pl_b_row">
-                                    <p>Sarajevo</p>
-                                    <div class="icons__wrapper">
-                                        <div class="temp__wrapper">
-                                            8° | 16 °C
+                    @if($history->count())
+                        <div class="previous__locations">
+                            <div class="pl__header">
+                                <h3>{{ __('Ranije pretrage') }}</h3>
+                            </div>
+                            <div class="pl__body">
+                                @foreach($history as $sample)
+                                    <a href="{{ route('public.forecast.preview', ['cityKey' => $sample->cityRel->key ]) }}">
+                                        <div class="pl_b_row">
+                                            <p>{{ $sample->cityRel->name ?? '' }}</p>
+                                            <div class="icons__wrapper">
+                                                <div class="temp__wrapper">
+                                                    {{ temperatureHelper::roundUp($sample->cityRel->twelveHoursCurrentRel->temperature ?? '0') }}°C
+                                                </div>
+                                                <img src="https://www.accuweather.com/images/weathericons/{{ $sample->cityRel->twelveHoursCurrentRel->icon ?? '' }}.svg" alt="{{ __('Weather icon') }}">
+                                            </div>
                                         </div>
-                                        <img src="https://www.accuweather.com/images/weathericons/1.svg" alt="{{ __('Weather icon') }}">
-                                    </div>
-                                </div>
-                            @endfor
+                                    </a>
+                                @endforeach
+                            </div>
                         </div>
-                    </div>
+                    @endif
 
                     <div class="banner__wrapper">
                         <img src="{{ asset('files/images/icons/banner.png') }}" alt="">

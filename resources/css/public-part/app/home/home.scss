@@ -156,17 +156,76 @@
                 position: relative; width: calc(50% - 32px); min-height: 240px;
 
                 @media only screen and (max-width: 1000px) {
-                    width: 100%;
+                    width: 100%; display: flex; flex-wrap: wrap; gap: 20px;
                 }
 
                 .popular__dropdown{
                     position: relative; width: 100%; padding: 16px 32px; background: #03335b; display: flex; gap: 24px; align-items: center;
                     justify-content: space-between; align-content: center; border-top-left-radius: 8px; border-top-right-radius: 8px;
-                    img{
-                        height: 14px;
+
+                    @media only screen and (max-width: 1000px) {
+                        border-radius: 8px; flex-wrap: wrap; padding: 20px; gap: 20px;
                     }
-                    h4{
-                        color: #FFFFFF; font-weight:normal;
+
+                    .inside__popular__dropdown{
+                        position: relative; width: 100%; display: flex; gap: 24px; align-items: center;
+                        justify-content: space-between; align-content: center; border-top-left-radius: 8px; border-top-right-radius: 8px;
+                        &:hover{cursor: pointer;}
+                        &.rotated{
+                            img{transform: rotate(180deg);}
+                        }
+                        img{
+                            @media only screen and (max-width: 1000px) {
+                                height: 12px;
+                            }
+                            height: 14px;
+                        }
+                        h4{ color: #FFFFFF; font-weight:normal; }
+                    }
+
+                    .popular__content{
+                        position: absolute; left: 0px; top: 100%; width: 100%; min-height: 120px; z-index: 50; background: #03335b;
+                        padding: 8px 16px 24px 16px; flex-wrap: wrap; gap: 4px; display: none;
+
+                        @media only screen and (max-width: 1000px) {
+                            position: relative; display: flex; top: 0px; padding: 0px;
+                        }
+
+                        &.visible{
+                            display: flex;
+                        }
+
+                        a{
+                            position: relative; display: flex; width: 100%; text-decoration: none; color: unset;
+                            .ppl_b_row{
+                                position: relative; width: 100%; display: flex; justify-content: space-between; align-items: center;
+                                padding: 4px 16px; border-radius: 4px; transition: 0.2s all;
+
+                                @media only screen and (max-width: 1000px) {
+                                    padding: 4px 0px;
+                                }
+
+                                &:hover{
+                                    @media only screen and (max-width: 1000px) {
+                                        background: #03335b;
+                                    }
+                                    cursor:pointer; background: #0e5ea3;
+                                }
+                                p{
+                                    color: #FFFFFF;
+                                }
+                                .ppl_icons__wrapper{
+                                    position: relative; display: flex; align-items: center; gap: 32px;
+
+                                    .temp__wrapper{
+                                        color: #FFFFFF;
+                                    }
+                                    img{
+                                        height: 20px;
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
                 .popular__locations__map{
@@ -204,26 +263,29 @@
                     .pl__body{
                         position: relative; width: 100%; display: flex; flex-wrap: wrap; gap: 4px; background: #03335b; padding: 16px;
                         border-radius: 8px;
-                        .pl_b_row{
-                            position: relative; width: 100%; display: flex; justify-content: space-between; align-items: center;
-                            padding: 4px 16px;
+                        a{
+                            position: relative; width: 100%; display: flex; text-decoration: none; color: unset;
+                            .pl_b_row{
+                                position: relative; width: 100%; display: flex; justify-content: space-between; align-items: center;
+                                padding: 4px 16px;
 
-                            @media only screen and (max-width: 1000px) {
-                                padding: 4px 0px;
-                            }
+                                @media only screen and (max-width: 1000px) {
+                                    padding: 4px 0px;
+                                }
 
-                            &:hover{cursor:pointer; background: #043965 }
-                            p{
-                                color: #FFFFFF;
-                            }
-                            .icons__wrapper{
-                                position: relative; display: flex; align-items: center; gap: 32px;
-
-                                .temp__wrapper{
+                                &:hover{cursor:pointer; background: #043965 }
+                                p{
                                     color: #FFFFFF;
                                 }
-                                img{
-                                    height: 20px;
+                                .icons__wrapper{
+                                    position: relative; display: flex; align-items: center; gap: 32px;
+
+                                    .temp__wrapper{
+                                        color: #FFFFFF;
+                                    }
+                                    img{
+                                        height: 20px;
+                                    }
                                 }
                             }
                         }
