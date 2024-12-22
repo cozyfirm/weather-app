@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\Core\KeywordsController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\Other\FAQsController;
 use App\Http\Controllers\Admin\Users\UsersController;
+use App\Http\Controllers\PublicPart\ContactController;
 use App\Http\Controllers\PublicPart\ForecastController;
 use App\Http\Controllers\PublicPart\HomeController as PublicHomeController;
 use App\Http\Controllers\Auth\AuthController;
@@ -33,6 +34,11 @@ Route::prefix('/')->group(function () {
         Route::prefix('/api-routes')->group(function () {
             Route::post('/search-by-text',            [ForecastController::class, 'searchByText'])->name('public.forecast.api-routes.search-by-text');
         });
+    });
+
+    Route::prefix('/contact-us')->group(function () {
+        Route::get ('/',                        [ContactController::class, 'home'])->name('public.contact-us');
+        Route::post('/send-a-message',          [ContactController::class, 'sendMessage'])->name('public.contact-us.send-a-message');
     });
 });
 

@@ -37,12 +37,12 @@
                         <a class="footer__list1-link" href="#"> {{ __('Uslovi korištenja') }} </a>
                     </li>
                     <li class="footer__list1-item">
-                        <a class="footer__list1-link" href="#"> {{ __('Kontaktirajte nas') }} </a>
+                        <a class="footer__list1-link" href="{{ route('public.contact-us') }}"> {{ __('Kontaktirajte nas') }} </a>
                     </li>
                 </ul>
                 <ul class="footer__list2">
                     <li class="footer__list2-item">
-                        <a class="footer__list2-link" href="#">{{ __('Prijavite se') }}</a>
+                        <a class="footer__list2-link" href="{{ route('auth') }}">{{ __('Prijavite se') }}</a>
                     </li>
 {{--                    <li class="footer__list2-item">--}}
 {{--                        <a class="footer__list2-link" href="#"> {{ __('') }} </a>--}}
