@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Base\Cities;
 use App\Models\Base\Forecast\FiveDays;
 use App\Models\Base\Forecast\FiveDaysInfo;
+use App\Models\Base\Forecast\TwelveHours;
 use App\Models\Users\History\SearchHistory;
 use App\Traits\API\ForecastTrait;
 use App\Traits\API\LocationsTrait;
@@ -104,10 +105,59 @@ class ForecastController extends Controller{
         /* Log search history */
         $this->userSearchHistory($cityKey);
 
+        $twelveHours = $city->twelveHoursRel;
+
+        try{
+            /* Get info about sunset and sunrise */
+            $today = FiveDays::where('city_key', '=', $cityKey)->where('date', '=', date('Y-m-d'))->first();
+            $tomorrow = FiveDays::where('city_key', '=', $cityKey)->where('date', '=', Carbon::now()->addDay()->format('Y-m-d'))->first();
+
+            $sunrise = null;
+            $sunset  = null;
+
+            $startOfInterval = Carbon::parse($twelveHours[0]->date_time ?? '');
+            $endOfInterval   = Carbon::parse($twelveHours[$twelveHours->count() -1 ]->date_time ?? '');
+
+            $todaySunrise = Carbon::parse($today->sunrise);
+            $todaySunset  = Carbon::parse($today->sunset);
+
+            $tomorrowSunrise = Carbon::parse($tomorrow->sunrise);
+            $tomorrowSunset  = Carbon::parse($tomorrow->sunset);
+
+            if($todaySunrise >= $startOfInterval and $todaySunrise <= $endOfInterval){
+                $sunrise = $todaySunrise;
+            }else if($todaySunset >= $startOfInterval and $todaySunset <= $endOfInterval){
+                $sunset = $todaySunset;
+            }else if($tomorrowSunrise >= $startOfInterval and $tomorrowSunrise <= $endOfInterval){
+                $sunrise = $tomorrowSunrise;
+            }else if($tomorrowSunset >= $startOfInterval and $tomorrowSunset <= $endOfInterval){
+                $sunset = $tomorrowSunset;
+            }
+
+            if(isset($sunrise)){
+                $sunriseSample = new TwelveHours();
+                $sunriseSample->date_time = $sunrise->format('Y-m-d H:i:s');
+                $sunriseSample->icon = "sunrise";
+
+                $twelveHours->push($sunriseSample);
+                $twelveHours = $twelveHours->sortBy(function($model){ return $model->date_time; });
+            }
+            if(isset($sunset)){
+                $sunsetSample = new TwelveHours();
+                $sunsetSample->date_time = $sunset->format('Y-m-d H:i:s');
+                $sunsetSample->icon = "sunset";
+
+                $twelveHours->push($sunsetSample);
+                $twelveHours = $twelveHours->sortBy(function($model){ return $model->date_time; });
+            }
+
+        }catch (\Exception $e){}
+
         return view($this->_path . 'preview', [
             'city' => $city,
             'history' => $this->getUserHistory(),
-            'dateTime' => $this->getFullDateTime(Carbon::now())
+            'dateTime' => $this->getFullDateTime(Carbon::now()),
+            'twelveHours' => $twelveHours
         ]);
     }
     public function previewDay($cityKey, $date, $type): View{

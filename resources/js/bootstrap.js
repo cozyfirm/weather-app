@@ -32,19 +32,19 @@ const multiSwiper = new Swiper('.multi-swiper', {
     // },
     breakpoints: {
         320: {
-            slidesPerView: 3,
+            slidesPerView: 6,
             spaceBetweenSlides: 16
         },
         480: {
-            slidesPerView: 4,
+            slidesPerView: 6,
             spaceBetweenSlides: 16
         },
         800: {
-            slidesPerView: 5,
+            slidesPerView: 6,
             spaceBetweenSlides: 16
         },
         1000: {
-            slidesPerView: 6,
+            slidesPerView: 8,
             spaceBetweenSlides: 16
         },
         1200: {
@@ -52,7 +52,7 @@ const multiSwiper = new Swiper('.multi-swiper', {
             spaceBetweenSlides: 16
         },
         1400: {
-            slidesPerView: 10,
+            slidesPerView: $(".total-days").length,
             spaceBetweenSlides: 16
         }
     }

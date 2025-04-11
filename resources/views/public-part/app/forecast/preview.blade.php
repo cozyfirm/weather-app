@@ -8,7 +8,7 @@
                     <h2>{{ $city->name ?? '' }}</h2>
                     <h2 class="current">{{ __('trenutno') }}</h2>
                 </div>
-                <p>{{ $dateTime }}</p>
+                <p class="datetime">{{ $dateTime }}</p>
             </div>
             <div class="temperature__wrapper">
                 <div class="temperature__info">
@@ -19,13 +19,17 @@
                         <div class="main__info__w">
                             <div class="miw__temp">
                                 <div class="img__wrapper">
-                                    <img src="https://www.accuweather.com/images/weathericons/{{ $city->twelveHoursCurrentRel->icon ?? '' }}.svg" alt="{{ __('Weather icon') }}">
+                                    <img src="{{ asset('files/images/weathericons/' . ( $city->twelveHoursCurrentRel->icon ?? '1' ) . '.png') }}" alt="{{ __('Weather icon') }}">
                                 </div>
                                 <div class="temp__wrapper">
                                     <h1>{{ temperatureHelper::roundUp($city->twelveHoursCurrentRel->temperature ?? '0') }}°C</h1>
                                 </div>
                             </div>
                         </div>
+                    </div>
+
+                    <div class="real__feel__mobile">
+                        <h5>{{ __('Realan osjećaj') }} {{ temperatureHelper::roundUp($city->twelveHoursCurrentRel->temperature_rf ?? '0') }} °C </h5>
                     </div>
 
                     <div class="other__info__wrapper">
@@ -72,12 +76,12 @@
         <div class="twelve__hours__wrapper">
             <div class="swiper multi-swiper">
                 <div class="swiper-wrapper">
-                    @foreach($city->twelveHoursRel as $tw)
-                    <div class="swiper-slide transition-05">
+                    @foreach($twelveHours as $tw)
+                    <div class="swiper-slide transition-05 total-days">
                         <div class="inside-swiper active">
                             <p> {{ $tw->getTime() }} </p>
-                            <img src="https://www.accuweather.com/images/weathericons/{{ $tw->icon ?? '1' }}.svg" alt="{{ __('Weather icon') }}">
-                            <h5> {{ temperatureHelper::roundUp($tw->temperature ?? '0') }}°C </h5>
+                            <img src="{{ asset('files/images/weathericons/' . ( $tw->icon ?? '1' ) . '.png') }}" alt="{{ __('Weather icon') }}">
+                            <h5> @if($tw->icon == "sunrise") {{ __('Izlazak') }} @elseif($tw->icon == "sunset") {{ __('Zalazak') }} @else {{ temperatureHelper::roundUp($tw->temperature ?? '0') }}°C @endif</h5>
                         </div>
                     </div>
                     @endforeach
@@ -87,27 +91,29 @@
             </div>
         </div>
 
+        <!-- Five days forecast -->
+        @include('public-part.app.forecast.includes.five-days-forecast')
+
         <!-- Only on mobile version, show this data at before five days forecast -->
         <div class="mobile__additional_info">
             <div class="mai_w">
                 <p>{{ __('Vjetar') }}</p>
-                <h5>15 km/h</h5>
+                <h5>{{ $city->twelveHoursCurrentRel->wind_speed ?? '' }} km/h</h5>
             </div>
             <div class="mai_w">
                 <p>{{ __('Vlažnost') }}</p>
-                <h5>30%</h5>
+                <h5>{{ $city->twelveHoursCurrentRel->rel_humidity ?? '' }}%</h5>
             </div>
             <div class="mai_w">
                 <p>{{ __('Vidljivost') }}</p>
-                <h5>12km</h5>
+                <h5>{{ $city->twelveHoursCurrentRel->visibility ?? '' }}km</h5>
             </div>
             <div class="mai_w">
                 <p>{{ __('Tačka orošavanja') }}</p>
-                <h5>-1.3°C</h5>
+                <h5>{{ $city->twelveHoursCurrentRel->dev_point ?? '' }}°C</h5>
             </div>
         </div>
 
-        <!-- Five days forecast -->
-        @include('public-part.app.forecast.includes.five-days-forecast')
+        @include('public-part.app.forecast.includes.wind-direction')
     </div>
 @endsection

@@ -53,6 +53,18 @@
                     <li class="footer__list2-item">
                         <a class="footer__list2-link" href="https://accuweather.com">{{ __('accuweather.com') }}</a>
                     </li>
+                    <li class="footer__list2-item">
+                        <a class="footer__list2-link" href="https://www.yr.no">{{ __('yr.no') }}</a>
+                    </li>
+                    <li class="footer__list2-item">
+                        <a class="footer__list2-link" href="https://www.dmi.dk/">{{ __('dmi.dk') }}</a>
+                    </li>
+                    <li class="footer__list2-item">
+                        <a class="footer__list2-link" href="https://www.srf.ch/">{{ __('srf.ch') }}</a>
+                    </li>
+                    <li class="footer__list2-item">
+                        <a class="footer__list2-link" href="https://fhmzbih.gov.ba/">{{ __('fhmzbih.gov.ba') }}</a>
+                    </li>
                 </ul>
             </div>
         </div>
