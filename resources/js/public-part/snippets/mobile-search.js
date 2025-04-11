@@ -63,6 +63,10 @@ $( document ).ready(function() {
                 }
 
                 searching = false;
+
+                if($("#mobile-menu-search").val() !== value){
+                    searchCitiesByText(uri, $("#mobile-menu-search").val());
+                }
             }
         });
     };
