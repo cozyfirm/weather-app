@@ -4,6 +4,7 @@ namespace App\Http\Controllers\PublicPart;
 
 use App\Http\Controllers\Controller;
 use App\Models\Base\Cities;
+use App\Models\Other\Page;
 use App\Traits\API\ForecastTrait;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -21,6 +22,28 @@ class HomeController extends Controller{
             'hideMenu' => true,
             'history' => $this->getUserHistory(),
             'popular' => $popular
+        ]);
+    }
+
+    public function privacyPolicy(): View{
+        return view('public-part.app.pages.pages.page', [
+            'history' => $this->getUserHistory(),
+            'page' => Page::where('id', '=', 1)->first(),
+            'gap' => 0
+        ]);
+    }
+    public function terms(): View{
+        return view('public-part.app.pages.pages.page', [
+            'history' => $this->getUserHistory(),
+            'page' => Page::where('id', '=', 2)->first(),
+            'gap' => 0
+        ]);
+    }
+    public function cookies(): View{
+        return view('public-part.app.pages.pages.page', [
+            'history' => $this->getUserHistory(),
+            'page' => Page::where('id', '=', 3)->first(),
+            'gap' => 0
         ]);
     }
 }

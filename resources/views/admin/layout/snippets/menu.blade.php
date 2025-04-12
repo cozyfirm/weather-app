@@ -110,19 +110,19 @@
             </div>
         </div>
 
-        <a href="#" class="menu-a-link">
-            <div class="s-lm-wrapper">
-                <div class="s-lm-s-elements">
-                    <div class="s-lms-e-img">
-                        <i class="fas fa-user-edit"></i>
-                    </div>
-                    <p>{{__('Moj profil')}}</p>
-                    <div class="extra-elements">
-                        <div class="ee-t ee-t-g"><p>{{__('Info')}}</p></div>
-                    </div>
-                </div>
-            </div>
-        </a>
+{{--        <a href="#" class="menu-a-link">--}}
+{{--            <div class="s-lm-wrapper">--}}
+{{--                <div class="s-lm-s-elements">--}}
+{{--                    <div class="s-lms-e-img">--}}
+{{--                        <i class="fas fa-user-edit"></i>--}}
+{{--                    </div>--}}
+{{--                    <p>{{__('Moj profil')}}</p>--}}
+{{--                    <div class="extra-elements">--}}
+{{--                        <div class="ee-t ee-t-g"><p>{{__('Info')}}</p></div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </a>--}}
         <a href="#" class="menu-a-link">
             <div class="s-lm-wrapper">
                 <div class="s-lm-s-elements">
@@ -151,19 +151,19 @@
             </div>
         </a>
 
-        <a href="{{ route('system.admin.users') }}" class="menu-a-link">
-            <div class="s-lm-wrapper">
-                <div class="s-lm-s-elements">
-                    <div class="s-lms-e-img">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <p>{{__('Korisnici')}}</p>
-                    <div class="extra-elements">
-                        <div class="ee-t ee-t-b"><p>{{__('All')}}</p></div>
-                    </div>
-                </div>
-            </div>
-        </a>
+{{--        <a href="{{ route('system.admin.users') }}" class="menu-a-link">--}}
+{{--            <div class="s-lm-wrapper">--}}
+{{--                <div class="s-lm-s-elements">--}}
+{{--                    <div class="s-lms-e-img">--}}
+{{--                        <i class="fas fa-users"></i>--}}
+{{--                    </div>--}}
+{{--                    <p>{{__('Korisnici')}}</p>--}}
+{{--                    <div class="extra-elements">--}}
+{{--                        <div class="ee-t ee-t-b"><p>{{__('All')}}</p></div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </a>--}}
 
 {{--        <a href="#" class="menu-a-link">--}}
 {{--            <div class="s-lm-wrapper">--}}
@@ -186,23 +186,13 @@
             </div>
         </div>
 
-        <a href="#" class="menu-a-link">
+        <a href="{{ route('system.admin.other.single-pages') }}" class="menu-a-link">
             <div class="s-lm-wrapper">
                 <div class="s-lm-s-elements">
                     <div class="s-lms-e-img">
                         <i class="fas fa-file"></i>
                     </div>
                     <p>{{__('Single Pages')}}</p>
-                </div>
-            </div>
-        </a>
-        <a href="{{ route('system.admin.other.faq') }}" class="menu-a-link">
-            <div class="s-lm-wrapper">
-                <div class="s-lm-s-elements">
-                    <div class="s-lms-e-img">
-                        <i class="fas fa-question"></i>
-                    </div>
-                    <p>{{__('FAQs section')}}</p>
                     <div class="extra-elements">
                         <div class="ee-t ee-t-b"><p>{{__('Other')}}</p></div>
                     </div>

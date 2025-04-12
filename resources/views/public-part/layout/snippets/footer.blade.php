@@ -1,4 +1,4 @@
-<div class="footer-wrapper">
+<div class="footer-wrapper @isset($gap) mt-0 @endisset">
     <footer class="footer-extended">
         <div class="footer__con-top">
             <div class="footer__con-left">
@@ -31,10 +31,10 @@
                         <a class="footer__list1-link" href="https://reprezentacija.ba/o-nama"> {{ __('O nama') }} </a>
                     </li>
                     <li class="footer__list1-item">
-                        <a class="footer__list1-link" href="#">{{ __('Pravila privatnosti') }}</a>
+                        <a class="footer__list1-link" href="{{ route('public.pages.privacy-policy') }}">{{ __('Pravila privatnosti') }}</a>
                     </li>
                     <li class="footer__list1-item">
-                        <a class="footer__list1-link" href="#"> {{ __('Uslovi korištenja') }} </a>
+                        <a class="footer__list1-link" href="{{ route('public.pages.terms-and-conditions') }}"> {{ __('Uslovi korištenja') }} </a>
                     </li>
                     <li class="footer__list1-item">
                         <a class="footer__list1-link" href="{{ route('public.contact-us') }}"> {{ __('Kontaktirajte nas') }} </a>
@@ -72,13 +72,13 @@
             <p>© {{ date('Y') }} Crafted by <a href="https://cozyfirm.com" class="text-decoration-none"> <b>Cozy Firm d.o.o</b> </a> </p>
             <ul class="con__bottom-list">
                 <li class="con__bottom-item">
-                    <a href="#" class="con__bottom-link underlined"> {{ __('Pravila privatnosti') }} </a>
+                    <a href="{{ route('public.pages.privacy-policy') }}" class="con__bottom-link underlined"> {{ __('Pravila privatnosti') }} </a>
                 </li>
                 <li class="con__bottom-item">
-                    <a href="#" class="con__bottom-link underlined"> {{ __('Uslovi korištenja') }} </a>
+                    <a href="{{ route('public.pages.terms-and-conditions') }}" class="con__bottom-link underlined"> {{ __('Uslovi korištenja') }} </a>
                 </li>
                 <li class="con__bottom-item">
-                    <a href="#" class="con__bottom-link underlined">{{ __('Korisnički kolačići') }}</a>
+                    <a href="{{ route('public.pages.cookies') }}" class="con__bottom-link underlined">{{ __('Korisnički kolačići') }}</a>
                 </li>
             </ul>
         </div>

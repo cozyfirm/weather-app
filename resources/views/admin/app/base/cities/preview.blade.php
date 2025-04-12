@@ -117,7 +117,8 @@
                             <div class="card p-0 m-0 mt-3" title="{{ $city->twelveHoursCurrentRel->temperature_desc ?? '' }}">
                                 <div class="card-body d-flex justify-content-between">
                                     <h5 class="p-0 m-0"> {{ __('Vremenski uslovi') }} </h5>
-                                    <img src="https://www.accuweather.com/images/weathericons/{{ $city->twelveHoursCurrentRel->icon ?? '1' }}.svg" class="height-30" alt="">
+
+                                    <img src="{{ asset('files/images/weathericons/' . ( $city->twelveHoursCurrentRel->icon ?? '') . '.png') }}" class="height-30" alt="">
                                 </div>
 
                                 <div class="card-body d-flex justify-content-between pt-0 pb-0">

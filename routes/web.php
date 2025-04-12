@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\Base\BaseCitiesController;
 use App\Http\Controllers\Admin\Core\KeywordsController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\Other\FAQsController;
+use App\Http\Controllers\Admin\Other\SinglePagesController;
 use App\Http\Controllers\Admin\Users\UsersController;
 use App\Http\Controllers\PublicPart\ContactController;
 use App\Http\Controllers\PublicPart\ForecastController;
@@ -39,6 +40,12 @@ Route::prefix('/')->group(function () {
     Route::prefix('/contact-us')->group(function () {
         Route::get ('/',                        [ContactController::class, 'home'])->name('public.contact-us');
         Route::post('/send-a-message',          [ContactController::class, 'sendMessage'])->name('public.contact-us.send-a-message');
+    });
+
+    Route::prefix('/pages')->group(function () {
+        Route::get ('/privacy-policy',                 [PublicHomeController::class, 'privacyPolicy'])->name('public.pages.privacy-policy');
+        Route::get ('/terms-and-conditions',           [PublicHomeController::class, 'terms'])->name('public.pages.terms-and-conditions');
+        Route::get ('/cookies',                        [PublicHomeController::class, 'cookies'])->name('public.pages.cookies');
     });
 });
 
@@ -100,6 +107,12 @@ Route::prefix('system')->middleware('isLogged')->group(function () {
                 Route::get ('/edit/{id}',                      [FAQsController::class, 'faqEdit'])->name('system.admin.other.faq.edit');
                 Route::post('/update',                         [FAQsController::class, 'faqUpdate'])->name('system.admin.other.faq.update');
                 Route::get ('/delete/{id}',                    [FAQsController::class, 'faqDelete'])->name('system.admin.other.faq.delete');
+            });
+
+            Route::prefix('single-pages')->group(function () {
+                Route::get ('/',                               [SinglePagesController::class, 'index'])->name('system.admin.other.single-pages');
+                Route::get ('/edit/{id}',                      [SinglePagesController::class, 'edit'])->name('system.admin.other.single-pages.edit');
+                Route::post('/update',                         [SinglePagesController::class, 'update'])->name('system.admin.other.single-pages.update');
             });
         });
 

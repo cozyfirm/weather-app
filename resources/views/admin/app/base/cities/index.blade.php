@@ -42,6 +42,8 @@
                     <td> {{ $city->region ?? ''}} </td>
                     <td> {{ $city->country ?? ''}} </td>
                     <td> {{ $city->area ?? ''}} </td>
+                    <td> {{ $city->baseCityRel->name ?? ''}} </td>
+                    <td> {{ $city->loads ?? ''}} </td>
 
                     <td class="text-center">
                         <a href="{{route('system.admin.base.cities.preview', ['id' => $city->id] )}}" title="{{ __('Više informacija') }}">

@@ -4,6 +4,7 @@ namespace App\Models\Base;
 
 use App\Models\Base\Forecast\FiveDays;
 use App\Models\Base\Forecast\TwelveHours;
+use App\Models\Core\Keyword;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -24,6 +25,9 @@ class Cities extends Model{
     protected $table = 'base__cities';
     protected $guarded = ['id'];
 
+    public function baseCityRel(): HasOne{
+        return $this->hasOne(Keyword::class, 'value', 'base')->where('type', '=', 'yes_no');
+    }
     public function twelveHoursRel(): HasMany{
         return $this->hasMany(TwelveHours::class, 'city_key', 'key')->where('date_time', '>=', Carbon::now()->format('Y-m-d H:00:00'));
     }

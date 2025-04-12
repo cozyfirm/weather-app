@@ -25,7 +25,7 @@
         @include('public-part.layout.snippets.mobile-search')
 
         <!-- Public content wrapper should be used in every public page -->
-        <div class="public-content pt-0">
+        <div class="public-content pt-0 @isset($gap) gap-0 @endisset">
             <!-- Static element on every page -->
             @if(!isset($hideMenu))
                 @include('public-part.layout.snippets.menu')

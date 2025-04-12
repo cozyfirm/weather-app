@@ -1,0 +1,17 @@
+.page__wrapper{
+    position: relative; width: 100%; min-height: 120px; background: #FFFFFF;
+
+    .page__inner_wrapper{
+        position: relative;
+        left: calc(50% - ($d-width / 2)); width: $d-width;
+        gap: 32px; display: flex; flex-wrap: wrap;
+        padding: 64px 0px;
+
+        @media only screen and (max-width: $d-width){
+            left:50px; width: calc(100% - 100px); flex-wrap: wrap;
+        }
+        @media only screen and (max-width: 1000px){
+            left: 20px; width: calc(100% - 40px); flex-wrap: wrap; padding: 20px 0px;
+        }
+    }
+}

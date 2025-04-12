@@ -26,7 +26,9 @@ class BaseCitiesController extends Controller{
             'name' => __('Naziv'),
             'region' => 'Regija',
             'country' => __('Država'),
-            'area' => __('Područje')
+            'area' => __('Područje'),
+            'baseCityRel.name' => __('Bazni grad'),
+            'loads' => __('Broj učitavanja')
         ];
 
         return view($this->_path . 'index', [
