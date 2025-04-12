@@ -44,7 +44,7 @@ class ForecastController extends Controller{
     public function getMyCity(): RedirectResponse{
         try{
             $ip = request()->ip();
-            $ip = "77.78.226.106";
+            // $ip = "77.78.226.106";
 
             $client = new Client();
 

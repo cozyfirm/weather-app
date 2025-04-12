@@ -1,10 +1,10 @@
 <!-- Primary Meta Tags -->
-<meta name="title" content="@yield('meta_title', __('Cozy Firm d.o.o'))">
-<meta name="description" content="@yield('meta_desc', __('Welcome to our website. Have fun!!'))">
+<meta name="title" content="@yield('meta_title', __('vrijeme24.ba'))">
+<meta name="description" content="@yield('meta_desc', __('Vremenska prognoza za BiH'))">
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website">
-<meta property="og:url" content="@yield('meta_uri', 'http://cozyfirm.com/')">
+<meta property="og:url" content="@yield('meta_uri', 'https://vrijeme24.ba/')">
 <meta property="og:title" content="@yield('meta_title', __('Cozy Firm d.o.o'))">
 <meta property="og:description" content="@yield('meta_desc', __('Welcome to our website. Have fun!!'))">
 <meta property="og:image" content="@yield('meta_img', asset('files/images/logo.png'))">
