@@ -81,10 +81,16 @@
                         <div class="inside-swiper active">
                             <p> {{ $tw->getTime() }} </p>
                             <img src="{{ asset('files/images/weathericons/' . ( $tw->icon ?? '1' ) . '.png') }}" alt="{{ __('Weather icon') }}">
-                            <h5> @if($tw->icon == "sunrise") {{ __('Izlazak') }} @elseif($tw->icon == "sunset") {{ __('Zalazak') }} @else {{ temperatureHelper::roundUp($tw->temperature ?? '0') }}°C @endif</h5>
+                            <h5> @if($tw->icon == "sunrise") {{ __('Izlazak') }} @elseif($tw->icon == "sunset") {{ __('Zalazak') }} @else {{ temperatureHelper::roundUp($tw->temperature ?? '0') }}° @endif</h5>
                         </div>
                         @if($tw->effect())
-                            <div class="{{ $tw->effect() }}"></div>
+                            <div class="{{ $tw->effect() }}">
+{{--                                @if($tw->effect() == "effect snow-effect")--}}
+{{--                                    @for($i=0; $i<20; $i++)--}}
+{{--                                        <div class="snowflake"> <div class="inner">❅</div> </div>--}}
+{{--                                    @endfor--}}
+{{--                                @endif--}}
+                            </div>
                         @endif
                     </div>
                     @endforeach
