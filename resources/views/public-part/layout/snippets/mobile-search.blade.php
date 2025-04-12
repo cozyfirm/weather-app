@@ -19,8 +19,8 @@
             <p id="searched__value"></p>
         </div>
 
-        @if($history->count())
-            <div class="previous__search_w">
+        <div class="previous__search_w">
+            @if($history->count())
                 <div class="psw__header">
                     <p>{{ __('Posljednje pretraživano') }}</p>
                     <p>{{ HistoryHelper::lastSearch() }}</p>
@@ -39,7 +39,12 @@
                         </div>
                     @endforeach
                 </div>
+            @endif
+
+            <div class="current__location hover-pointer go-to-current-location">
+                <img src="{{ asset('files/images/icons/location-arrow.svg') }}" alt="">
+                <p>{{ __('Koristi trenutnu lokaciju') }}</p>
             </div>
-        @endif
+        </div>
     </div>
 </div>

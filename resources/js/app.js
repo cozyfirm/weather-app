@@ -35,6 +35,7 @@ import './public-part/snippets/menu-search.js';
 import './public-part/snippets/mobile-search.js';
 
 import './public-part/app/effects.js';
+import './public-part/app/my-location.js';
 
 $(document).ready(function() {
     $(".datepicker").datepicker({

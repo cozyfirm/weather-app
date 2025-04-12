@@ -58,7 +58,7 @@
                                     @if($i++ != 5) <span>|</span> @endif
                                 @endforeach
                             </div>
-                            <div class="current__location skip-home">
+                            <div class="current__location skip-home hover-pointer go-to-current-location" title="{{ __('Vremenska prognoza za Vašu trenutnu lokaciju') }}">
                                 <img src="{{ asset('files/images/icons/location-arrow.svg') }}" alt="">
                                 <p>{{ __('Koristi trenutnu lokaciju') }}</p>
                             </div>

@@ -13,6 +13,8 @@ html{
         background-repeat: no-repeat;
         background-attachment: fixed;
 
+        .hover-pointer{ &:hover{cursor: pointer; } }
+
         /**
          *  Right menu is on top
          */

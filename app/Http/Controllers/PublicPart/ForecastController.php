@@ -12,7 +12,10 @@ use App\Traits\API\ForecastTrait;
 use App\Traits\API\LocationsTrait;
 use App\Traits\Http\ResponseTrait;
 use Carbon\Carbon;
+use GuzzleHttp\Client;
+use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
@@ -36,6 +39,30 @@ class ForecastController extends Controller{
             'history' => $this->getUserHistory(),
             'popular' => $popular
         ]);
+    }
+
+    public function getMyCity(): RedirectResponse{
+        try{
+            $ip = request()->ip();
+            $ip = "77.78.226.106";
+
+            $client = new Client();
+
+            try {
+                $response = $client->request('GET', env('ACCU_WEATHER_BASE_URI') . 'locations/v1/cities/ipaddress' , [
+                    'query' => $this->constructQuery($ip, "bs")
+                ]);
+
+                if($response->getStatusCode() == 200) $response = json_decode($response->getBody());
+                else return redirect()->route('public.home');
+
+                return redirect()->route('public.forecast.preview', ['cityKey' => $response->Key]);
+            } catch (GuzzleException $e) {
+                return redirect()->route('public.home');
+            }
+        }catch (\Exception $e){
+            return redirect()->route('public.home');
+        }
     }
 
     /** ------------------------------------------------------------------------------------------------------------ **/
