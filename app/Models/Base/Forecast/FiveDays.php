@@ -3,6 +3,7 @@
 namespace App\Models\Base\Forecast;
 
 use App\Traits\Common\CommonTrait;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
@@ -24,6 +25,8 @@ class FiveDays extends Model{
         return $this->HasOne(FiveDaysInfo::class, 'parent_id', 'id')->where('type', '=', 'night');
     }
     public function weekDay(): string{
+        if($this->date == date('Y-m-d')) return __('Danas');
+        if($this->date == Carbon::now()->addDay()->format('Y-m-d')) return __('Sutra');
         return $this->getDay($this->date);
     }
     public function dateAndMonth(): string{

@@ -26,9 +26,9 @@
                 <div class="wind__info">
                     <h3>
                         @if(isset($previewDay))
-                            {{ $info->wind_speed ?? 'I' }}
+                            {{ $info->wind_speed ?? '0km/h' }}
                         @else
-                            {{ $city->twelveHoursCurrentRel->wind_speed ?? 'I' }}
+                            {{ $city->twelveHoursCurrentRel->wind_speed ?? '0km/h' }}
                         @endif
                     </h3>
                     <div class="wind__info__text">
@@ -54,9 +54,13 @@
     </div>
     <div class="wind__info">
         <p>
-            ToDo::
-            {{ __('Umjeren, sa prosječnom brzinom od 8 km/h.') }}
-            {{ __('Očekuju se udari vjetra do 25 km/h!') }}
+            @if(isset($previewDay))
+                {{ WindHelper::windSpeed($info->wind_speed ?? '0') }}
+                {{ WindHelper::windGustSpeed($info->wind_gust_speed ?? '0') }}
+            @else
+                {{ WindHelper::windSpeed($city->twelveHoursCurrentRel->wind_speed ?? '0') }}
+                {{ WindHelper::windGustSpeed($city->twelveHoursCurrentRel->wind_gust_speed ?? '0') }}
+            @endif
         </p>
     </div>
 </div>

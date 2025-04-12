@@ -35,10 +35,13 @@
 
             a{
                 display: flex; text-decoration: none; color: unset; padding: 0px; margin: 0px;
+                @media only screen and (max-width: 1000px) {
+                    width: 50%;
+                }
                 .sdw__h__o_option{
                     position: relative; color: #FFFFFF; padding: 4px 32px 4px 32px; border-radius:4px;
                     @media only screen and (max-width: 1000px) {
-                        width: calc(50% - 10px); text-align: center; padding: 4px 16px 6px 16px;
+                        width: calc(100% - 0px); text-align: center; padding: 4px 16px 6px 16px;
                     }
 
                     &.active{

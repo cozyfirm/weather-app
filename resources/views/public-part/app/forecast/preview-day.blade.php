@@ -6,7 +6,7 @@
             <div class="sdw__header">
                 <div class="sdw__header__w">
                     <h2>{{ $city->name ?? '' }}</h2>
-                    @if($dayTitle != 'danas' and $dayTitle != 'sutra')
+                    @if($dayTitle != 'danas' and $dayTitle != 'sutra' and $dayTitle != 'večeras' and $dayTitle != 'sutra večer')
                         <h2 class="comma">,</h2>
                     @endif
                     <h2 class="date">{{ $dayTitle }}</h2>
@@ -45,7 +45,7 @@
                             <p>{{ __('Realan osjećaj') }} {{ temperatureHelper::roundUp($fiveDays->min_temp_rf ?? '0') }}° | {{ temperatureHelper::roundUp($fiveDays->max_temp_rf ?? '0') }}°C </p>
                             <h2>{{ temperatureHelper::roundUp($fiveDays->min_temp ?? '0') }}° | {{ temperatureHelper::roundUp($fiveDays->max_temp ?? '0') }}°C</h2>
                         </div>
-                        <img src="{{ asset('files/images/weathericons/' . ( $fiveDays->icon ?? '1' ) . '.png') }}" alt="{{ __('Weather icon') }}">
+                        <img src="{{ asset('files/images/weathericons/' . ( $info->icon ?? '1' ) . '.png') }}" alt="{{ __('Weather icon') }}">
                     </div>
                 </div>
             </div>
@@ -74,10 +74,10 @@
                     <img src="{{ asset('files/images/icons/sun.svg') }}" alt="">
                 </div>
                 <div class="oiw__i__body">
-                    <h3>{{ $fiveDays->uv_index ?? '' }}</h3>
+                    <h3> @if($type == 'night') 0 @else {{ $fiveDays->uv_index ?? '' }} @endif </h3>
                 </div>
                 <div class="oiw__i__footer">
-                    <div class="line__wrapper"> <div class="fill__line width-{{ ($fiveDays->uv_index ?? '0') * 10 }}"></div> </div>
+                    <div class="line__wrapper"> <div class="@if($type == 'night') fill__line width-0 @else fill__line width-{{ ($fiveDays->uv_index ?? '0') * 10 }} @endif"></div> </div>
                     <div class="line__desc">
                         <span>0</span>
                         <span>10</span>
@@ -113,7 +113,7 @@
                         <div class="line__wrapper"> <div class="fill__line width-{{ (int)(($info->total_snow ?? 0) * 10) }}"></div> </div>
                         <div class="line__desc">
                             <span>0cm</span>
-                            <span>10cm</span>
+                            <span>100cm</span>
                         </div>
                     </div>
                 </div>
@@ -127,10 +127,10 @@
                         <h3>{{ $info->total_rain ?? 0 }}mm</h3>
                     </div>
                     <div class="oiw__i__footer">
-                        <div class="line__wrapper"> <div class="fill__line width-{{ (int)(($info->total_rain ?? 0) * 10) }}"></div> </div>
+                        <div class="line__wrapper"> <div class="fill__line width-{{ (int)(($info->total_rain ?? 0) * 2) }}"></div> </div>
                         <div class="line__desc">
                             <span>0mm</span>
-                            <span>10mm</span>
+                            <span>50mm</span>
                         </div>
                     </div>
                 </div>
@@ -139,5 +139,7 @@
 
         <!-- Five days forecast -->
         @include('public-part.app.forecast.includes.five-days-forecast')
+
+        @include('public-part.app.forecast.includes.wind-direction')
     </div>
 @endsection

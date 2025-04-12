@@ -29,7 +29,8 @@
         },
         "files": [
             "app/Helpers/historyHelper.php",
-            "app/Helpers/temperatureHelper.php"
+            "app/Helpers/temperatureHelper.php",
+            "app/Helpers/WindHelper.php"
         ]
     },
     "autoload-dev": {

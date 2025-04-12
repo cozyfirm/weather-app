@@ -48,13 +48,13 @@
 
         <div class="forecast__links">
             <div class="fl__row">
-                <a href="#">{{ __('AccuWeather') }}</a>
+                <a href="https://accuweather.com">{{ __('AccuWeather') }}</a>
             </div>
             <div class="fl__row">
-                <a href="#">{{ __('O nama') }}</a>
+                <a href="https://reprezentacija.ba/o-nama">{{ __('O nama') }}</a>
             </div>
             <div class="fl__row">
-                <a href="#">{{ __('Kontaktirajte nas') }}</a>
+                <a href="{{ route('public.contact-us') }}">{{ __('Kontaktirajte nas') }}</a>
             </div>
         </div>
     </div>

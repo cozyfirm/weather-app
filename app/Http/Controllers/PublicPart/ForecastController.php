@@ -164,8 +164,14 @@ class ForecastController extends Controller{
         $city = $this->getDayInfo($cityKey);
         if(!$city) $city = Cities::where('key', '=', $cityKey)->first();
 
-        if(date("Y-m-d", strtotime('today')) == $date) $dayTitle = "danas";
-        else if(date("Y-m-d", strtotime('tomorrow')) == $date) $dayTitle = "sutra";
+        if(date("Y-m-d", strtotime('today')) == $date){
+            if($type == 'night') $dayTitle = "večeras";
+            else $dayTitle = "danas";
+        }
+        else if(date("Y-m-d", strtotime('tomorrow')) == $date) {
+            if($type == 'night') $dayTitle = "sutra večer";
+            else $dayTitle = "sutra";
+        }
         else $dayTitle = $this->getMDayY($date);
 
         $fiveDays = FiveDays::where('city_key', '=', $cityKey)->where('date', '=', $date)->first();
