@@ -30,12 +30,12 @@
                     <p>{{ $dayName }}</p>
                     <h4> {{ $info->long_phrase ?? '' }} </h4>
                     <div class="warnings__wrapper">
-                        <div class="oiw__info yellow-warning">
-                            <p>{{ __('Žuto upozorenje za maglu 00:00 - 11:00h') }}</p>
-                        </div>
-                        <div class="oiw__info info-warning">
-                            <p>{{ __('Srijeda navečer snijeg 20:00 - 23:59') }}</p>
-                        </div>
+{{--                        <div class="oiw__info yellow-warning">--}}
+{{--                            <p>{{ __('Žuto upozorenje za maglu 00:00 - 11:00h') }}</p>--}}
+{{--                        </div>--}}
+{{--                        <div class="oiw__info info-warning">--}}
+{{--                            <p>{{ __('Srijeda navečer snijeg 20:00 - 23:59') }}</p>--}}
+{{--                        </div>--}}
                     </div>
                     <p>Izlazak sunca u {{ $fiveDays->getSunrise() }}h, zalazak u {{ $fiveDays->getSunset() }}h !</p>
                 </div>

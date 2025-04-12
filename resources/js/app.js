@@ -34,6 +34,8 @@ import './public-part/app/home/search.js';
 import './public-part/snippets/menu-search.js';
 import './public-part/snippets/mobile-search.js';
 
+import './public-part/app/effects.js';
+
 $(document).ready(function() {
     $(".datepicker").datepicker({
         format: 'mm.dd.yyyy',

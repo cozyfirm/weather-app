@@ -46,4 +46,18 @@ class HomeController extends Controller{
             'gap' => 0
         ]);
     }
+
+    /**
+     * Page for testing effects
+     *
+     * @param $type
+     * @return View
+     */
+    public function effects($type): View{
+        return view('public-part.app.pages.pages.effects', [
+            'history' => $this->getUserHistory(),
+            'type' => $type
+        ]);
+    }
+
 }

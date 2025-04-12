@@ -33,12 +33,12 @@
                     </div>
 
                     <div class="other__info__wrapper">
-                        <div class="oiw__info yellow-warning">
-                            <p>{{ __('Žuto upozorenje za maglu 00:00 - 11:00h') }}</p>
-                        </div>
-                        <div class="oiw__info info-warning">
-                            <p>{{ __('Srijeda navečer snijeg 20:00 - 23:59') }}</p>
-                        </div>
+{{--                        <div class="oiw__info yellow-warning">--}}
+{{--                            <p>{{ __('Žuto upozorenje za maglu 00:00 - 11:00h') }}</p>--}}
+{{--                        </div>--}}
+{{--                        <div class="oiw__info info-warning">--}}
+{{--                            <p>{{ __('Srijeda navečer snijeg 20:00 - 23:59') }}</p>--}}
+{{--                        </div>--}}
 
                         <!-- No warnings present -->
                         {{--                    <div class="oiw__info">--}}
@@ -83,6 +83,9 @@
                             <img src="{{ asset('files/images/weathericons/' . ( $tw->icon ?? '1' ) . '.png') }}" alt="{{ __('Weather icon') }}">
                             <h5> @if($tw->icon == "sunrise") {{ __('Izlazak') }} @elseif($tw->icon == "sunset") {{ __('Zalazak') }} @else {{ temperatureHelper::roundUp($tw->temperature ?? '0') }}°C @endif</h5>
                         </div>
+                        @if($tw->effect())
+                            <div class="{{ $tw->effect() }}"></div>
+                        @endif
                     </div>
                     @endforeach
                 </div>

@@ -25,4 +25,16 @@ class TwelveHours extends Model{
     public function getTime(): string{
         return $this->getPublicTime($this->date_time);
     }
+
+    /**
+     * Check for this one
+     * @return string|null
+     */
+    public function effect(): ?string{
+        if(!isset($this->icon)) return null;
+
+        if($this->icon == 12 or $this->icon == 13 or $this->icon == 14 or $this->icon == 12 or $this->icon == 39 or $this->icon == 40) return "effect rain light-rain";
+        else if($this->icon == 18)  return "effect rain";
+        else return null;
+    }
 }

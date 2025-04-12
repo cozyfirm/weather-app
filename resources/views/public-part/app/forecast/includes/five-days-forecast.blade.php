@@ -23,10 +23,10 @@
                                 <p>{{ temperatureHelper::roundUp($day->max_temp ?? '0') }}°</p>
                             </div>
 
-                            <div class="warning__info">
-                                <div class="warning__w yellow-warning"> <p>!</p> </div>
-                                <div class="warning__w info-warning"> <p>!</p> </div>
-                            </div>
+{{--                            <div class="warning__info">--}}
+{{--                                <div class="warning__w yellow-warning"> <p>!</p> </div>--}}
+{{--                                <div class="warning__w info-warning"> <p>!</p> </div>--}}
+{{--                            </div>--}}
 
                             <!-- ToDo: Day or night -->
 
