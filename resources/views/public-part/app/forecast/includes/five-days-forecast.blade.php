@@ -2,7 +2,7 @@
     <div class="five__days__inner_wrapper">
         <div class="inner__header">
             <img src="{{ asset('files/images/icons/location.svg') }}" alt="">
-            <h3><b>{{ $city->name ?? '' }}</b> {{ __('pet dana') }}</h3>
+            <h3><b>{{ $city->getName() ?? '' }}</b> {{ __('pet dana') }}</h3>
         </div>
 
         <div class="body__data">

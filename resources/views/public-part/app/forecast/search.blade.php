@@ -23,10 +23,11 @@
                         @foreach($history as $city)
                             <a href="{{ route('public.forecast.preview', ['cityKey' => $city->cityRel->key ?? 0]) }}">
                                 <div class="si__b__row">
-                                    <p>{{ $city->cityRel->name ?? '' }}</p>
+                                    <p>{{ $city->cityRel->getName() ?? '' }}</p>
                                     <div class="weather__icon">
                                         <p>{{ $city->cityRel->twelveHoursCurrentRel->temperature ?? '' }}°C</p>
-                                        <img src="https://www.accuweather.com/images/weathericons/{{ $city->cityRel->twelveHoursCurrentRel->icon ?? '' }}.svg" alt="{{ __('Weather icon') }}">
+
+                                        <img src="{{ asset('files/images/weathericons/' . ( $city->cityRel->twelveHoursCurrentRel->icon ?? '1' ) . '.png') }}" alt="{{ __('Weather icon') }}">
                                     </div>
                                 </div>
                             </a>
@@ -42,10 +43,11 @@
                     @foreach($popular as $city)
                         <a href="{{ route('public.forecast.preview', ['cityKey' => $city->key ?? 0]) }}">
                             <div class="si__b__row">
-                                <p>{{ $city->name ?? '' }}</p>
+                                <p>{{ $city->getName() ?? '' }}</p>
                                 <div class="weather__icon">
                                     <p>{{ $city->twelveHoursCurrentRel->temperature ?? '' }}°C</p>
-                                    <img src="https://www.accuweather.com/images/weathericons/{{ $city->twelveHoursCurrentRel->icon ?? '' }}.svg" alt="{{ __('Weather icon') }}">
+
+                                    <img src="{{ asset('files/images/weathericons/' . ( $city->twelveHoursCurrentRel->icon ?? '1' ) . '.png') }}" alt="{{ __('Weather icon') }}">
                                 </div>
                             </div>
                         </a>

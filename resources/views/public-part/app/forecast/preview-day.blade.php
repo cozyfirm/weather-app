@@ -1,11 +1,17 @@
 @extends('public-part.layout.layout')
 
+@section('title'){{ __("Vremenska prognoza za ") . $city->getName() }}@endsection
+@section('meta_uri'){{ route('public.forecast.preview-day', ['cityKey' => $city->key, 'date' => $date, 'type' => $type]) }}@endsection
+@section('meta_title'){{ __("Vremenska prognoza za ") . $city->getName() }}@endsection
+@section('meta_desc'){{ __("Vremenska prognoza za ") . $city->getName()  . __(". Dnevna temperatura od") . (temperatureHelper::roundUp($fiveDays->min_temp ?? '0')) . "°C do " . (temperatureHelper::roundUp($fiveDays->max_temp ?? '0')) . ". " . ($info->long_phrase ?? '')}}@endsection
+@section('meta_img'){{ asset('files/images/weathericons/' . ( $info->icon ?? '1' ) . '.png') }}@endsection
+
 @section('public-content')
     <div class="preview__wrapper">
         <div class="specific__day__wrapper">
             <div class="sdw__header">
                 <div class="sdw__header__w">
-                    <h2>{{ $city->name ?? '' }}</h2>
+                    <h2>{{ $city->getName() ?? '' }}</h2>
                     @if($dayTitle != 'danas' and $dayTitle != 'sutra' and $dayTitle != 'večeras' and $dayTitle != 'sutra večer')
                         <h2 class="comma">,</h2>
                     @endif

@@ -25,6 +25,11 @@ class Cities extends Model{
     protected $table = 'base__cities';
     protected $guarded = ['id'];
 
+    public function getName(){
+        if(!isset($this->name) or !isset($this->name_eng)) return __("Nije poznato");
+        if($this->name == "") return $this->name_eng;
+        else return $this->name;
+    }
     public function baseCityRel(): HasOne{
         return $this->hasOne(Keyword::class, 'value', 'base')->where('type', '=', 'yes_no');
     }

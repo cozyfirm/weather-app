@@ -1,11 +1,17 @@
 @extends('public-part.layout.layout')
 
+@section('title'){{ __("Vremenska prognoza za ") . $city->getName() }}@endsection
+@section('meta_uri'){{ route('public.forecast.preview', ['cityKey' => $city->key ]) }}@endsection
+@section('meta_title'){{ __("Vremenska prognoza za ") . $city->getName() }}@endsection
+@section('meta_desc'){{ __("Vremenska prognoza za ") . $city->getName()  . __(". Trenutna temperatura iznosi ") . (temperatureHelper::roundUp($city->twelveHoursCurrentRel->temperature ?? '0')) . "°C." . " " . ($city->twelveHoursCurrentRel->phase ?? '')}}@endsection
+@section('meta_img'){{ asset('files/images/weathericons/' . ( $city->twelveHoursCurrentRel->icon ?? '1' ) . '.png') }}@endsection
+
 @section('public-content')
     <div class="preview__wrapper">
         <div class="current__wrapper">
             <div class="header">
                 <div class="city__">
-                    <h2>{{ $city->name ?? '' }}</h2>
+                    <h2>{{ $city->getName() ?? '' }}</h2>
                     <h2 class="current">{{ __('trenutno') }}</h2>
                 </div>
                 <p class="datetime">{{ $dateTime }}</p>
