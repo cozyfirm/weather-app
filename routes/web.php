@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\Other\FAQsController;
 use App\Http\Controllers\Admin\Other\SinglePagesController;
 use App\Http\Controllers\Admin\Users\UsersController;
+use App\Http\Controllers\PublicPart\APICallsController;
 use App\Http\Controllers\PublicPart\ContactController;
 use App\Http\Controllers\PublicPart\ForecastController;
 use App\Http\Controllers\PublicPart\HomeController as PublicHomeController;
@@ -183,4 +184,14 @@ Route::prefix('system')->middleware('isLogged')->group(function () {
             });
         });
     });
+});
+
+
+/**
+ *  API Calls
+ */
+
+Route::prefix('/api-calls')->group(function () {
+    Route::get ('/twelve-hour-forecast',                 [APICallsController::class, 'twelveHourForecast'])->name('api-calls.twelve-hour-forecast');
+    Route::get ('/five-days-forecast',                   [APICallsController::class, 'fiveDaysForecast'])->name('api-calls.five-days-forecast');
 });
