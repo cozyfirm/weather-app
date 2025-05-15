@@ -90,10 +90,10 @@
                     </div>
                 </div>
 
-                <!-- Full banner -->
-                <div class="full__banner">
-                    <img src="{{ asset('files/images/icons/banner.png') }}" alt="">
-                </div>
+{{--                <!-- Full banner -->--}}
+{{--                <div class="full__banner">--}}
+{{--                    <img src="{{ asset('files/images/icons/banner.png') }}" alt="">--}}
+{{--                </div>--}}
             </div>
 
             <!-- Popular and searched locations -->
@@ -151,9 +151,9 @@
                         </div>
                     @endif
 
-                    <div class="banner__wrapper">
-                        <img src="{{ asset('files/images/icons/banner.png') }}" alt="">
-                    </div>
+{{--                    <div class="banner__wrapper">--}}
+{{--                        <img src="{{ asset('files/images/icons/banner.png') }}" alt="">--}}
+{{--                    </div>--}}
                 </div>
             </div>
         </div>
