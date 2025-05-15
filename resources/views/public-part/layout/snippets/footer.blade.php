@@ -28,7 +28,7 @@
             <div class="footer__con-right">
                 <ul class="footer__list1">
                     <li class="footer__list1-item">
-                        <a class="footer__list1-link" href="https://reprezentacija.ba/o-nama"> {{ __('O nama') }} </a>
+                        <a class="footer__list1-link" href="{{ route('public.pages.about-us') }}"> {{ __('O nama') }} </a>
                     </li>
                     <li class="footer__list1-item">
                         <a class="footer__list1-link" href="{{ route('public.pages.privacy-policy') }}">{{ __('Pravila privatnosti') }}</a>

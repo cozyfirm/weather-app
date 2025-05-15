@@ -51,8 +51,8 @@
                     </div>
                     <div class="cu_i_w_right_two">
                         <div class="cu_i_w_right_two_1">
-                            <h6>{{ __('OD “BOSEL GROUP”') }}</h6>
-                            <p>{{ __('ul. La Benevolencija 12') }}</p>
+{{--                            <h6>{{ __('OD “BOSEL GROUP”') }}</h6>--}}
+{{--                            <p>{{ __('ul. La Benevolencija 12') }}</p>--}}
                             <p>{{ __('71000 Sarajevo') }}</p>
                             <p>{{ __('Bosna i Hercegovina') }}</p>
                         </div>

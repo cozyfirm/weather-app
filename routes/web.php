@@ -49,6 +49,7 @@ Route::prefix('/')->group(function () {
         Route::get ('/privacy-policy',                 [PublicHomeController::class, 'privacyPolicy'])->name('public.pages.privacy-policy');
         Route::get ('/terms-and-conditions',           [PublicHomeController::class, 'terms'])->name('public.pages.terms-and-conditions');
         Route::get ('/cookies',                        [PublicHomeController::class, 'cookies'])->name('public.pages.cookies');
+        Route::get ('/about-us',                       [PublicHomeController::class, 'aboutUs'])->name('public.pages.about-us');
 
         Route::get ('/effects/{type}',                 [PublicHomeController::class, 'effects'])->name('public.pages.effects');
     });

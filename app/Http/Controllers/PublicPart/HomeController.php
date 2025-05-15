@@ -47,6 +47,14 @@ class HomeController extends Controller{
         ]);
     }
 
+    public function aboutUs(): View{
+        return view('public-part.app.pages.pages.page', [
+            'history' => $this->getUserHistory(),
+            'page' => Page::where('id', '=', 4)->first(),
+            'gap' => 0
+        ]);
+    }
+
     /**
      * Page for testing effects
      *

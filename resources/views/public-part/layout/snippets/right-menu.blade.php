@@ -51,7 +51,7 @@
                 <a href="https://accuweather.com">{{ __('AccuWeather') }}</a>
             </div>
             <div class="fl__row">
-                <a href="https://reprezentacija.ba/o-nama">{{ __('O nama') }}</a>
+                <a href="{{ route('public.pages.about-us') }}">{{ __('O nama') }}</a>
             </div>
             <div class="fl__row">
                 <a href="{{ route('public.contact-us') }}">{{ __('Kontaktirajte nas') }}</a>
