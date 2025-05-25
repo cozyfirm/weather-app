@@ -99,6 +99,7 @@ trait ForecastTrait{
         $uri = '12hour/' . $cityKey;
 
         $forecast = $this->fetchForecast($uri, "hourly");
+
         foreach ($forecast as $sample){
             $dbSample = TwelveHours::where('city_key', '=', $cityKey)
                 ->where('date_time', '=', Carbon::parse($sample->DateTime))

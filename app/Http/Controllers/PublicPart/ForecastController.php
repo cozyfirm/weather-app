@@ -88,19 +88,22 @@ class ForecastController extends Controller{
             return $city;
         }
 
+        /**
+         *  Update forecast on every request
+         */
+        $this->saveTwelveHoursForecast($cityKey);
+        $this->saveFiveDaysForecast($cityKey);
+
         if($city->twelveHoursRel->count() < 13 or $city->fiveDaysRel->count() < 5){
             if($city->twelveHoursRel->count() < 13){
                 /* Get twelve hours info */
-                $this->saveTwelveHoursForecast($cityKey);
             }
-            if($city->fiveDaysRel->count() < 5){
-                $this->saveFiveDaysForecast($cityKey);
-            }
+            if($city->fiveDaysRel->count() < 5){ }
 
             return null;
         }
 
-        return $city;
+        return Cities::where('key', '=', $cityKey)->first();
     }
 
     /**
