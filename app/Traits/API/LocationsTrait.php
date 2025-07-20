@@ -32,7 +32,7 @@ trait LocationsTrait{
      * @param string $language
      * @return false|mixed
      */
-    public function searchBy(string $uri, $query, string $language = 'bs'): mixed{
+    public function searchBy(string $uri, $query, string $language = 'hr'): mixed{
         $client = new Client();
 
         try {

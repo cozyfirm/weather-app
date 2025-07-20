@@ -19,7 +19,7 @@ trait ForecastTrait{
         if($apiType == "hourly") return env('ACCU_WEATHER_BASE_URI') . $this->_hourly_forecast_uri_path . '/' . $uri;
         else if($apiType == "daily") return env('ACCU_WEATHER_BASE_URI') . $this->_daily_forecast_uri_path . '/' . $uri;
     }
-    public function fetchForecast($uri, string $apiType, string $language = "bs", string $details = "true", string $metric = "true"): mixed{
+    public function fetchForecast($uri, string $apiType, string $language = "hr", string $details = "true", string $metric = "true"): mixed{
         $client = new Client();
 
         try {
