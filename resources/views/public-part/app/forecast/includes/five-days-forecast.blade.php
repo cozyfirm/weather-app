@@ -2,7 +2,7 @@
     <div class="five__days__inner_wrapper">
         <div class="inner__header">
             <img src="{{ asset('files/images/icons/location.svg') }}" alt="">
-            <h2><b>{{ $city->getName() ?? '' }}</b> {{ __('pet dana') }}</h2>
+            <h2>{{ __('Prognoza za narednih 5 dana') }}</h2>
         </div>
 
         <div class="body__data">

@@ -28,7 +28,7 @@
                 @media only screen and (max-width: 1000px) {
                     flex-wrap: wrap; gap: 8px;
                 }
-                h1{
+                h1, h2{
                     @media only screen and (max-width: 1000px) {
                         width: 100%; text-align: center; font-size: 30px;
                         &.current{
@@ -64,7 +64,7 @@
                 @media only screen and (max-width: 1000px) {
                     text-align: center; margin-top: 20px;
                 }
-                h4{
+                h3{
                     @media only screen and (max-width: 1000px) {
                         font-size: 24px;
                     }
@@ -106,7 +106,7 @@
                             }
                             .temp__wrapper{
                                 position: relative; display: flex; align-items: center;
-                                h1{
+                                p{
                                     font-size: 80px; margin: 0px; padding: 0px; line-height: 1; /* Or 100% */
                                     margin-top: -6px; color: #FFFFFF;
                                 }
@@ -144,7 +144,7 @@
                     @media only screen and (max-width: 1000px) {
                         display: flex;
                     }
-                    h5{color: #FFFFFF; font-size: 14px; font-weight: normal; }
+                    h3{color: #FFFFFF; font-size: 14px; font-weight: normal; }
                 }
 
                 .other__info__wrapper{
@@ -186,7 +186,7 @@
                 @media only screen and (max-width: 1000px) {
                     width: 100%; justify-content: center; margin-bottom: 20px; display: none;
                 }
-                h5{color: #FFFFFF; font-size: 18px; font-weight: normal; }
+                h3{color: #FFFFFF; font-size: 18px; font-weight: normal; }
             }
             .other__info__inner{
                 position: relative; display: flex; justify-content: flex-end; gap: 32px;
@@ -198,11 +198,11 @@
                     @media only screen and (max-width: 1000px) {
                         width: calc(50% - 10px); background: $bColor; padding: 20px; border-radius: 8px;
                     }
-                    p{
+                    h3{
                         color: grey; font-size: 14px;
                     }
-                    h5{
-                        color: #FFFFFF;
+                    p{
+                        color: #FFFFFF; font-size: 20px;
                     }
                 }
             }
@@ -234,9 +234,9 @@
                         position: relative; display: flex; flex-direction: column; gap: 16px; padding:16px; justify-content: center; align-items: center;
                         height: 160px;
 
-                        p{ color: #2fc8fe; }
+                        h3{ color: #2fc8fe; font-size: 16px; font-weight: normal; }
                         img{ height: 40px; }
-                        h5{ color: #FFFFFF; font-size: 16px; }
+                        p{ color: #FFFFFF; font-size: 16px; }
                     }
                     .effect{
                         position: absolute; left: 0px; top: 0px; width: 100%; height: 100%; z-index: 50; overflow: hidden;
@@ -340,10 +340,10 @@
             @media only screen and (max-width: 1000px) {
                 width: calc(50% - 10px); background: $bColor; padding: 20px; border-radius: 8px;
             }
-            p{
+            h3{
                 color: grey; font-size: 14px;
             }
-            h5{
+            p{
                 color: #FFFFFF;
             }
         }

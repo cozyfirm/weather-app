@@ -12,13 +12,13 @@
             <div class="header">
                 <div class="city__">
                     <h1>{{ $city->getName() ?? '' }}</h1>
-                    <h1 class="current">{{ __('trenutno') }}</h1>
+                    <h2 class="current">{{ __('trenutno') }}</h2>
                 </div>
                 <p class="datetime">{{ $dateTime }}</p>
             </div>
             <div class="temperature__wrapper">
                 <div class="temperature__info">
-                    <h4>{{ $city->twelveHoursCurrentRel->phase ?? '' }}</h4>
+                    <h3>{{ $city->twelveHoursCurrentRel->phase ?? '' }}</h3>
                 </div>
                 <div class="temperature__iww">
                     <div class="info__wrapper">
@@ -28,14 +28,14 @@
                                     <img src="{{ asset('files/images/weathericons/' . ( $city->twelveHoursCurrentRel->icon ?? '1' ) . '.png') }}" alt="{{ __('Weather icon') }}">
                                 </div>
                                 <div class="temp__wrapper">
-                                    <h1>{{ temperatureHelper::roundUp($city->twelveHoursCurrentRel->temperature ?? '0') }}°C</h1>
+                                    <p>{{ temperatureHelper::roundUp($city->twelveHoursCurrentRel->temperature ?? '0') }}°C</p>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <div class="real__feel__mobile">
-                        <h5>{{ __('Realan osjećaj') }} {{ temperatureHelper::roundUp($city->twelveHoursCurrentRel->temperature_rf ?? '0') }} °C </h5>
+                        <h3>{{ __('Realan osjećaj') }} {{ temperatureHelper::roundUp($city->twelveHoursCurrentRel->temperature_rf ?? '0') }} °C </h3>
                     </div>
 
                     <div class="other__info__wrapper">
@@ -55,24 +55,24 @@
             </div>
             <div class="other__info">
                 <div class="other__info__temp" title="{{ $city->twelveHoursCurrentRel->temperature_desc ?? '' }}">
-                    <h5>{{ __('Realan osjećaj') }} {{ temperatureHelper::roundUp($city->twelveHoursCurrentRel->temperature_rf ?? '0') }} °C </h5>
+                    <h3>{{ __('Realan osjećaj') }} {{ temperatureHelper::roundUp($city->twelveHoursCurrentRel->temperature_rf ?? '0') }} °C </h3>
                 </div>
                 <div class="other__info__inner">
                     <div class="oi_w">
-                        <p>{{ __('Vjetar') }}</p>
-                        <h5>{{ $city->twelveHoursCurrentRel->wind_speed ?? '' }} km/h</h5>
+                        <h3>{{ __('Vjetar') }}</h3>
+                        <p>{{ $city->twelveHoursCurrentRel->wind_speed ?? '' }} km/h</p>
                     </div>
                     <div class="oi_w">
-                        <p>{{ __('Vlažnost') }}</p>
-                        <h5>{{ $city->twelveHoursCurrentRel->rel_humidity ?? '' }}%</h5>
+                        <h3>{{ __('Vlažnost') }}</h3>
+                        <p>{{ $city->twelveHoursCurrentRel->rel_humidity ?? '' }}%</p>
                     </div>
                     <div class="oi_w">
-                        <p>{{ __('Vidljivost') }}</p>
-                        <h5>{{ $city->twelveHoursCurrentRel->visibility ?? '' }}km</h5>
+                        <h3>{{ __('Vidljivost') }}</h3>
+                        <p>{{ $city->twelveHoursCurrentRel->visibility ?? '' }}km</p>
                     </div>
                     <div class="oi_w">
-                        <p>{{ __('Tačka orošavanja') }}</p>
-                        <h5>{{ $city->twelveHoursCurrentRel->dev_point ?? '' }}°C</h5>
+                        <h3>{{ __('Tačka orošavanja') }}</h3>
+                        <p>{{ $city->twelveHoursCurrentRel->dev_point ?? '' }}°C</p>
                     </div>
                 </div>
             </div>
@@ -85,9 +85,9 @@
                     @foreach($twelveHours as $tw)
                     <div class="swiper-slide transition-05 total-days">
                         <div class="inside-swiper active">
-                            <p> {{ $tw->getTime() }} </p>
+                            <h3> {{ $tw->getTime() }} </h3>
                             <img src="{{ asset('files/images/weathericons/' . ( $tw->icon ?? '1' ) . '.png') }}" alt="{{ __('Weather icon') }}">
-                            <h5> @if($tw->icon == "sunrise") {{ __('Izlazak') }} @elseif($tw->icon == "sunset") {{ __('Zalazak') }} @else {{ temperatureHelper::roundUp($tw->temperature ?? '0') }}° @endif</h5>
+                            <p> @if($tw->icon == "sunrise") {{ __('Izlazak') }} @elseif($tw->icon == "sunset") {{ __('Zalazak') }} @else {{ temperatureHelper::roundUp($tw->temperature ?? '0') }}° @endif</p>
                         </div>
                         @if($tw->effect())
                             <div class="{{ $tw->effect() }}">
@@ -112,20 +112,20 @@
         <!-- Only on mobile version, show this data at before five days forecast -->
         <div class="mobile__additional_info">
             <div class="mai_w">
-                <p>{{ __('Vjetar') }}</p>
-                <h5>{{ $city->twelveHoursCurrentRel->wind_speed ?? '' }} km/h</h5>
+                <h3>{{ __('Vjetar') }}</h3>
+                <p>{{ $city->twelveHoursCurrentRel->wind_speed ?? '' }} km/h</p>
             </div>
             <div class="mai_w">
-                <p>{{ __('Vlažnost') }}</p>
-                <h5>{{ $city->twelveHoursCurrentRel->rel_humidity ?? '' }}%</h5>
+                <h3>{{ __('Vlažnost') }}</h3>
+                <p>{{ $city->twelveHoursCurrentRel->rel_humidity ?? '' }}%</p>
             </div>
             <div class="mai_w">
-                <p>{{ __('Vidljivost') }}</p>
-                <h5>{{ $city->twelveHoursCurrentRel->visibility ?? '' }}km</h5>
+                <h3>{{ __('Vidljivost') }}</h3>
+                <p>{{ $city->twelveHoursCurrentRel->visibility ?? '' }}km</p>
             </div>
             <div class="mai_w">
-                <p>{{ __('Tačka orošavanja') }}</p>
-                <h5>{{ $city->twelveHoursCurrentRel->dev_point ?? '' }}°C</h5>
+                <h3>{{ __('Tačka orošavanja') }}</h3>
+                <p>{{ $city->twelveHoursCurrentRel->dev_point ?? '' }}°C</p>
             </div>
         </div>
 
