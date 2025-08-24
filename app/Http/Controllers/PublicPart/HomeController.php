@@ -33,21 +33,24 @@ class HomeController extends Controller{
         return view('public-part.app.pages.pages.page', [
             'history' => $this->getUserHistory(),
             'page' => Page::where('id', '=', 1)->first(),
-            'gap' => 0
+            'gap' => 0,
+            'title' => 'Pravila privatnosti'
         ]);
     }
     public function terms(): View{
         return view('public-part.app.pages.pages.page', [
             'history' => $this->getUserHistory(),
             'page' => Page::where('id', '=', 2)->first(),
-            'gap' => 0
+            'gap' => 0,
+            'title' => 'Uslovi korištenja'
         ]);
     }
     public function cookies(): View{
         return view('public-part.app.pages.pages.page', [
             'history' => $this->getUserHistory(),
             'page' => Page::where('id', '=', 3)->first(),
-            'gap' => 0
+            'gap' => 0,
+            'title' => 'Kolačići'
         ]);
     }
 
@@ -55,7 +58,8 @@ class HomeController extends Controller{
         return view('public-part.app.pages.pages.page', [
             'history' => $this->getUserHistory(),
             'page' => Page::where('id', '=', 4)->first(),
-            'gap' => 0
+            'gap' => 0,
+            'title' => 'O nama'
         ]);
     }
 
@@ -92,6 +96,7 @@ class HomeController extends Controller{
                 Url::create(route('public.forecast.preview-by-slug', ['slug' => $city->slug]))
                     ->setPriority(0.8)
                     ->setChangeFrequency('hourly')
+                    ->setLastModificationDate($city->updated_at ?? Carbon::now())
             );
 
             // Forecast for 5 days
@@ -108,6 +113,7 @@ class HomeController extends Controller{
                     )
                         ->setPriority(0.7)
                         ->setChangeFrequency('daily')
+                        ->setLastModificationDate(Carbon::now()->addDays($i))
                 );
             }
         }
@@ -118,6 +124,7 @@ class HomeController extends Controller{
         $sitemap->add(Url::create('/pages/privacy-policy'));
         $sitemap->add(Url::create('/pages/terms-and-conditions'));
         $sitemap->add(Url::create('/pages/cookies'));
+        $sitemap->add(Url::create('/auth'));
 
         return $sitemap->toResponse(request());
     }

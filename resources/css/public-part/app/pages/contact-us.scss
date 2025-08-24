@@ -32,8 +32,8 @@
                 .cu_i_w_left_subheader {
                     position: relative; width: 100%; display: flex; justify-content: space-between; align-items: center; padding-bottom: 16px;
                     border-bottom: 1px solid rgba(0,0,0,0.1);
-                    h3{
-                        margin: 0px; color: #FFFFFF;
+                    h1{
+                        margin: 0px; color: #FFFFFF; font-size: 24px;
                     }
                 }
                 .cu_i_w_left_contact__form {

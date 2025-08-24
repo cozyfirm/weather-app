@@ -1,12 +1,14 @@
 @extends('public-part.layout.layout')
 
+@section('title')Kontaktirajte nas | Vrijeme24.ba @endsection
+
 @section('public-content')
     <div class="contact_us_wrapper ">
         <div class="contact_us_inner_wrapper">
             <div class="cu_i_w_form">
                 <div class="cu_i_w_left">
                     <div class="cu_i_w_left_subheader">
-                        <h3>{{ __('Imate pitanje? Ispunite formu i pošaljite nam poruku!') }}</h3>
+                        <h1>{{ __('Imate pitanje? Ispunite formu i pošaljite nam poruku!') }}</h1>
                     </div>
 
                     <div class="cu_i_w_left_contact__form">
