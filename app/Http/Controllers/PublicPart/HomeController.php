@@ -14,7 +14,7 @@ class HomeController extends Controller{
     protected string $_path = 'public-part.app.home.';
 
     public function home(): View{
-        $popular = Cities::where('base', '=', 1)->inRandomOrder()->take(6)->get();
+        $popular = Cities::where('base', '=', 1)->orderBy('name')->take(6)->get();
 
         return view($this->_path . 'home', [
             'popularCities' => Cities::inRandomOrder()->take(5)->get(),

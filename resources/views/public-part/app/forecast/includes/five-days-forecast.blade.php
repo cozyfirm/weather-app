@@ -7,7 +7,7 @@
 
         <div class="body__data">
             @foreach($city->fiveDaysRel as $day)
-                <a href="{{ route('public.forecast.preview-day', ['cityKey' => $city->key, 'date' => $day->date, 'type' => 'day']) }}">
+                <a href="{{ route('public.forecast.daily-by-slug', ['slug' => $city->slug, 'date' => $day->date, 'type' => 'day']) }}">
                     <div class="day__forecast transition-05" title="{{ $day->dayRel->long_phrase ?? '' }}">
                         <div class="day__title">
                             <h3 class="week-day"> {{ $day->weekDay() }} </h3>

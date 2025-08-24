@@ -18,12 +18,12 @@
                     <h2 class="date">{{ $dayTitle }}</h2>
                 </div>
                 <div class="sdw__h__options">
-                    <a href="{{ route('public.forecast.preview-day', ['cityKey' => $city->key, 'date' => $date, 'type' => 'day']) }}" title="{{ __('Dnevna prognoza') }}">
+                    <a href="{{ route('public.forecast.daily-by-slug', ['slug' => $city->slug, 'date' => $date, 'type' => 'day']) }}" title="{{ __('Dnevna prognoza') }}">
                         <div class="sdw__h__o_option @if($type == 'day') active @else animated pulse infinite @endif">
                             {{ __('DAN') }}
                         </div>
                     </a>
-                    <a href="{{ route('public.forecast.preview-day', ['cityKey' => $city->key, 'date' => $date, 'type' => 'night']) }}" title="{{ __('Večernja prognoza') }}">
+                    <a href="{{ route('public.forecast.daily-by-slug', ['slug' => $city->slug, 'date' => $date, 'type' => 'night']) }}" title="{{ __('Večernja prognoza') }}">
                         <div class="sdw__h__o_option @if($type == 'night') active @else animated pulse infinite @endif">
                             {{ __('VEČER') }}
                         </div>

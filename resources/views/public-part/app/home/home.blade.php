@@ -57,7 +57,7 @@
                             <div class="popular__search">
                                 @php $i = 0 @endphp
                                 @foreach($popular as $city)
-                                    <p><a href="{{ route('public.forecast.preview', ['cityKey' => $city->key ?? 0]) }}" class="skip-home">{{ $city->name ?? '' }}</a></p>
+                                    <p><a href="{{ route('public.forecast.preview-by-slug', ['slug' => $city->slug ?? 0]) }}" class="skip-home">{{ $city->name ?? '' }}</a></p>
                                     @if($i++ != 5) <span>|</span> @endif
                                 @endforeach
                             </div>
@@ -78,7 +78,7 @@
 
                     <div class="popular__content">
                         @foreach($popular as $sample)
-                            <a href="{{ route('public.forecast.preview', ['cityKey' => $sample->key ]) }}">
+                            <a href="{{ route('public.forecast.preview-by-slug', ['slug' => $sample->slug ?? 0]) }}">
                                 <div class="ppl_b_row">
                                     <h3>{{ $sample->name ?? '' }}</h3>
                                     <div class="ppl_icons__wrapper">

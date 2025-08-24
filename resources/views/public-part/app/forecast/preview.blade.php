@@ -1,9 +1,9 @@
 @extends('public-part.layout.layout')
 
-@section('title'){{ __("Vremenska prognoza za ") . $city->getName() }}@endsection
+@section('title')Vremenska prognoza za {{ $city->getName() }} | Vrijeme24.ba @endsection
 @section('meta_uri'){{ route('public.forecast.preview', ['cityKey' => $city->key ]) }}@endsection
-@section('meta_title'){{ __("Vremenska prognoza za ") . $city->getName() }}@endsection
-@section('meta_desc'){{ __("Vremenska prognoza za ") . $city->getName()  . __(". Trenutna temperatura iznosi ") . (temperatureHelper::roundUp($city->twelveHoursCurrentRel->temperature ?? '0')) . "°C." . " " . ($city->twelveHoursCurrentRel->phase ?? '')}}@endsection
+{{--@section('meta_desc'){{ __("Vremenska prognoza za ") . $city->getName()  . __(". Trenutna temperatura iznosi ") . (temperatureHelper::roundUp($city->twelveHoursCurrentRel->temperature ?? '0')) . "°C." . " " . ($city->twelveHoursCurrentRel->phase ?? '')}}@endsection--}}
+@section('meta_desc')Vremenska prognoza za {{ $city->getName() }}. Trenutna temperatura iznosi {{ temperatureHelper::roundUp($city->twelveHoursCurrentRel->temperature ?? '0') }}°C – {{ $city->twelveHoursCurrentRel->phase ?? '' }}. Detaljna prognoza za danas i narednih 5 dana. @endsection
 @section('meta_img'){{ asset('files/images/weathericons/' . ( $city->twelveHoursCurrentRel->icon ?? '1' ) . '.png') }}@endsection
 
 @section('public-content')

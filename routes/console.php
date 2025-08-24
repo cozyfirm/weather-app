@@ -18,3 +18,13 @@ Artisan::command('api:forecast:five-days-forecast', function () {
     // You can call the handle method of your command class
     (new \App\Console\Commands\API\Forecast\FiveDaysForecast())->handle();
 })->purpose('Fetch 5 days forecast for base cities');
+
+
+/** ----------------------------------------------------------------------------------------------------------------- */
+/**
+ *  Fixes commands
+ */
+
+Artisan::command('fixes:generate-slugs', function () {
+    (new \App\Console\Commands\Fixes\GenerateCitySlugs())->handle();
+})->purpose('Generate slugs for all cities');

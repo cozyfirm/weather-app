@@ -109,38 +109,31 @@ class ForecastController extends Controller{
     /**
      * Get user search history by cities
      * @param $cityKey
+     * @param $slug
      * @return void
      */
-    public function userSearchHistory($cityKey): void{
+    public function userSearchHistory($cityKey, $slug): void{
         $history = SearchHistory::where('city_key', '=', $cityKey)->where('ip_addr', '=', request()->ip())->first();
         if(!$history){
-            SearchHistory::create(['city_key' => $cityKey, 'ip_addr' => request()->ip(), 'loads' => '1']);
+            SearchHistory::create(['city_key' => $cityKey, 'slug' => $slug, 'ip_addr' => request()->ip(), 'loads' => '1']);
         }else{
             $history->update(['loads' => ($history->loads + 1)]);
         }
     }
-    /**
-     * Preview info about day
-     *
-     * @param $cityKey
-     * @return View
-     */
-    public function preview($cityKey): View{
-        $city = $this->getDayInfo($cityKey);
-        if(!$city) $city = Cities::where('key', '=', $cityKey)->first();
 
+    public function getCityInfo($city): View{
         /* Update number of loads */
         $city->update(['loads' => ($city->loads + 1)]);
 
         /* Log search history */
-        $this->userSearchHistory($cityKey);
+        $this->userSearchHistory($city->key, $city->slug);
 
         $twelveHours = $city->twelveHoursRel;
 
         try{
             /* Get info about sunset and sunrise */
-            $today = FiveDays::where('city_key', '=', $cityKey)->where('date', '=', date('Y-m-d'))->first();
-            $tomorrow = FiveDays::where('city_key', '=', $cityKey)->where('date', '=', Carbon::now()->addDay()->format('Y-m-d'))->first();
+            $today = FiveDays::where('city_key', '=', $city->key)->where('date', '=', date('Y-m-d'))->first();
+            $tomorrow = FiveDays::where('city_key', '=', $city->key)->where('date', '=', Carbon::now()->addDay()->format('Y-m-d'))->first();
 
             $sunrise = null;
             $sunset  = null;
@@ -190,10 +183,41 @@ class ForecastController extends Controller{
             'twelveHours' => $twelveHours
         ]);
     }
-    public function previewDay($cityKey, $date, $type): View{
+    /**
+     * Preview info about day
+     *
+     * @param $cityKey
+     * @return View
+     */
+    public function preview($cityKey): RedirectResponse{
         $city = $this->getDayInfo($cityKey);
         if(!$city) $city = Cities::where('key', '=', $cityKey)->first();
 
+        // Not so clever solution, but it's what it is
+        return redirect()->route('public.forecast.preview-by-slug', ['slug' => $city->slug]);
+    }
+
+    /**
+     * Get City by slug;
+     *
+     * @param $slug
+     * @return View
+     */
+    public function previewBySlug($slug): View{
+        $dbCity = Cities::where('slug', '=', $slug)->first();
+
+        $city = $this->getDayInfo($dbCity->key);
+        if(!$city) $city = Cities::where('key', '=', $dbCity->key)->first();
+
+        return $this->getCityInfo($city);
+    }
+
+    /** ------------------------------------------------------------------------------------------------------------- */
+    /**
+     *  Five days info
+     */
+
+    public function previewFiveDays($city, $date, $type): View{
         if(date("Y-m-d", strtotime('today')) == $date){
             if($type == 'night') $dayTitle = "večeras";
             else $dayTitle = "danas";
@@ -204,7 +228,7 @@ class ForecastController extends Controller{
         }
         else $dayTitle = $this->getMDayY($date);
 
-        $fiveDays = FiveDays::where('city_key', '=', $cityKey)->where('date', '=', $date)->first();
+        $fiveDays = FiveDays::where('city_key', '=', $city->key)->where('date', '=', $date)->first();
         $info = FiveDaysInfo::where('parent_id', '=', $fiveDays->id)->where('type', '=', $type)->first();
 
         return view($this->_path . 'preview-day', [
@@ -218,6 +242,22 @@ class ForecastController extends Controller{
             'info' => $info,
             'previewDay' => true
         ]);
+    }
+
+    public function previewDay($cityKey, $date, $type): View{
+        $city = $this->getDayInfo($cityKey);
+        if(!$city) $city = Cities::where('key', '=', $cityKey)->first();
+
+        return $this->previewFiveDays($city, $date, $type);
+    }
+
+    public function dailyBySlug($slug, $date, $type): View{
+        $dbCity = Cities::where('slug', '=', $slug)->first();
+
+        $city = $this->getDayInfo($dbCity->key);
+        if(!$city) $city = Cities::where('key', '=', $dbCity->key)->first();
+
+        return $this->previewFiveDays($city, $date, $type);
     }
 
     /** ------------------------------------------------------------------------------------------------------------ **/

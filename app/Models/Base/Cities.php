@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Str;
 
 /**
  * @method static create(array $array)
@@ -55,5 +56,26 @@ class Cities extends Model{
     }
     public function currentWind(): string{
         return ($this->twelveHoursCurrentRel->wind_speed ?? '0') . ' km/h';
+    }
+
+    protected static function booted(): void{
+        static::saving(function ($city) {
+            if (empty($city->slug)) {
+                $cityName = $city->name_eng ?: $city->name;   // Check first eng then bosnian
+
+                $baseSlug = Str::slug($cityName);
+                $slug = $baseSlug;
+
+                $count = Cities::where('slug', 'LIKE', $baseSlug . '%')
+                    ->where('id', '!=', $city->id)
+                    ->count();
+
+                if ($count > 0) {
+                    $slug = $baseSlug . '-' . $city->key;
+                }
+
+                $city->slug = $slug;
+            }
+        });
     }
 }

@@ -19,12 +19,12 @@
 
             <div class="forecast__links">
                 <div class="fl__row">
-                    <a href="{{ route('public.forecast.preview', ['cityKey' => temperatureHelper::lastSearchedCity()->cityRel->key ?? 0]) }}">
+                    <a href="{{ route('public.forecast.preview-by-slug', ['slug' => temperatureHelper::lastSearchedCity()->cityRel->slug ?? 0]) }}">
                         {{ __('Vrijeme danas') }}
                     </a>
                 </div>
                 <div class="fl__row">
-                    <a href="{{ route('public.forecast.preview-day', ['cityKey' => temperatureHelper::lastSearchedCity()->cityRel->key ?? 0, 'date' => date("Y-m-d", strtotime('tomorrow')), 'type' => 'day']) }}">
+                    <a href="{{ route('public.forecast.daily-by-slug', ['slug' => temperatureHelper::lastSearchedCity()->cityRel->slug ?? 0, 'date' => date("Y-m-d", strtotime('tomorrow')), 'type' => 'day']) }}">
                         {{ __('Vrijeme sutra') }}
                     </a>
                 </div>
@@ -34,7 +34,7 @@
                             {{ temperatureHelper::lastSearchedCity()->cityRel->name ?? '' }} {{ __('5 dana') }}
                         </a>
                     @else
-                        <a href="{{ route('public.forecast.preview', ['cityKey' => temperatureHelper::lastSearchedCity()->cityRel->key ?? 0]) }}#five__days__wrapper">
+                        <a href="{{ route('public.forecast.preview-by-slug', ['slug' => temperatureHelper::lastSearchedCity()->cityRel->slug ?? 0]) }}#five__days__wrapper">
                             {{ temperatureHelper::lastSearchedCity()->cityRel->name ?? '' }} {{ __('5 dana') }}
                         </a>
                     @endif
