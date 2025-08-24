@@ -19,6 +19,9 @@ Route::prefix('/')->group(function () {
      */
     Route::get ('/',                              [PublicHomeController::class, 'home'])->name('public.home');
 
+    /** Sitemaps of website */
+    Route::get ('/sitemap.xml',                   [PublicHomeController::class, 'sitemaps'])->name('public.sitemap');
+
     /**
      *  Forecast routes
      */

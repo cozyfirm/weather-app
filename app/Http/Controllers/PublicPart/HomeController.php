@@ -6,8 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Models\Base\Cities;
 use App\Models\Other\Page;
 use App\Traits\API\ForecastTrait;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use Spatie\Sitemap\Sitemap;
+use Spatie\Sitemap\Tags\Url;
+use Symfony\Component\HttpFoundation\Response;
 
 class HomeController extends Controller{
     use ForecastTrait;
@@ -68,4 +72,53 @@ class HomeController extends Controller{
         ]);
     }
 
+
+    /** ------------------------------------------------------------------------------------------------------------- */
+    /**
+     *  Sitemaps generator
+     */
+    public function sitemaps(): Response{
+        $sitemap = Sitemap::create();
+
+        // Homepage
+        $sitemap->add(Url::create('/')
+            ->setPriority(1.0)
+            ->setChangeFrequency('daily'));
+
+        foreach (Cities::where('base', '=', '1')->get() as $city) {
+            // Main City URI
+
+            $sitemap->add(
+                Url::create(route('public.forecast.preview-by-slug', ['slug' => $city->slug]))
+                    ->setPriority(0.8)
+                    ->setChangeFrequency('hourly')
+            );
+
+            // Forecast for 5 days
+            for ($i = 0; $i < 5; $i++) {
+                $date = Carbon::now()->addDays($i)->format('Y-m-d');
+
+                $sitemap->add(
+                    Url::create(
+                        route('public.forecast.daily-by-slug', [
+                            'slug' => $city->slug,
+                            'date'    => $date,
+                            'type'    => 'day'
+                        ])
+                    )
+                        ->setPriority(0.7)
+                        ->setChangeFrequency('daily')
+                );
+            }
+        }
+
+        // Static sites
+        $sitemap->add(Url::create('/contact-us'));
+        $sitemap->add(Url::create('/pages/about-us'));
+        $sitemap->add(Url::create('/pages/privacy-policy'));
+        $sitemap->add(Url::create('/pages/terms-and-conditions'));
+        $sitemap->add(Url::create('/pages/cookies'));
+
+        return $sitemap->toResponse(request());
+    }
 }
