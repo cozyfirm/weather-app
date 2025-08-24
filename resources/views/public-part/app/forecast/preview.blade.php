@@ -5,6 +5,7 @@
 {{--@section('meta_desc'){{ __("Vremenska prognoza za ") . $city->getName()  . __(". Trenutna temperatura iznosi ") . (temperatureHelper::roundUp($city->twelveHoursCurrentRel->temperature ?? '0')) . "°C." . " " . ($city->twelveHoursCurrentRel->phase ?? '')}}@endsection--}}
 @section('meta_desc')Vremenska prognoza za {{ $city->getName() }}. Trenutna temperatura iznosi {{ temperatureHelper::roundUp($city->twelveHoursCurrentRel->temperature ?? '0') }}°C – {{ $city->twelveHoursCurrentRel->phase ?? '' }}. Detaljna prognoza za danas i narednih 5 dana. @endsection
 @section('meta_img'){{ asset('files/images/weathericons/' . ( $city->twelveHoursCurrentRel->icon ?? '1' ) . '.png') }}@endsection
+@section('meta_canonical'){{ route('public.forecast.preview-by-slug', ['slug' => $city->slug ?? 0]) }}@endsection
 
 @section('public-content')
     <div class="preview__wrapper">

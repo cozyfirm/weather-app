@@ -5,6 +5,7 @@
 @section('meta_title'){{ __("Vremenska prognoza za ") . $city->getName() }}@endsection
 @section('meta_desc'){{ __("Vremenska prognoza za ") . $city->getName()  . __(". Dnevna temperatura od ") . (temperatureHelper::roundUp($fiveDays->min_temp ?? '0')) . "°C do " . (temperatureHelper::roundUp($fiveDays->max_temp ?? '0')) . "°C. " . ($info->long_phrase ?? '')}}@endsection
 @section('meta_img'){{ asset('files/images/weathericons/' . ( $info->icon ?? '1' ) . '.png') }}@endsection
+@section('meta_canonical'){{ route('public.forecast.preview-by-slug', ['slug' => $city->slug ?? 0]) }}@endsection
 
 @section('public-content')
     <div class="preview__wrapper">
