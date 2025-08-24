@@ -37,7 +37,7 @@ Route::prefix('/')->group(function () {
         Route::get ('/preview-day/{cityKey}/{date}/{type}',      [ForecastController::class, 'previewDay'])->name('public.forecast.preview-day');
 
         Route::get ('/{slug}',                                   [ForecastController::class, 'previewBySlug'])->name('public.forecast.preview-by-slug');
-        Route::get ('/daily/{slug}/{date}/{type}',               [ForecastController::class, 'dailyBySlug'])->name('public.forecast.daily-by-slug');
+        Route::get ('/{slug}/{date}/{type}',                     [ForecastController::class, 'dailyBySlug'])->name('public.forecast.daily-by-slug');
 
         /**
          *  API Routes
