@@ -1,19 +1,22 @@
 @extends('public-part.layout.layout')
 
-@section('title') {{ __('vrijeme24.ba') }} @endsection
+@section('title'){{ __('Vremenska prognoza za BiH | Vrijeme24.ba – Brzo, Pouzdano, Lokalno') }}@endsection
+<!-- Meta tags -->
+@section('meta_title'){{ __('Vremenska prognoza za BiH | Vrijeme24.ba – Brzo, Pouzdano, Lokalno') }}@endsection
+@section('meta_desc'){{ __('Vrijeme u BiH – najnovija vremenska prognoza za danas, sutra i narednih 7 dana. Detaljno po gradovima: Sarajevo, Tuzla, Mostar, Banja Luka, Bihać, Zenica i drugi.') }}@endsection
 
 @section('public-content')
     <div class="homepage__wrapper">
         <div class="inner__wrapper">
             <div class="main__search__wrapper">
                 <div class="search__upper_description">
-                    <img src="{{ asset('files/images/logo.png') }}" alt="">
-                    <h2>{{ __('Pouzdana prognoza') }}</h2>
+                    <img src="{{ asset('files/images/logo.png') }}" alt="{{ __('Vrijeme24.ba logo') }}">
+                    <h1>{{ __('Pouzdana prognoza') }}</h1>
                 </div>
 
                 <div class="outside__search__wrapper">
                     <div class="search__title">
-                        <h2>{{ __('Pouzdana prognoza') }}</h2>
+                        <h1>{{ __('Pouzdana prognoza') }}</h1>
                     </div>
                     <div class="search__wrapper">
                         <div class="search__bar">
@@ -70,14 +73,14 @@
             <div class="popular_locations__home_wrapper">
                 <div class="popular__dropdown">
                     <div class="inside__popular__dropdown noselect">
-                        <h4>{{ __('Popularne lokacije') }}</h4>
+                        <h2>{{ __('Popularne lokacije') }}</h2>
                     </div>
 
                     <div class="popular__content">
                         @foreach($popular as $sample)
                             <a href="{{ route('public.forecast.preview', ['cityKey' => $sample->key ]) }}">
                                 <div class="ppl_b_row">
-                                    <p>{{ $sample->name ?? '' }}</p>
+                                    <h3>{{ $sample->name ?? '' }}</h3>
                                     <div class="ppl_icons__wrapper">
                                         <div class="temp__wrapper">
                                             {{ temperatureHelper::roundUp($sample->twelveHoursCurrentRel->temperature ?? '0') }}°C

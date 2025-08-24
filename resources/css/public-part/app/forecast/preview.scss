@@ -28,14 +28,14 @@
                 @media only screen and (max-width: 1000px) {
                     flex-wrap: wrap; gap: 8px;
                 }
-                h2{
+                h1{
                     @media only screen and (max-width: 1000px) {
                         width: 100%; text-align: center; font-size: 30px;
                         &.current{
                             font-size: 10px; text-transform: uppercase;
                         }
                     }
-                    color: #FFFFFF;
+                    color: #FFFFFF; font-size: 32px;
                 }
                 span{
                     @media only screen and (max-width: 1000px) {
@@ -380,7 +380,12 @@
                 img{
                     height: 20px;
                 }
-                h3{color: #FFFFFF; font-weight: normal; }
+                h2{
+                    color: #FFFFFF; font-weight: normal; font-size: 28px;
+                    @media only screen and (max-width: 1000px) {
+                        font-size: 24px;
+                    }
+                }
             }
 
             .body__data{
@@ -407,7 +412,7 @@
                             @media only screen and (max-width: 1000px) {
                                 flex-wrap: wrap;
                             }
-                            p{
+                            p, .week-day{
                                 @media only screen and (max-width: 1000px) {
                                     width: 100%;
                                 }

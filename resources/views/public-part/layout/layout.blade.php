@@ -11,7 +11,7 @@
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3860319822168575" crossorigin="anonymous"></script>
 
 
-        <title> @yield('title', 'vrijeme24.ba - Vremenska prognoza') </title>
+        <title>@yield('title', 'vrijeme24.ba - Vremenska prognoza')</title>
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">

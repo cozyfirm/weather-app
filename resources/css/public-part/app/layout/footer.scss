@@ -224,11 +224,15 @@
 }
 
 .footer__address h5,
-.footer__contact h5 {
+.footer__contact .heading-h5 {
     // font-family: Quirel;
     // letter-spacing: $qLetterSpacing;
     line-height: 140%;
     margin-bottom: 0.5rem;
+}
+
+.footer__contact .heading-h5{
+    font-size: 20px; font-weight: 500;
 }
 
 .footer__contact a {

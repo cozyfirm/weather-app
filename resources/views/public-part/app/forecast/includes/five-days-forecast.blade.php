@@ -2,7 +2,7 @@
     <div class="five__days__inner_wrapper">
         <div class="inner__header">
             <img src="{{ asset('files/images/icons/location.svg') }}" alt="">
-            <h3><b>{{ $city->getName() ?? '' }}</b> {{ __('pet dana') }}</h3>
+            <h2><b>{{ $city->getName() ?? '' }}</b> {{ __('pet dana') }}</h2>
         </div>
 
         <div class="body__data">
@@ -10,7 +10,7 @@
                 <a href="{{ route('public.forecast.preview-day', ['cityKey' => $city->key, 'date' => $day->date, 'type' => 'day']) }}">
                     <div class="day__forecast transition-05" title="{{ $day->dayRel->long_phrase ?? '' }}">
                         <div class="day__title">
-                            <p> {{ $day->weekDay() }} </p>
+                            <h3 class="week-day"> {{ $day->weekDay() }} </h3>
                             <p class="comma">,</p>
                             <span> {{ $day->dateAndMonth() }} </span>
                         </div>
@@ -37,8 +37,6 @@
                                     <span> {{ $day->dayRel->wind_speed ?? '' }} km/h</span>
                                 </div>
                             </div>
-
-
                         </div>
                     </div>
                 </a>

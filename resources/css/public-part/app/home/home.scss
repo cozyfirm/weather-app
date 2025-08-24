@@ -34,11 +34,11 @@
                     }
                     // display: none;
                 }
-                h2{
+                h1{
                     @media only screen and (max-width: 1000px) {
                         display: initial;
                     }
-                    color: #2dc3f9; margin: 0px; padding: 0px; font-weight: normal; display: none;
+                    color: #2dc3f9; margin: 0px; padding: 0px; font-weight: normal; display: none; font-size: 25px;
                 }
             }
 
@@ -57,11 +57,11 @@
 
                 .search__title{
                     position: relative; width: 100%;
-                    h2{
+                    h1{
                         @media only screen and (max-width: 1000px) {
                             display: none;
                         }
-                        color: #2dc3f9; margin: 0px; padding: 0px; font-weight: normal; display: initial;
+                        color: #2dc3f9; margin: 0px; padding: 0px; font-weight: normal; display: initial; font-size: 32px;
                     }
                 }
                 .search__wrapper{
@@ -206,7 +206,7 @@
                         }
                         height: 14px;
                     }
-                    h4{ color: #FFFFFF; font-weight:normal; }
+                    h2{ color: #FFFFFF; font-weight:normal; font-size: 24px; }
                 }
 
                 .popular__content{
@@ -234,8 +234,8 @@
                                 }
                                 cursor:pointer; background: #0e5ea3;
                             }
-                            p{
-                                color: #FFFFFF;
+                            h3{
+                                color: #FFFFFF; font-size: 16px; font-weight: normal;
                             }
                             .ppl_icons__wrapper{
                                 position: relative; display: flex; align-items: center; gap: 32px;

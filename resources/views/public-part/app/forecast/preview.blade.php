@@ -11,8 +11,8 @@
         <div class="current__wrapper">
             <div class="header">
                 <div class="city__">
-                    <h2>{{ $city->getName() ?? '' }}</h2>
-                    <h2 class="current">{{ __('trenutno') }}</h2>
+                    <h1>{{ $city->getName() ?? '' }}</h1>
+                    <h1 class="current">{{ __('trenutno') }}</h1>
                 </div>
                 <p class="datetime">{{ $dateTime }}</p>
             </div>

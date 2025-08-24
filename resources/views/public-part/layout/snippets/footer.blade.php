@@ -3,10 +3,10 @@
         <div class="footer__con-top">
             <div class="footer__con-left">
                 <a href="homepage">
-                    <img src="{{ asset('files/images/logo.png') }}" alt="">
+                    <img src="{{ asset('files/images/logo.png') }}" alt="{{ __('Vrijeme24.ba logo') }}">
                 </a>
                 <div class="footer__contact">
-                    <h5 class="heading-h5">{{ __('Kontakt') }}:</h5>
+                    <p class="heading-h5">{{ __('Kontakt') }}:</p>
                     <a class="underlined" href="#">www.vrijeme24.ba</a>
                     <a class="underlined" href="mailto:press@reprezentacija.ba">info@vrijeme24.ba</a>
                 </div>
@@ -44,12 +44,6 @@
                     <li class="footer__list2-item">
                         <a class="footer__list2-link" href="{{ route('auth') }}">{{ __('Prijavite se') }}</a>
                     </li>
-{{--                    <li class="footer__list2-item">--}}
-{{--                        <a class="footer__list2-link" href="#"> {{ __('') }} </a>--}}
-{{--                    </li>--}}
-{{--                    <li class="footer__list2-item">--}}
-{{--                        <a class="footer__list2-link" href="#">{{ __('') }}</a>--}}
-{{--                    </li>--}}
                     <li class="footer__list2-item">
                         <a class="footer__list2-link" href="https://accuweather.com">{{ __('accuweather.com') }}</a>
                     </li>

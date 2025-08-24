@@ -1,6 +1,8 @@
 <!-- Primary Meta Tags -->
-<meta name="title" content="@yield('meta_title', __('vrijeme24.ba'))">
+{{--<meta name="title" content="@yield('meta_title', __('vrijeme24.ba'))">--}}
 <meta name="description" content="@yield('meta_desc', __('Vremenska prognoza za BiH'))">
+<!-- Canonical tag -->
+<link rel="canonical" href="@yield('meta_canonical', __('https://vrijeme24.ba/'))">
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website">
