@@ -34,7 +34,8 @@ class HomeController extends Controller{
             'history' => $this->getUserHistory(),
             'page' => Page::where('id', '=', 1)->first(),
             'gap' => 0,
-            'title' => 'Pravila privatnosti'
+            'title' => 'Pravila privatnosti',
+            'privacy' => true
         ]);
     }
     public function terms(): View{
@@ -42,7 +43,8 @@ class HomeController extends Controller{
             'history' => $this->getUserHistory(),
             'page' => Page::where('id', '=', 2)->first(),
             'gap' => 0,
-            'title' => 'Uslovi korištenja'
+            'title' => 'Uslovi korištenja',
+            'terms' => true
         ]);
     }
     public function cookies(): View{
@@ -50,7 +52,8 @@ class HomeController extends Controller{
             'history' => $this->getUserHistory(),
             'page' => Page::where('id', '=', 3)->first(),
             'gap' => 0,
-            'title' => 'Kolačići'
+            'title' => 'Kolačići',
+            'cookies' => true
         ]);
     }
 
@@ -59,7 +62,8 @@ class HomeController extends Controller{
             'history' => $this->getUserHistory(),
             'page' => Page::where('id', '=', 4)->first(),
             'gap' => 0,
-            'title' => 'O nama'
+            'title' => 'O nama',
+            'about' => true
         ]);
     }
 

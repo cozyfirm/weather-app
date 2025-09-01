@@ -1,6 +1,7 @@
 @extends('public-part.layout.layout')
 
 @section('title')Kontaktirajte nas | Vrijeme24.ba @endsection
+@section('meta_canonical'){{ route('public.contact-us') }}@endsection
 
 @section('public-content')
     <div class="contact_us_wrapper ">
