@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\ApiAuth;
 use App\Http\Middleware\isAdmin;
 use App\Http\Middleware\isLogged;
 use App\Http\Middleware\forecast;
@@ -10,11 +11,13 @@ use Illuminate\Foundation\Configuration\Middleware;
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
         web: __DIR__.'/../routes/web.php',
+        api: __DIR__.'/../routes/api.php',
         commands: __DIR__.'/../routes/console.php',
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->alias([
+            'api-auth' => ApiAuth::class,
             'isAdmin' => isAdmin::class,
             'isLogged' => isLogged::class,
             'forecast' => forecast::class

@@ -15,6 +15,7 @@ class TwelveHours extends Model{
 
     protected $table = 'base__cities_forecast_th';
     protected $guarded = ['id'];
+    protected $appends = ['icon_uri'];
 
     public function getDateTime():string {
         return $this->getPublicDate($this->date_time);
@@ -24,6 +25,9 @@ class TwelveHours extends Model{
     }
     public function getTime(): string{
         return $this->getPublicTime($this->date_time);
+    }
+    public function getIconUriAttribute(): string{
+        return "https://vrijeme24.ba/files/images/" . $this->icon . ".png";
     }
 
     /**
