@@ -18,5 +18,7 @@ Route::prefix('/forecast')->middleware('api-auth')->group(function (){
 
     Route::prefix('/cities')->middleware('api-auth')->group(function (){
         Route::post('/preview-city',                 [ForecastController::class, 'previewCity'])->name('api.forecast.cities.preview-city');
+
+        Route::post('/preview-by-date',              [ForecastController::class, 'previewByDate'])->name('api.forecast.cities.preview-by-date');
     });
 });

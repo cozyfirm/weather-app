@@ -117,7 +117,7 @@
                         <h3>{{ $info->total_snow ?? 0 }}cm</h3>
                     </div>
                     <div class="oiw__i__footer">
-                        <div class="line__wrapper"> <div class="fill__line width-{{ (int)(($info->total_snow ?? 0) * 10) }}"></div> </div>
+                        <div class="line__wrapper"> <div class="fill__line width-{{ (int)(($info->total_snow ?? 0) * 1) }}"></div> </div>
                         <div class="line__desc">
                             <span>0cm</span>
                             <span>100cm</span>

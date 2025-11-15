@@ -27,7 +27,7 @@ class TwelveHours extends Model{
         return $this->getPublicTime($this->date_time);
     }
     public function getIconUriAttribute(): string{
-        return "https://vrijeme24.ba/files/images/" . $this->icon . ".png";
+        return env('APP_URL') . "/files/images/" . $this->icon . ".png";
     }
 
     /**
