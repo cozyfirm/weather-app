@@ -18,7 +18,10 @@ Route::prefix('/forecast')->middleware('api-auth')->group(function (){
 
     Route::prefix('/cities')->middleware('api-auth')->group(function (){
         Route::post('/preview-city',                 [ForecastController::class, 'previewCity'])->name('api.forecast.cities.preview-city');
-
+        /** Today, tomorrow and / or by date */
         Route::post('/preview-by-date',              [ForecastController::class, 'previewByDate'])->name('api.forecast.cities.preview-by-date');
+
+        /** Get city slug */
+        Route::post('/get-city-slug',                [ForecastController::class, 'getCitySlug'])->name('api.forecast.cities.get-city-slug');
     });
 });

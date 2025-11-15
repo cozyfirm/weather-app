@@ -304,4 +304,35 @@ class ForecastController extends Controller{
             return $this->apiResponse('3060', __('Greška prilikom obrade zahtjeva. Molimo kotantktirajte administratora!'));
         }
     }
+
+    public function getCitySlug(Request $request): JsonResponse{
+        try{
+            // Check for city key
+            if(!isset($request->cityKey)) return $this->apiResponse('3071', __('Nepoznat ključ'));
+
+            /** Now, let's fetch fresh data from city */
+            $publicFC = new PublicForecastController();
+
+            $city = $publicFC->getDayInfo($request->cityKey);
+            if(!$city) $city = Cities::where('key', '=', $request->cityKey)->first();
+
+            return $this->apiResponse('0000', __('Success'), [
+                'city' => [
+                    'slug' => $city->slug,
+                    'name' => $city->name,
+                    'region' => $city->region,
+                    'country' => $city->country,
+                    'geo' => [
+                        'latitude' => $city->latitude,
+                        'longitude' => $city->longitude,
+                        'elevation' => $city->elevation
+                    ]
+                ],
+                'cityKey' => $request->cityKey
+            ]);
+        }catch (\Exception $e){
+            $this->write('ForecastController::getCitySlug()', $e->getCode(), $e->getMessage(), $request);
+            return $this->apiResponse('3070', __('Greška prilikom obrade zahtjeva. Molimo kotantktirajte administratora!'));
+        }
+    }
 }
