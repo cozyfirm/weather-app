@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\ForecastController;
+use App\Http\Controllers\API\HistoryController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -24,4 +25,8 @@ Route::prefix('/forecast')->middleware('api-auth')->group(function (){
         /** Get city slug */
         Route::post('/get-city-slug',                [ForecastController::class, 'getCitySlug'])->name('api.forecast.cities.get-city-slug');
     });
+});
+
+Route::prefix('/history')->middleware('api-auth')->group(function (){
+    Route::post('/search-history',                   [HistoryController::class, 'searchHistory'])->name('api.history.search-history');
 });
